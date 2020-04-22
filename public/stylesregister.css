@@ -1,0 +1,27 @@
+.register
+{
+  font-family: 'timelessregular';
+  font-size: 20px;
+  padding: 5px 200px 5px 200px;
+}
+
+.container
+{
+  padding: 40px 40px 40px 40px;
+}
+
+.imagenlogin
+{
+  padding-bottom: 30px;
+}
+
+.boton
+{
+  font-family: 'Arial';
+  font-size: 50px;
+}
+
+.nav-brand
+{
+  padding-left: 500px;
+}

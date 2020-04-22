@@ -1,0 +1,37 @@
+body
+{
+  background-image: url("background.jpg");
+  background-size: cover;
+}
+
+.login
+{
+  font-family: 'timelessbold';
+  font-size: 20px;
+  background-color: White;
+  width: 350px;
+  text-align: center;
+  padding: 20px 40px 40px 40px;
+}
+
+.container
+{
+  padding-top: 130px;
+  padding-bottom: 130px;
+}
+
+.imagen
+{
+  padding-bottom: 30px;
+  padding-bottom: 30px;
+}
+
+.boton
+{
+  font-family: 'Arial';
+}
+
+.form-control
+{
+  font-size: 200px;
+}
