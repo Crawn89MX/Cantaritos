@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('comensales.indexComensales');
 });
+
+Route::get('/facturacion', function () {
+    return view('administracion.facturacion');
+});
