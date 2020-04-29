@@ -43,11 +43,13 @@
 		.titulo
 		{
 			padding-bottom: 0px;
-			font-family: 'proxima-nova' !important;
+			/*font-family: 'proxima-nova' !important;*/
+			font-family: 'Segoe UI Regular' !important;
 		}
 		.subtitulo
 		{
-			font-family: 'brillotusregular' !important;
+			/*font-family: 'brillotusregular' !important;*/
+			font-family: 'Segoe UI Regular' !important;
 		}
 		.card
 		{
@@ -82,7 +84,7 @@
 								</div>
 								<div class="col-md-4">
 									<CENTER>
-										<img class="card-img"  src="{{ asset("images/temp.png") }}" style="width:20px !important; height:20px !important">
+										<i class="fas fa-stopwatch" style="font-size:20px; color:gray;"></i>
 									</CENTER>
 									<button type="button" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;">✔</button>
 								</div>

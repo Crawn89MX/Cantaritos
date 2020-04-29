@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="{{ asset("Fuentes/stylesheet.css") }}">
 	<link rel="stylesheet" href="{{ asset("css/estilos.css") }}">
 	<link rel="stylesheet" href="{{ asset("css/app.css")}}">
+	<script src="https://kit.fontawesome.com/64af8825ab.js"></script>
 	
 </head>
 <body>

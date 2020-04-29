@@ -44,15 +44,58 @@
 		.titulo
 		{
 			padding-bottom: 0px;
-			font-family: 'proxima-nova' !important;
+			/*font-family: 'proxima-nova' !important;*/
+			font-family: 'Segoe UI Regular' !important;
 		}
 		.subtitulo
 		{
-			font-family: 'brillotusregular' !important;
+			/*font-family: 'brillotusregular' !important;*/
+			font-family: 'Segoe UI Regular' !important;
 		}
 		.card
 		{
 			box-shadow: 2px 2px 5px #999;
+		}
+		.card:hover
+		{
+			box-shadow: 5px 5px 10px #999;
+		}
+		.card:hover
+		{
+			animation-name:zoom-independiente;
+			animation-duration: .4s;
+			margin-top:-20px;
+			margin-bottom:20px;
+		}
+		.card:not(:hover)
+		{
+			animation-name:zoom-independienteContrario;
+			animation-duration: .4s;
+			margin-top:0px;
+			margin-bottom:0px;
+		}
+
+		@keyframes zoom-independiente{
+			from {
+				margin-top:0px;
+				margin-bottom:0px;
+			}
+			to{
+				margin-top:-20px;
+				margin-bottom:20px;
+			}
+
+		}
+		@keyframes zoom-independienteContrario{
+			from{
+				margin-top:-20px;
+				margin-bottom:20px;
+			}
+			to {
+				margin-top:0px;
+				margin-bottom:0px;
+			}
+
 		}
 	</style>
 
@@ -65,7 +108,6 @@
 				<div class="col-md-8">
 					<div class="titulo">
 						<h2>MENÚ</h2>
-						<hr>
 					</div>
 				</div>
 			</div>
@@ -74,9 +116,12 @@
 			<!--Entradas-->
 			<div class="container">
 				<CENTER>
-				<div class="subtitulo">
-					<h3>Entradas</h3>
-					<br>
+				<div class="subtitulo row">
+					<div class="col-6 row"> 
+						<div class="col-4"><hr></div>
+						<div class="col-4"><h3>Entradas</h3></div>
+						<div class="col-4"><hr></div>
+					</div>
 				</div>
 				</CENTER>
 
@@ -138,10 +183,13 @@
 
 				<!--Platillos-->
 				<CENTER>
-				<div class="subtitulo">
-					<h3>Platillos</h3>
-					<br>
-				</div>
+					<div class="subtitulo row">
+						<div class="col-6 row"> 
+							<div class="col-4"><hr></div>
+							<div class="col-4"><h3>Platillos</h3></div>
+							<div class="col-4"><hr></div>
+						</div>
+					</div>
 				</CENTER>
 
 				<div class="row form-group">
@@ -202,10 +250,13 @@
 
 				<!--Postres-->
 				<CENTER>
-				<div class="subtitulo">
-					<h3>Postres</h3>
-					<br>
-				</div>
+					<div class="subtitulo row">
+						<div class="col-6 row"> 
+							<div class="col-4"><hr></div>
+							<div class="col-4"><h3>Postres</h3></div>
+							<div class="col-4"><hr></div>
+						</div>
+					</div>
 				</CENTER>
 
 				<div class="row form-group">
@@ -266,10 +317,13 @@
 
 				<!--Bebidas-->
 				<CENTER>
-				<div class="subtitulo">
-					<h3>Bebidas</h3>
-					<br>
-				</div>
+					<div class="subtitulo row">
+						<div class="col-6 row"> 
+							<div class="col-4"><hr></div>
+							<div class="col-4"><h3>Bebidas</h3></div>
+							<div class="col-4"><hr></div>
+						</div>
+					</div>
 				</CENTER>
 
 				<div class="row form-group">

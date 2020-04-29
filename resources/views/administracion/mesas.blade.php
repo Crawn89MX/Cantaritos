@@ -60,70 +60,65 @@
 			height: 500px;
 			width: -800px;
 		}
+		.btn-info
+		{
+			color:white;
+		}
 	</style>
 
 	<!--Botones de las mesas-->
 	<div class="margenes">
 		<div class="container contenido">
-			<div class="row">
+			<div class="row" style="padding-left: 135px;">
 				<div class="col-2">
-					<div class="boton" style="padding-top: 80px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 12</button>
+					<div class="boton" style="padding-top: 67px !important; ">
+						
 					</div>
-					<div class="boton" style="padding-top: 10px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 13</button>
+					<?php
+
+						for($i = 3;$i <= 15; $i++) {
+							if($i != 6 && $i != 7 && $i != 11 && $i != 12){
+							echo '	<div class="boton" style="padding-top: 13px !important; ">
+										<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa '.$i.'</button>
+									</div>';
+							}
+						}
+
+					?>
+					
 					</div>
-					<div class="boton" style="padding-top: 20px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 14</button>
-					</div>
-					<div class="boton" style="padding-top: 5px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 15</button>
-					</div>
-					<div class="boton" style="padding-top: 5px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 16</button>
-					</div>
-					<div class="boton" style="padding-top: 10px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 17</button>
-					</div>
-					<div class="boton" style="padding-top: 15px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 18</button>
-					</div>
-					<div class="boton" style="padding-top: 15px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 19</button>
-					</div>
-					<div class="boton" style="padding-top: 15px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 20</button>
+				<div class="col-2" style="padding-left: 110px; padding-top: 330px;">
+					<div class="boton" style="padding-top: 80px !important;">
+						<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa 18</button>
 					</div>
 				</div>
-				<div class="col-6">
-					<div class="boton" style="padding-top: 80px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 12</button>
+				<div class="col-2" style="padding-left: 55px; padding-top: 330px;">
+					<div class="boton" style="padding-top: 80px !important;">
+						<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa 19</button>
 					</div>
-					<div class="boton" style="padding-top: 10px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 13</button>
+				</div>
+				<div class="col-2" style="margin-left: -15px; padding-top: 330px;">
+					<div class="boton" style="padding-top: 80px !important;">
+						<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa 20</button>
 					</div>
-					<div class="boton" style="padding-top: 20px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 14</button>
+				</div>
+				<div class="col-2"  style="padding-left: 70px;">
+					<div class="boton" style="padding-top: 70px !important;">
+						
 					</div>
-					<div class="boton" style="padding-top: 5px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 15</button>
-					</div>
-					<div class="boton" style="padding-top: 5px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 16</button>
-					</div>
-					<div class="boton" style="padding-top: 10px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 17</button>
-					</div>
-					<div class="boton" style="padding-top: 15px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 18</button>
-					</div>
-					<div class="boton" style="padding-top: 15px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 19</button>
-					</div>
-					<div class="boton" style="padding-top: 15px !important; padding-left: 225px !important">
-						<button type="button" class="btn btn-info btn-sm">Mesa 20</button>
-					</div>
+					<?php
 
+						for($i = 1;$i <= 21; $i++) {
+							if($i == 1 || $i == 2 || $i == 6 || $i == 7 || $i == 11 || $i == 12 || $i == 16 || $i == 17 || $i == 21){
+							echo '	<div class="boton" style="padding-top: 13px !important; ">
+										<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa '.$i.'</button>
+									</div>';
+							}
+						}
+
+					?>
+				</div>
+				
 				</div>
 				<br>
 			</div>
