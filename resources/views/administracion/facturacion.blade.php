@@ -1,7 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app') <!--Llama a la carpeta layouts con su archivo app,
+						Contiene el navbar y el menú de navegación para no 
+						repetir el diseño en todos los archivos-->
 
 
-@section('content')
+@section('content') <!--Todo lo que se pondrá dentro del proyecto
+					De que punto a que punto se tomará, en este caso para el diseño
+					@yield Punto específico, es decir, el orden que se tomará el contenido-->
 	
 <div class="titulo">
 	<h2>Facturación</h2>

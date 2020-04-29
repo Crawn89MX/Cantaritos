@@ -13,10 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () 
+{
     return view('comensales.indexComensales');
 });
 
-Route::get('/facturacion', function () {
+Route::get('/facturacion', function () 
+{
     return view('administracion.facturacion');
+});
+
+Route::get('/cuenta', function () 
+{
+    return view('administracion.cuenta');
 });
