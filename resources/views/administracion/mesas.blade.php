@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Mesas</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="css/estilos.css">
-	<link rel="stylesheet" href="fuentes/stylesheet.css">
+@extends('layouts.app')
+
+@section('content')
+	
 	<style>
 		.btn-primary
 		{
@@ -17,7 +9,7 @@
 		}
 		.navbar-light
 		{
-			background-image: url("img/background.jpg");
+			background-image: url("{{ asset("images/background.jpg") }}");
 			background-size: cover;
 			background-position: 0px -280px;
 		}
@@ -36,7 +28,7 @@
 		}
 		body
 		{
-			background-image: url("img/background2.png");
+			background-image: url("{{ asset("images/background2.png") }}");
 			background-size: cover;
 		}
 		.contenido
@@ -63,76 +55,12 @@
 		}
 		.contenido
 		{
-			background-image: url("img/mesas.jpg");
+			background-image: url("{{ asset("images/mesas.jpg") }}");
 			background-size: cover;
 			height: 500px;
 			width: -800px;
 		}
 	</style>
-</head>
-<body>
-
-	<!-- Menu de restaurante, la carta, eventos y contacto-->
-			<nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-center" style="padding: 0px; margin: 0px;">
-				<ul class="navbar-nav">
-					<li class="nav-item" style="padding-top: 20px !important;">
-            <div class="espacio">
-              <a href="" class="navbar-brand-principal"><h4><b>RESTAURANTE</b></h4></a>
-            </div>
-			    </li>
-					<li class="nav-item" style="padding-top: 20px !important; padding-right: 30px !important;">
-            <div class="espacio">
-              <a href="" class="navbar-brand-principal"><h4><b>LA CARTA</b></h4></a>
-            </div>
-			    </li>
-					<li class="nav-item-img" style="padding: 0px !important;">
-						<img src="img/logo.png" alt="" class="estilos-logo">
-	    		</li>
-					<li class="nav-item" style="padding-top: 20px !important;">
-            <div class="espacio">
-              <a href="" class="navbar-brand-principal"><h4><b>EVENTOS</b></h4></a>
-            </div>
-			    </li>
-					<li class="nav-item" style="padding-top: 20px !important;">
-            <div class="espacio">
-              <a href="" class="navbar-brand-principal"><h4><b>CONTACTO</b></h4></a>
-            </div>
-			    </li>
-			  </ul>
-			</nav>
-
-		<!-- Menu de meseros, chefs, cuentas, facturacion y gestión-->
-				<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="padding: 0px; margin: 0px;">
-					<ul class="navbar-nav">
-				    <li class="nav-item">
-	            <div class="espacio">
-	              <a href="" class="navbar-brand"><h4><b>Meseros</b></h4></a>
-	            </div>
-				    </li>
-				    <li class="nav-item">
-				      <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
-				    </li>
-	          <li class="nav-item">
-				      <a href="" class="navbar-brand"><h4><b>Chefs</b></h4></a>
-				    </li>
-				    <li class="nav-item">
-				      <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
-				    </li>
-						<li class="nav-item">
-				      <a href="" class="navbar-brand"><h4><b>Cuentas</b></h4></a>
-				    </li>
-						<li class="nav-item">
-				      <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
-				    </li><li class="nav-item">
-				      <a href="" class="navbar-brand"><h4><b>Facturación</b></h4></a>
-				    </li><li class="nav-item">
-				      <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
-				    </li><li class="nav-item">
-				      <a href="" class="navbar-brand"><h4><b>Gestión</b></h4></a>
-	          </li><li class="nav-item">
-				      <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
-				  </ul>
-				</nav>
 
 	<!--Botones de las mesas-->
 	<div class="margenes">
@@ -204,10 +132,5 @@
 		<br>
 	</div>
 
+@endsection
 
-
-	 <script src="js/jquery-3.4.1.min.js"></script>
-	 <script src="js/popper.min.js"></script>
-	 <script src="js/bootstrap.min.js"></script>
-</body>
-</html>

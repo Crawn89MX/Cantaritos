@@ -5,8 +5,15 @@
 
 @section('content') <!--Todo lo que se pondrá dentro del proyecto
 					De que punto a que punto se tomará, en este caso para el diseño
-					@yield Punto específico, es decir, el orden que se tomará el contenido-->
-	
+					yield Punto específico, es decir, el orden que se tomará el contenido-->
+<style>
+		.navbar-light
+		{
+			background-image: url("{{ asset("images/background.jpg") }}");
+			background-size: cover;
+			background-position: 0px -280px;
+		}
+</style>
 <div class="titulo">
 	<h2>Facturación</h2>
 </div>

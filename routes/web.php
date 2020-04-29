@@ -27,3 +27,23 @@ Route::get('/cuenta', function ()
 {
     return view('administracion.cuenta');
 });
+
+Route::get('/index', function () 
+{
+    return view('administracion.index');
+});
+
+Route::get('/menu', function () 
+{
+    return view('administracion.menu');
+});
+
+Route::get('/mesas', function () 
+{
+    return view('administracion.mesas');
+});
+
+Route::get('/ordenes', function () 
+{
+    return view('administracion.ordenes');
+});
