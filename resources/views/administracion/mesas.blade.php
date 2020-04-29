@@ -87,17 +87,17 @@
 					?>
 					
 					</div>
-				<div class="col-2" style="padding-left: 110px; padding-top: 330px;">
+				<div class="col-2" style="margin-left: 110px; padding-top: 330px;">
 					<div class="boton" style="padding-top: 80px !important;">
 						<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa 18</button>
 					</div>
 				</div>
-				<div class="col-2" style="padding-left: 55px; padding-top: 330px;">
+				<div class="col-2" style="margin-left: -55px; padding-top: 330px;">
 					<div class="boton" style="padding-top: 80px !important;">
 						<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa 19</button>
 					</div>
 				</div>
-				<div class="col-2" style="margin-left: -15px; padding-top: 330px;">
+				<div class="col-2" style="margin-left: -55px; padding-top: 330px;">
 					<div class="boton" style="padding-top: 80px !important;">
 						<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa 20</button>
 					</div>
