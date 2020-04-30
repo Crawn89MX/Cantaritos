@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement("SET FOREIGN_KEY_CHECKS = 0;");
+        DB::table('Mesas')->truncate();
+        DB::statement("SET FOREIGN_KEY_CHECKS = 1;");
+
         // $this->call(UserSeeder::class);
+        $this->call(MesasSeeder::class);
     }
 }

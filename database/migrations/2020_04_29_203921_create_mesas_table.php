@@ -14,8 +14,13 @@ class CreateMesasTable extends Migration
     public function up()
     {
         Schema::create('mesas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->bigIncrements('ID');
+            $table->string('Nombre')->unique();
+            $table->integer('Disponibilidad');
+            $table->string('Total');
+            $table->integer('Sillas');
+            $table->timestamp('FechaCreacion')->useCurrent();
+            $table->timestamp('FechaModificacion')->useCurrent();
         });
     }
 
