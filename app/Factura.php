@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-//Modelo
-class Image extends Model
+class Factura extends Model
 {
     //
+
+    public $timestamps = false;
 }

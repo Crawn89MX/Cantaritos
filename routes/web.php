@@ -18,10 +18,7 @@ Route::get('/', function ()
     return view('comensales.indexComensales');
 });
 
-Route::get('/facturacion', function () 
-{
-    return view('administracion.facturacion');
-});
+Route::get('/facturacion','FacturaController@index');
 
 Route::get('/cuenta', function () 
 {
@@ -38,10 +35,14 @@ Route::get('/menu', function ()
     return view('administracion.menu');
 });
 
+Route::get('/mesas', 'MesaController@index');
+
+/*
 Route::get('/mesas', function () 
 {
     return view('administracion.mesas');
 });
+*/
 
 Route::get('/ordenes', function () 
 {

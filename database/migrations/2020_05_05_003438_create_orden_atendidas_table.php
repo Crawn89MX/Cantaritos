@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMesasTable extends Migration
+class CreateOrdenAtendidasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateMesasTable extends Migration
      */
     public function up()
     {
-        Schema::create('mesas', function (Blueprint $table) {
+        Schema::create('orden_atendidas', function (Blueprint $table) {
             $table->bigIncrements('ID')->unique();
-            $table->string('Nombre')->unique();
-            $table->integer('Disponibilidad');
-            $table->string('Total');
-            $table->integer('Sillas');
-            $table->string("Ordenes")->nullable();
-            //$table->timestamps();
+            $table->string('Mesa');
+            $table->bigInteger('ID_Receta');
+            $table->string('Ingredientes_Alternativos');
+            $table->string('Precio');
+            $table->bigInteger("ID_Facturacion");
             $table->timestamp('FechaCreacion')->useCurrent();
             $table->timestamp('FechaModificacion')->useCurrent();
-            
         });
     }
 
@@ -34,6 +32,6 @@ class CreateMesasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mesas');
+        Schema::dropIfExists('orden_atendidas');
     }
 }

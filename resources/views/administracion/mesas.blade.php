@@ -106,17 +106,20 @@
 					<div class="boton" style="padding-top: 70px !important;">
 						
 					</div>
-					<?php
-
-						for($i = 1;$i <= 21; $i++) {
-							if($i == 1 || $i == 2 || $i == 6 || $i == 7 || $i == 11 || $i == 12 || $i == 16 || $i == 17 || $i == 21){
-							echo '	<div class="boton" style="padding-top: 13px !important; ">
-										<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa '.$i.'</button>
-									</div>';
-							}
-						}
-
-					?>
+					
+						@forelse ($mesas as $mesa)
+							@if($mesa->Disponibilidad == 1 && ($mesa->ID == 1 || $mesa->ID == 2 || $mesa->ID == 6 || $mesa->ID == 7 || $mesa->ID == 11 || $mesa->ID == 12 || $mesa->ID == 16 || $mesa->ID == 17 || $mesa->ID == 21))
+								<div class="boton" style="padding-top: 13px !important; ">
+									<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">{{ $mesa->Nombre }}</button>
+								</div>
+							@endif
+						@empty
+							<div class="boton" style="padding-top: 13px !important; ">
+								<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa '.$i.'</button>
+							</div>
+						@endforelse
+					
+					
 				</div>
 				
 				</div>
