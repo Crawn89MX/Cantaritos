@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
 
         protected function truncateTables(array $tables)
         {
+            //Activar llaves foráneas
             DB::statement("SET FOREIGN_KEY_CHECKS = 0;");
             foreach($tables as $table){
                 DB::table($table)->truncate();
