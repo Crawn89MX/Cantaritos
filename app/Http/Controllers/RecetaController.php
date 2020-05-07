@@ -59,7 +59,7 @@ class RecetaController extends Controller
 
         $recetas = Receta::all();
 
-        return view('administracion.menu', compact('recetas'));
+        return view('comensales.menu', compact('recetas'));
     }
 
     /**

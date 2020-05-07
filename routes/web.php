@@ -22,7 +22,7 @@ Route::get('/cuenta', function ()
 
 Route::get('/', function () 
 {
-    return view('administracion.index');
+    return view('welcome');
 });
 
 Route::get('/menu', 'RecetaController@show');
