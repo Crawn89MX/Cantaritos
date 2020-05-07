@@ -19,6 +19,7 @@ class CreateRecetasTable extends Migration
             $table->string('Nombre')->unique();
             $table->string('Descripcion');
             $table->string('Costo');
+            $table->string('Clasificacion');
             $table->longText('Ingredientes');
             $table->longText('Preparacion');
             $table->string('Condimentos_Alternativos');
