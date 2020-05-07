@@ -429,19 +429,24 @@ right: 0;
 				</CENTER>
 
 				<div class="row form-group">
+					@forelse ($recetas as $receta)
 					<div class="card" style="width: 200px; margin-left: 2.2% !important;">
-					  <img class="card-img-top" width="350" height="200" src="img/queso.jpg" alt="Card image">
-					  <div class="card-body" style="padding: 5px !important;">
-							<div class="row d-flex justify-content-between">
-								<div class="col-md-9">
-									<h5 class="card-title" style="margin-bottom: 0px !important;">Queso fundido</h5>
-								</div>
-								<div class="col-md-3">
-									<h5 class="card-title" style="margin-bottom: 0px !important; width: 150px !important; margin-left: -20px !important;">$30</h5>
-								</div>
-							</div>
+						<img class="card-img-top" width="350" height="200" src="{{asset("Images/$receta->Imagen")}}" alt="Card image">
+						<div class="card-body" style="padding: 5px !important;">
+							  <div class="row d-flex justify-content-between">
+								  <div class="col-md-9">
+									  <h5 class="card-title" style="margin-bottom: 0px !important;">{{$receta->Nombre}}</h5>
+								  </div>
+								  <div class="col-md-3">
+								  <h5 class="card-title" style="margin-bottom: 0px !important; width: 150px !important; margin-left: -20px !important;">{{$receta->Costo}}</h5>
+								  </div>
+							  </div>
+						</div>
 					  </div>
-					</div>
+					@empty
+						<h5>No hay productos</h5>
+					@endforelse
+					{{-- 
 					<div class="card" style="width: 200px; margin-left: 2.2% !important;">
 					  <img class="card-img-top" width="350" height="200" src="img/quesadilla.jpg" alt="Card image">
 					  <div class="card-body" style="padding: 5px !important;">
@@ -674,7 +679,7 @@ right: 0;
 					  </div>
 					</div>
 				</div>
-				<br>
+				<br> --}}
 
 				<!--Botón
 				<div class="col-md-12">

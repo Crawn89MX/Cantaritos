@@ -25,10 +25,7 @@ Route::get('/', function ()
     return view('administracion.index');
 });
 
-Route::get('/menu', function () 
-{
-    return view('administracion.menu');
-});
+Route::get('/menu', 'RecetaController@show');
 
 Route::get('/mesas', 'MesaController@index');
 

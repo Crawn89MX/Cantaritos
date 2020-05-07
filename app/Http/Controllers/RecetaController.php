@@ -16,7 +16,7 @@ class RecetaController extends Controller
     {
         $recetas = DB::table('recetas')->get();
 
-        dd($recetas);
+        //dd($recetas);
 
         $title = 'Listado de Recetas';
 
@@ -51,9 +51,15 @@ class RecetaController extends Controller
      * @param  \App\Receta  $receta
      * @return \Illuminate\Http\Response
      */
-    public function show(Receta $receta)
+    public function show()
     {
         //
+        //$recetas = DB::table('recetas')->get();
+        //dd($recetas);
+
+        $recetas = Receta::all();
+
+        return view('administracion.menu', compact('recetas'));
     }
 
     /**
