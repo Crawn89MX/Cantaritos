@@ -83,5 +83,6 @@ class FacturaController extends Controller
     public function destroy(Factura $factura)
     {
         //
+        
     }
 }
