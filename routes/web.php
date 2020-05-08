@@ -36,6 +36,11 @@ Route::get('/mesas', function ()
 });
 */
 
+Route::get('/receta', function () 
+{
+    return view('administracion.receta');
+});
+
 Route::get('/ordenes', function () 
 {
     return view('administracion.ordenes');

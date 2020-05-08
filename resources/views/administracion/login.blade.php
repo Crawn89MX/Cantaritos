@@ -83,7 +83,6 @@
 							<button class="contact100-form-btn">
 								<span>
 									<b>Crear</b>
-									<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
 								</span>
 							</button>
 						</div>

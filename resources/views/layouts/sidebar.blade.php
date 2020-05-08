@@ -15,12 +15,12 @@
 	    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 
-
                 <link rel="stylesheet" href="{{ asset("css/comensales.css") }}">
                 <link rel="stylesheet" href="{{ asset("Fuentes/stylesheet.css") }}">
                 <link rel="stylesheet" href="{{ asset("css/estilos.css") }}">
                 <link rel="stylesheet" href="{{ asset("css/app.css")}}">
         
+
           <!-- Kit de FontAwesome -->
 	  <script src="https://kit.fontawesome.com/64af8825ab.js"></script>
 	  <!-- jQuery CDN - Slim version (=without AJAX) -->

@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="{{ asset("Fuentes/stylesheet.css") }}">
 	<link rel="stylesheet" href="{{ asset("css/estilos.css") }}">
 	<link rel="stylesheet" href="{{ asset("css/app.css")}}">
+	<link rel="stylesheet" href="{{ asset("css/comensales.css") }}">
 	<script src="https://kit.fontawesome.com/64af8825ab.js"></script>
 	  <!-- jQuery CDN - Slim version (=without AJAX) -->
 	  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -26,8 +27,30 @@
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+	<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
+	<style>
+		body
+		{
+			background-image: url("{{ asset("Images/background2.jpg") }}");
+			background-size: cover;
+		}
+		.navbar-light
+		{
+			background-image: url("{{ asset("Images/background2.png") }}");
+			background-size: cover;
+			background-position: 0px -280px;
+		}
+		.navbar-dark
+		{
+			background-color: black !important;
+		}
+		a:visited, a:link, a:focus, a:hover, a:active
+		{
+				list-style: none !important;
+				text-decoration: none !important;
+		}
+	</style>
 </head>
 <body>
 	
@@ -95,15 +118,9 @@
 	  		<li class="nav-item">
 			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
 			</li>
-			<li class="nav-item" style="padding-left: 600px !important;">
-                <button type="button" id="sidebarCollapse" class="btn btn-info" style="background: black !important">
-                    <i class="fas fa-align-left"></i>
-                </button>
-              </li>
-			@yield('button')
 		  </ul>
 		</nav>
-	<br>
+<br>
 
   @yield('content')
 

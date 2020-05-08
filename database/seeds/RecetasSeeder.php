@@ -12,12 +12,13 @@ class RecetasSeeder extends Seeder
      */
     public function run()
     {
-        /*
+        
         Receta::create([
-            'Imagen'=>'birria.jpg',
+            'Imagen'=>'chiles.jpg',
             'Nombre'=>'Birria',
             'Descripcion'=>'Plato a base de carne de borrego, adobado con una preparacion a base de algunos tipos de chiles, condimentos y sal.',
             'Costo'=>'25',
+            'Clasificacion'=>'Plato Fuerte',
             'Ingredientes'=>'{"1 Kilo de Rabo/Cola de res de RUMBA MEATS",
                 "1 Kilo de Cachete de res o pulpa de res",
                 "Sal y pimienta al gusto","3 Chiles Ancho",
@@ -35,14 +36,14 @@ class RecetasSeeder extends Seeder
                 "Precaliente el horno a 350 º F. Hornea la carne durante unas 4 horas o hasta que este tierna.",
                 "Sirva la carne caliente con su caldo en tazones y decora con cebolla picada y cilantro. Puedes acompañar con tortillas calientes y una salsa picante."}',
             'Condimentos_Alternativos'=>'{"1/2 cebolla blanca mediana cortada en rodajas","1 cucharadita de oregano mexicano","4 dientes de ajo enteros"}'
-        ]);*/
+        ]);
         
         Receta::create([
             'Imagen'=>'quesadilla.jpg',
             'Nombre'=>'Quesadillas',
             'Descripcion'=>'Tortilla fundida con queso en su interior',
             'Costo'=>'15',
-            'Clasificacion'=>'Plato Fuerte'
+            'Clasificacion'=>'Platillo principal',
             'Ingredientes'=>'{"1 Tortilla",
                 "1 cuarto de queso"}',
             'Preparacion'=>'{"Sazona la carne con sal y pimienta, y colocala en un plato grande para hornear.",
@@ -62,7 +63,7 @@ class RecetasSeeder extends Seeder
             'Nombre'=>'Torta ahogada',
             'Descripcion'=>'Pan de birote bañado en salsa se tomate y relleno de carnes',
             'Costo'=>'32',
-            'Clasificacion'=>'Plato Fuerte',
+            'Clasificacion'=>'Platillo principal',
             'Ingredientes'=>'{"100 g de chile de arbol seco, sin rabos, venas ni semillas",
                 "2 cucharadas de ajonjoli tostado",
                 "2 cucharadas de vinagre blanco",
@@ -89,7 +90,7 @@ class RecetasSeeder extends Seeder
             'Nombre'=>'Enchiladas',
             'Descripcion'=>'Tortilla de maiz bañada en alguna salsa picante utilizando chile en su preparacion.',
             'Costo'=>'40',
-            'Clasificacion'=>'Platillo principal',
+            'Clasificacion'=>'Plato Fuerte',
             'Ingredientes'=>'{"4 chiles guajillo abiertos, limpios y sin semillas.",
                 "4 chiles anchos abiertos, limpios y sin semillas.",
                 "2 dientes de ajo picados",
@@ -121,80 +122,45 @@ class RecetasSeeder extends Seeder
             'Nombre'=>'Pozole',
             'Descripcion'=>'plato tradicional, un caldo hecho a base de granos de maíz, según la región se le agrega, carne de pollo o de cerdo como ingrediente secundario.​',
             'Costo'=>'31',
-            'Clasificacion'=>'Platillo principal',
+            'Clasificacion'=>'Plato Fuerte',
             'Ingredientes'=>'{"4 litros de agua",
-                "1 kilo de carne de puerco cortada en cubos
-                "1/2 kilo de costilla de puerco cortada en trozos
-                "3 latas de maíz para pozole enjuagado y escurrido (425 gramos c/u).
-                "1 cebolla blanca cortada en cuatro partes
-                "8 dientes de ajo grandes
-                "Sal para sazonar al gusto
-                "5 chiles anchos limpios sin semillas y desvenados.
-                "5 chiles guajillo limpios sin semillas y desvenados.
-                "6 dientes de ajo
-                "1/2 cebolla mediana picadita.
-                "2 cucharadas soperas de aceite vegetal
-                "1/2 cucharadita cafetera de orégano mexicano
-                "Sal al gusto para sazonar
-                "1 lechuga finamente picada
-                "1/2 taza de cebolla blanca finamente picada
-                "1/2 taza de rábanos finamente rebanados
-                "Chile piquín recién molido al gusto
-                "Orégano mexicano al gusto para sazonar
+                "1 kilo de carne de puerco cortada en cubos",
+                "1/2 kilo de costilla de puerco cortada en trozos",
+                "3 latas de maíz para pozole enjuagado y escurrido (425 gramos c/u).",
+                "1 cebolla blanca cortada en cuatro partes",
+                "8 dientes de ajo grandes",
+                "Sal para sazonar al gusto",
+                "5 chiles anchos limpios sin semillas y desvenados.",
+                "5 chiles guajillo limpios sin semillas y desvenados.",
+                "6 dientes de ajo",
+                "1/2 cebolla mediana picadita.",
+                "2 cucharadas soperas de aceite vegetal",
+                "1/2 cucharadita cafetera de orégano mexicano",
+                "Sal al gusto para sazonar",
+                "1 lechuga finamente picada",
+                "1/2 taza de cebolla blanca finamente picada",
+                "1/2 taza de rábanos finamente rebanados",
+                "Chile piquín recién molido al gusto",
+                "Orégano mexicano al gusto para sazonar",
                 "Tortillas doradas ó tostadas de paquete 2–3 por persona",
                 "Limones cortados en cuartos"}',
-            'Preparacion'=>'{"Coloque los chiles en una olla y cubralos con agua; hiervalos por 10 minutos, escurralos y licuelos con el ajo, el ajonjoli, el vinagre, el comino y la mejorana. Hierva la salsa y añada la sal al gusto.",
-                "Licue todos los ingredientes, cuelelos y hiervalos durante 8 minutos. Rec­tifique de sal y reserve.",
-                "Corte los birotes por la mitad horizontalmente, retireles un poco de migajon y unte ambas mitades con los frijoles; agregue las carnitas y cierrelos. Sumerja cada torta en la salsa de jitomate y acompañe con la salsa picante al gusto."}',
-            'Condimentos_Alternativos'=>'{"Aguacate cortado en cubos",
-                "2 tazas de zanahorias precocidas y partidas en cubos",
-                "Lechuga o repollo",
-                "Rabanos"}'
+            'Preparacion'=>'{"Pon el agua a calentar en una olla grande. Agrega la cebolla, el ajo, la sal, la carne y las costillas. Deja que suelte el hervor y después baja la flama para que se cocine la carne por aproximadamente 2 horas y media, o hasta que ésta se despegue del hueso.",
+                "Mientras se cuece la carne, remueve con un cucharón la capa de espuma y grasa que se vaya formando en la superficie del caldo. Si es necesario agrega más agua caliente para mantener el mismo nivel de caldo en la olla.",
+                "Cuando la carne se cueza, sepárala del caldo. Quítale al caldo el exceso de grasa, los huesos de las costillas, la cebolla y el ajo.",
+                "Para preparar la salsa, remoja los chiles anchos y guajillo durante 25 minutos en suficiente agua que los cubra.",
+                "Una vez que los chiles estén blandos, escúrrelos y colócalos en la licuadora junto con el ajo, la cebolla y el orégano, agregando un poco del agua donde se remojaron éstos. Licua hasta que tenga la consistencia de una salsa suave.",
+                "Calienta el aceite en un sartén a temperatura media alta; agrega la salsa, y sazona con sal al gusto. (Revuelve constantemente, ya que tiende a brincar). Reduce la flama y hierve a fuego lento por aprox. 25 minutos.",
+                "Agrega la salsa al caldo pasándola primero por un colador. Deja que suelte el hervor y agrega la carne. Hierve a fuego bajo por aprox. 10 minutos. Agrega el maíz y sazona con sal y pimienta. Sigue cocinando hasta que se caliente completamente.",
+                "Sirve el pozole en plato hondo y coloca la guarnición a un lado como se muestra en la foto."}',
+            'Condimentos_Alternativos'=>'{"Aguacate cortado en cubos"}'
         ]);
 
 
         
-            <div class="card" style="width: 200px; margin-left: 2.2% !important;">
-              <img class="card-img-top" width="350" height="200" src="img/" alt="Card image">
-              <div class="card-body" style="padding: 5px !important;">
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-md-9">
-                            <h5 class="card-title" style="margin-bottom: 0px !important;">Pozole</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <h5 class="card-title" style="margin-bottom: 0px !important; width: 150px !important; margin-left: -20px !important;">$40</h5>
-                        </div>
-                    </div>
-              </div>
-            </div>
-            <br><br>
-        </div>
 
 
         /*
-            <div class="card" style="width: 200px; margin-left: 2.2% !important;">
-              <img class="card-img-top" width="350" height="200" src="img/torta.jpg" alt="Card image">
-              <div class="card-body" style="padding: 5px !important;">
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-md-9">
-                            <h5 class="card-title" style="margin-bottom: 0px !important;">Torta ahogada</h5>
-                        </div>
-                        <div class="col-md-3">
-                            <h5 class="card-title" style="margin-bottom: 0px !important; width: 150px !important; margin-left: -20px !important;">$60</h5>
-                        </div>
-                    </div>
-              </div>
-            </div>
-            <br><br>
-        </div>
-
-        <!--Platillos-->
-        <CENTER>
-        <div class="subtitulo">
-            <h3>Platillos</h3>
-            <br>
-        </div>
-        </CENTER>
+           
 
         <div class="row form-group">
             <div class="card" style="width: 200px; margin-left: 2.2% !important;">
