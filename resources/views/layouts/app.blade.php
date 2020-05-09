@@ -59,12 +59,12 @@
 		<ul class="navbar-nav">
 			<li class="nav-item" style="padding-top: 20px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>RESTAURANTE</b></h4></a>
+	  <a href="" class="navbar-brand-principal"><h4><b>SERVICIO</b></h4></a>
 	</div>
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important; padding-right: 30px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>LA CARTA</b></h4></a>
+	  <a href="" class="navbar-brand-principal"><h4><b>AL&nbsp;&nbsp;&nbsp; CLIENTE</b></h4></a>
 	</div>
 		</li>
 			<li class="nav-item-img" style="padding: 0px !important;">
@@ -72,12 +72,12 @@
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>EVENTOS</b></h4></a>
+	  <a href="" class="navbar-brand-principal"><h4><b>GRANDES</b></h4></a>
 	</div>
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>CONTACTO</b></h4></a>
+	  <a href="" class="navbar-brand-principal"><h4><b>RECETAS</b></h4></a>
 	</div>
 		</li>
 	  </ul>
@@ -88,14 +88,14 @@
 		  <ul class="navbar-nav">
 			<li class="nav-item">
 				<div class="espacio">
-					<a href="/ordenes" class="navbar-brand"><h4><b>Meseros</b></h4></a>
+					<a href="/entregas" class="navbar-brand"><h4><b>Meseros</b></h4></a>
 				</div>
 			</li>
 			<li class="nav-item">
 			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
 			</li>
 	  		<li class="nav-item">
-			  <a href="/menu" class="navbar-brand"><h4><b>Chefs</b></h4></a>
+			  <a href="/ordenes" class="navbar-brand"><h4><b>Chefs</b></h4></a>
 			</li>
 			<li class="nav-item">
 			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>

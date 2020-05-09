@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\OrdenPedida;
+use App\Receta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrdenPedidaController extends Controller
 {
@@ -14,7 +16,27 @@ class OrdenPedidaController extends Controller
      */
     public function index()
     {
-        //
+        //Eloquent
+        //$ordenPedida = OrdenPedida::all();
+        //$receta = Receta::all();
+
+        $orden_Pedidas = DB::select('SELECT orden_pedidas.ID,
+                                        orden_pedidas.Mesa,
+                                        orden_pedidas.Ingredientes_Alternativos,
+                                        orden_pedidas.Precio,
+                                        recetas.Imagen,
+                                        recetas.Nombre,
+                                        recetas.Descripcion,
+                                        recetas.Costo,
+                                        recetas.Clasificacion,
+                                        recetas.Ingredientes,
+                                        recetas.Preparacion 
+                                        FROM orden_pedidas,recetas 
+                                        WHERE orden_pedidas.ID_Receta = recetas.ID;');
+        
+        //dd($ordenPedida);
+        //$id = $receta->id_receta;
+        return view('administracion.ordenes', compact('orden_Pedidas'));
     }
 
     /**
@@ -36,26 +58,28 @@ class OrdenPedidaController extends Controller
     public function store(Request $request)
     {
         //
+        return 'Procesando informacion';
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Orden_Pedida  $orden_Pedida
+     * @param  \App\OrdenPedida  $ordenPedida
      * @return \Illuminate\Http\Response
      */
-    public function show(Orden_Pedida $orden_Pedida)
+    public function show(OrdenPedida $ordenPedida)
     {
         //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Orden_Pedida  $orden_Pedida
+     * @param  \App\OrdenPedida  $ordenPedida
      * @return \Illuminate\Http\Response
      */
-    public function edit(Orden_Pedida $orden_Pedida)
+    public function edit(OrdenPedida $ordenPedida)
     {
         //
     }
@@ -64,10 +88,10 @@ class OrdenPedidaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Orden_Pedida  $orden_Pedida
+     * @param  \App\OrdenPedida  $ordenPedida
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Orden_Pedida $orden_Pedida)
+    public function update(Request $request, OrdenPedida $ordenPedida)
     {
         //
     }
@@ -75,10 +99,10 @@ class OrdenPedidaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Orden_Pedida  $orden_Pedida
+     * @param  \App\OrdenPedida  $ordenPedida
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Orden_Pedida $orden_Pedida)
+    public function destroy(OrdenPedida $ordenPedida)
     {
         //
     }

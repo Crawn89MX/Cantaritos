@@ -71,32 +71,32 @@
 			</div>
 
 			<div class="sidebar-header">
-                                <h3>Mi Orden </h3>
-                                <h5>Restaurante "Cantaritos"</h5>
+				<h3>Mi Orden </h3>
+				<h5>Restaurante "Cantaritos"</h5>
                         
 			</div>
 
 			<ul class="list-unstyled components">
 				<li class="active">
-                                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Resumen</a>
-                                        <ul class="collapse list-unstyled" id="homeSubmenu">
-                                                <li>
-                                                        <label style="font-size:17px;">Quesadillas</label><br>
-                                                        <img src="{{ asset("Images/quesadilla.jpg") }}" width="50px">
-                                                        <label style="font-size:25px;">X</label>
-                                                        <input type="text" style="width:50px;" class="form-input">
-                                                        <label style="font-size:25px;">=</label>
-                                                        <label style="font-size:25px;">$25</label>
-                                                </li>
-                                        </ul>
-                                </li>
-                        </ul>
+					<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Resumen</a>
+					<ul class="collapse list-unstyled" id="homeSubmenu">
+						<li>
+							<label style="font-size:17px;">Quesadillas</label><br>
+							<img src="{{ asset("Images/quesadilla.jpg") }}" width="50px">
+							<label style="font-size:25px;">X</label>
+							<input type="text" style="width:50px;" class="form-input">
+							<label style="font-size:25px;">=</label>
+							<label style="font-size:25px;">$25</label>
+						</li>
+					</ul>
+				</li>
+			</ul>
 
-                        <ul class="list-unstyled CTAs">
-                                <li>
-                                        <a href="" >Hacer pedido</a>
-                                </li>
-                        </ul>
+			<ul class="list-unstyled CTAs">
+				<li>
+					<a href="" >Hacer pedido</a>
+				</li>
+			</ul>
 		</nav>
 	</div>
 
@@ -106,12 +106,13 @@
 		<ul class="navbar-nav">
 			<li class="nav-item" style="padding-top: 20px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>RESTAURANTE</b></h4></a>
+	  <a href="" class="navbar-brand-principal"><h4><b>CLUBCANTARITOS</b></h4></a>
+	  <!--<a href="" class="navbar-brand-principal"><h4><b>HECTOR JESUS</b></h4></a>-->
 	</div>
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important; padding-right: 30px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>LA CARTA</b></h4></a>
+	  <a href="" class="navbar-brand-principal"><h4><b>VER ESTADO DE ORDEN</b></h4></a>
 	</div>
 		</li>
 			<li class="nav-item-img" style="padding: 0px !important;">
@@ -119,12 +120,12 @@
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>EVENTOS</b></h4></a>
+	  <a href="" class="navbar-brand-principal"><h4><b>PEDIR CUENTA</b></h4></a>
 	</div>
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>CONTACTO</b></h4></a>
+	  <a href="" class="navbar-brand-principal"><h4><b>PEDIR FACTURACION</b></h4></a>
 	</div>
 		</li>
 	  </ul>
@@ -134,42 +135,42 @@
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="padding: 0px; margin: 0px;">
 		  <ul class="navbar-nav">
 			<li class="nav-item">
-                        <div class="espacio">
-                                <a href="/ordenes" class="navbar-brand"><h4><b>Sopas</b></h4></a>
-                        </div>
+				<div class="espacio">
+						<a href="#Sopas" class="navbar-brand"><h4><b>Sopas</b></h4></a>
+				</div>
 			</li>
 			<li class="nav-item">
 			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
 			</li>
 	  		<li class="nav-item">
-			  <a href="/menu" class="navbar-brand"><h4><b>Apperitivos</b></h4></a>
+			  <a href="#Apperitivos" class="navbar-brand"><h4><b>Apperitivos</b></h4></a>
 			</li>
 			<li class="nav-item">
 			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
 			</li>
 			<li class="nav-item">
-			  <a href="/cuenta" class="navbar-brand"><h4><b>Platos principales</b></h4></a>
+			  <a href="#Entradas" class="navbar-brand"><h4><b>Entradas</b></h4></a>
 			</li>
 			<li class="nav-item">
 			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
 			</li>
 			<li class="nav-item">
-			  <a href="/facturacion" class="navbar-brand"><h4><b>Platos Fuerte</b></h4></a>
+			  <a href="#PlatosFuertes" class="navbar-brand"><h4><b>Platos Fuerte</b></h4></a>
 			</li>
 			<li class="nav-item">
 			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
 			</li>
 			<li class="nav-item">
-			  <a href="/mesas" class="navbar-brand"><h4><b>Postres</b></h4></a>
+			  <a href="#Postres" class="navbar-brand"><h4><b>Postres</b></h4></a>
 	  		</li>
 	  		<li class="nav-item">
 			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
-                        </li>
+            </li>
 			<li class="nav-item" style="padding-left: 435px !important;">
-                                <button type="button" id="sidebarCollapse" class="btn btn-info" style="background: black !important">
-                                <i class="fas fa-align-left"></i>
-                                </button>
-                        </li>
+				<button type="button" id="sidebarCollapse" class="btn btn-info" style="background: black !important">
+				<i class="fas fa-align-left"></i>
+				</button>
+            </li>
 			@yield('button')
 		  </ul>
 		</nav>
@@ -194,23 +195,23 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
         <script type="text/javascript">
-                        $(document).ready(function () {
-                                        $("#sidebar").mCustomScrollbar({
-                                                        theme: "minimal"
-                                        });
+			$(document).ready(function () {
+				$("#sidebar").mCustomScrollbar({
+					theme: "minimal"
+				});
 
-                                        $('#dismiss, .overlay').on('click', function () {
-                                                        $('#sidebar').removeClass('active');
-                                                        $('.overlay').removeClass('active');
-                                        });
+				$('#dismiss, .overlay').on('click', function () {
+					$('#sidebar').removeClass('active');
+					$('.overlay').removeClass('active');
+				});
 
-                                        $('#sidebarCollapse').on('click', function () {
-                                                        $('#sidebar').addClass('active');
-                                                        $('.overlay').addClass('active');
-                                                        $('.collapse.in').toggleClass('in');
-                                                        $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-                                        });
-                        });
+				$('#sidebarCollapse').on('click', function () {
+					$('#sidebar').addClass('active');
+					$('.overlay').addClass('active');
+					$('.collapse.in').toggleClass('in');
+					$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+				});
+			});
         </script>
 
 </body>

@@ -13,38 +13,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/facturacion','FacturaController@index');
+Route::get('/', function () 
+{
+    return view('welcome');
+});
 
 Route::get('/cuenta', function () 
 {
     return view('administracion.cuenta');
 });
 
-Route::get('/', function () 
-{
-    return view('welcome');
-});
-
-Route::get('/menu', 'RecetaController@show');
+Route::get('/menu', 'RecetaController@index');
 
 Route::get('/mesas', 'MesaController@index');
 
-/*
-Route::get('/mesas', function () 
-{
-    return view('administracion.mesas');
-});
-*/
+//Facturación
+Route::get('/facturacion','FacturaController@create');
+
+Route::post('/facturacion/registrar','FacturaController@store');
 
 Route::get('/receta', function () 
 {
     return view('administracion.receta');
 });
 
-Route::get('/ordenes', function () 
-{
-    return view('administracion.ordenes');
-});
+//Órdenes pedidas
+Route::get('/ordenes','OrdenPedidaController@index');
+
+Route::post('/ordenes/pedida','OrdenPedidaController@store');
+
+//Órdenes atendidas
 
 Route::get('/login', function () 
 {

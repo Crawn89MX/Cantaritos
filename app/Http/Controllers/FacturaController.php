@@ -14,9 +14,7 @@ class FacturaController extends Controller
      */
     public function index()
     {
-        
-
-        return view('administracion.facturacion');
+        //
     }
 
     /**
@@ -27,6 +25,7 @@ class FacturaController extends Controller
     public function create()
     {
         //
+        return view('administracion.facturacion');
     }
 
     /**
@@ -38,6 +37,22 @@ class FacturaController extends Controller
     public function store(Request $request)
     {
         //
+        //$data = request()->all();
+        $data = $request;
+
+        Factura::create([ 
+            'Name' => $data['nombre'],
+            'Apellido_Pat' => $data['apellido_pat'],
+            'Apellido_Mat' => $data['apellido_mat'],
+            'Domicilio' => $data['domicilio'],
+            'RFC' => $data['rfc'],
+            'Monto' => $data['monto'],
+            'Condiciones' => $data['condiciones'],
+            'Metodo' => $data['metodo'],
+            'Cantidad_Descripcion' => $data['cantidad_descripcion']
+        ]);
+
+        return redirect()->route('index');
     }
 
     /**

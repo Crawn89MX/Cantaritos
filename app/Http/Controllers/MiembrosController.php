@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Receta;
+use App\Miembros;
 use Illuminate\Http\Request;
 
-class RecetaController extends Controller
+class MiembrosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +14,7 @@ class RecetaController extends Controller
      */
     public function index()
     {
-        // Consultas de Laravel
-        //$recetas = DB::table('recetas')->get();
-        //dd($recetas);
-
-        //Eloquent
-        $recetas = Receta::all();
-        return view('comensales.menu', compact('recetas'));
+        //
     }
 
     /**
@@ -31,7 +25,6 @@ class RecetaController extends Controller
     public function create()
     {
         //
-        return view('administracion.receta');
     }
 
     /**
@@ -48,28 +41,21 @@ class RecetaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Receta  $receta
+     * @param  \App\Miembros  $miembros
      * @return \Illuminate\Http\Response
      */
-    public function show(Receta $receta)
-    {   
-        // Consultas de Laravel
-        //$recetas = DB::table('recetas')->get();  // la forma de laravel
-        //dd($recetas);
-        
-        //Eloquent
-        $recetas = Receta::all();   // la forma de eloquent
-        $title = 'Listado de Recetas';  // es solo un titulo para la pagina
-        return view('users.index', compact('title','users')); // puedes pasar mas de un parametro pero tu sabes como rescatarlo
+    public function show(Miembros $miembros)
+    {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Receta  $receta
+     * @param  \App\Miembros  $miembros
      * @return \Illuminate\Http\Response
      */
-    public function edit(Receta $receta)
+    public function edit(Miembros $miembros)
     {
         //
     }
@@ -78,10 +64,10 @@ class RecetaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Receta  $receta
+     * @param  \App\Miembros  $miembros
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Receta $receta)
+    public function update(Request $request, Miembros $miembros)
     {
         //
     }
@@ -89,10 +75,10 @@ class RecetaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Receta  $receta
+     * @param  \App\Miembros  $miembros
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Receta $receta)
+    public function destroy(Miembros $miembros)
     {
         //
     }

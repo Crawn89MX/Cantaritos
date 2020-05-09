@@ -9,7 +9,7 @@
 		}
 		.navbar-light
 		{
-			background-image: url("{{ asset("Images/background.jpg") }}");
+			background-image: url("{{ asset("images/background.jpg") }}");
 			background-size: cover;
 			background-position: 0px -280px;
 		}
@@ -28,7 +28,7 @@
 		}
 		body
 		{
-			background-image: url("{{ asset("Images/background2.png") }}");
+			background-image: url("{{ asset("images/background2.png") }}");
 			background-size: cover;
 		}
 		.contenido
@@ -75,26 +75,22 @@
 			<!--Entradas-->
 			<div class="container">
 				<div class="row form-group">
-					@forelse ($orden_Pedidas ?? '' as $orden_Pedida)
 					<div class="card" style="width: 200px; margin-left: 2.2% !important;">
-						<img class="card-img-top" width="350" height="200" src="{{ asset("Images/$orden_Pedida->Imagen") }}" alt="Card image">
-						<div class="card-body" style="padding: 5px !important;">
-							  <div class="row d-flex justify-content-between">
-								  <div class="col-md-8">
-									  <h5 class="card-title" style="margin-bottom: 0px !important;">{{$orden_Pedida->Nombre}}</h5>
-								  </div>
-								  <div class="col-md-4">
-									  <CENTER>
-										  <i class="fas fa-stopwatch" style="font-size:20px; color:gray;"></i>
-									  </CENTER>
-									  <button type="button" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;">✔</button>
-								  </div>
-							  </div>
-						</div>
+					  <img class="card-img-top" width="350" height="200" src="{{ asset("Images/queso.jpg") }}" alt="Card image">
+					  <div class="card-body" style="padding: 5px !important;">
+							<div class="row d-flex justify-content-between">
+								<div class="col-md-8">
+									<h5 class="card-title" style="margin-bottom: 0px !important;">Queso fundido</h5>
+								</div>
+								<div class="col-md-4">
+									<CENTER>
+										<i class="fas fa-stopwatch" style="font-size:20px; color:gray;"></i>
+									</CENTER>
+									<button type="button" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;">✔</button>
+								</div>
+							</div>
 					  </div>
-					@empty
-						<h5>No hay productos</h5>
-					@endforelse
+					</div>
 					<br><br>
 				</div>
 				<br>

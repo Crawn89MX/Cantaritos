@@ -42,7 +42,16 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$data = request()->all();
+        $data = $request;
+
+        Factura::update([ 
+            'Disponibilidad' => $data['disponibilidad'];
+            'Total' => $data['total'];
+            'Ordenes' => $data['ordenes'];
+        ]);
+
+        return redirect()->route($data['ruta']);
     }
 
     /**

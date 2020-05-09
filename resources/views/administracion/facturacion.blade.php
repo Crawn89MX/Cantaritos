@@ -14,7 +14,8 @@
 <!-- Formulario -->
 <div class="container">
 <div class="row form-group">
-<form class="contact100-form">
+<form class="contact100-form" method="POST" action="{{ url("facturacion/registrar") }}">
+	 {!! csrf_field() !!}
 	<div class="col-md-6">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required" >
 			<span class="label-input100">Nombre completo</span>
@@ -78,10 +79,9 @@
 <!--Botón-->
 <div class="col-md-12">
 <div class="container-contact100-form-btn">
-	<button class="contact100-form-btn">
+	<button type="submit" class="contact100-form-btn">
 		<span>
 			<b>Generar</b>
-			<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
 		</span>
 	</button>
 </div>
