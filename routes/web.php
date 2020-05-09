@@ -52,5 +52,10 @@ Route::get('/entregas','OrdenPreparadaController@index');
 
 Route::get('/login', function () 
 {
-    return view('administracion.login');
+    return view('comensales.login');
+});
+
+Route::get('/register', function () 
+{
+    return view('comensales.register');
 });

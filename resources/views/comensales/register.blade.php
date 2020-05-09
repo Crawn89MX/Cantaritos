@@ -38,7 +38,7 @@
 						<center>
 							<div class="titulo">
 								<br>
-									<h2>Login</h2>
+									<h2>Registro</h2>
 							</div>
 						</center>
 
