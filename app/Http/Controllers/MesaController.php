@@ -44,6 +44,9 @@ class MesaController extends Controller
     {
         $data = request()->all();
         //$data = $request;
+        if(empty($data['id']) || empty($data['disponibilidad']) || empty($data['total']) || empty($data['ordenes'])){
+            return;
+        }
 
         Mesa::where('ID', $data['id'])->where('Borrado',0)->update([ 
             'Disponibilidad' => $data['disponibilidad'],

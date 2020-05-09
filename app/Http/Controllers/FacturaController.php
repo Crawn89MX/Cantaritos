@@ -40,6 +40,11 @@ class FacturaController extends Controller
         $data = request()->all();
         //$data = $request;
 
+        if(empty($data['nombre']) || empty($data['apellidop']) || empty($data['apellidom']) || empty($data['domicilio'])
+        || empty($data['rfc']) || empty($data['monto']) || empty($data['condiciones']) || empty($data['metodo'])
+        || empty($data['cantidad']) || empty($data['descripcion'])){
+            return;
+        }
 
         Factura::create([ 
             'Nombre' => $data['nombre'],

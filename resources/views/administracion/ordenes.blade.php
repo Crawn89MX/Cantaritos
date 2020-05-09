@@ -60,23 +60,25 @@
 	<!--Menu-->
 	<div class="margenes">
 		<div class="container contenido">
-			<CENTER>
-			<br>
-			<div class="col-md-12">
-				<div class="col-md-8">
-					<div class="titulo">
-						<h2>ÓRDENES</h2>
-						<hr>
-					</div>
-				</div>
-			</div>
-			</CENTER>
+			
 
 			<!--Entradas-->
 			<div class="container">
-				<div class="row form-group">
+				<div class="row">
+					<div class="col-6">
+					<CENTER>
+						<br>
+						<div class="col-md-12">
+							<div class="col-md-8">
+								<div class="titulo">
+									<h2>ÓRDENES</h2>
+									<hr>
+								</div>
+							</div>
+						</div>
+					</CENTER>
 					@forelse ($orden_Pedidas ?? '' as $orden_Pedida)
-					<div class="card" style="width: 200px; margin-left: 2.2% !important;">
+					  <div class="card" style="width: 200px; margin-left: 2.2% !important;">
 						<img class="card-img-top" width="350" height="200" src="{{ asset("Images/$orden_Pedida->Imagen") }}" alt="Card image">
 						<div class="card-body" style="padding: 5px !important;">
 							  <div class="row d-flex justify-content-between">
@@ -87,7 +89,8 @@
 									  <CENTER>
 										  <i class="fas fa-stopwatch" style="font-size:20px; color:gray;"></i>
 									  </CENTER>
-									  <button type="button" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;">✔</button>
+									  <input type="text" name="id" value="{{$orden_Pedida->ID}}" requierd hidden> 
+									  <button type="button" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;"><i class="fas fa-check"></i></button>
 								  </div>
 							  </div>
 						</div>
@@ -96,6 +99,39 @@
 						<h5>No hay productos</h5>
 					@endforelse
 					<br><br>
+					</div>
+					<div class="col-6">
+						  <CENTER>
+							<br>
+							<div class="col-md-12">
+								<div class="col-md-8">
+									<div class="titulo">
+										<h2>PREPARANDO</h2>
+										<hr>
+									</div>
+								</div>
+							</div>
+						  </CENTER>
+						  <div class="card" style="width: 200px; margin-left: 2.2% !important;">
+							<img class="card-img-top" width="350" height="200" src="{{ asset("Images/$orden_Pedida->Imagen") }}" alt="Card image">
+							<div class="card-body" style="padding: 5px !important;">
+								  <div class="row d-flex justify-content-between">
+									  <div class="col-md-8">
+										  <h5 class="card-title" style="margin-bottom: 0px !important;">{{$orden_Pedida->Nombre}}</h5>
+									  </div>
+									  <div class="col-md-4">
+										  <CENTER>
+											  <i class="fas fa-stopwatch" style="font-size:20px; color:gray;"></i>
+										  </CENTER>
+										  <form method="POST" action="ordenes/confirmacion">
+											<input type="text" name="id" value="">
+										  	<button type="button" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;"><i class="fas fa-check-double"></i></button>
+										  </form>
+									  </div>
+								  </div>
+							</div>
+						  </div>
+					</div>
 				</div>
 				<br>
 

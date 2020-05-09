@@ -65,7 +65,7 @@
 			<div class="col-md-12">
 				<div class="col-md-8">
 					<div class="titulo">
-						<h2>ÓRDENES</h2>
+						<h2>ENTREGAS</h2>
 						<hr>
 					</div>
 				</div>
@@ -75,22 +75,27 @@
 			<!--Entradas-->
 			<div class="container">
 				<div class="row form-group">
-					<div class="card" style="width: 200px; margin-left: 2.2% !important;">
-					  <img class="card-img-top" width="350" height="200" src="{{ asset("Images/queso.jpg") }}" alt="Card image">
-					  <div class="card-body" style="padding: 5px !important;">
-							<div class="row d-flex justify-content-between">
-								<div class="col-md-8">
-									<h5 class="card-title" style="margin-bottom: 0px !important;">Queso fundido</h5>
-								</div>
-								<div class="col-md-4">
-									<CENTER>
-										<i class="fas fa-stopwatch" style="font-size:20px; color:gray;"></i>
-									</CENTER>
-									<button type="button" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;">✔</button>
-								</div>
-							</div>
+					@forelse ($orden_Preparadas ?? '' as $orden_Preparada)
+					  <div class="card" style="width: 200px; margin-left: 2.2% !important;">
+						<img class="card-img-top" width="350" height="200" src="{{ asset("Images/$orden_Preparada->Imagen") }}" alt="Card image">
+						<div class="card-body" style="padding: 5px !important;">
+							  <div class="row d-flex justify-content-between">
+								  <div class="col-md-8">
+									  <h5 class="card-title" style="margin-bottom: 0px !important;">{{$orden_Preparada->Nombre}}</h5>
+								  </div>
+								  <div class="col-md-4">
+									  <CENTER>
+										  <i class="fas fa-stopwatch" style="font-size:20px; color:gray;"></i>
+									  </CENTER>
+									  <input type="text" name="id" value="{{$orden_Preparada->ID}}" requierd hidden> 
+									  <button type="button" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;"><i class="fas fa-check"></i></button>
+								  </div>
+							  </div>
+						</div>
 					  </div>
-					</div>
+					@empty
+						<h5>No hay productos</h5>
+					@endforelse
 					<br><br>
 				</div>
 				<br>
