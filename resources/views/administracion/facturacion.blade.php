@@ -19,21 +19,21 @@
 	<div class="col-md-6">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el nombre" >
 			<span class="label-input100">Nombre completo</span>
-			<input class="input100" type="text" name="nombre">
+			<input class="input100" type="text" name="nombre" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el apellido paterno" >
 			<span class="label-input100">Apellido paterno</span>
-			<input class="input100" type="text" name="apellidop">
+			<input class="input100" type="text" name="apellidop" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el apellido materno" >
 			<span class="label-input100">Apellido materno</span>
-			<input class="input100" type="text" name="apellidom">
+			<input class="input100" type="text" name="apellidom" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
@@ -41,28 +41,28 @@
 	<div class="col-md-12">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se el domicilio">
 			<span class="label-input100">Domicilio</span>
-			<input class="input100" type="text" name="domicilio">
+			<input class="input100" type="text" name="domicilio" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
 	<div class="col-md-6">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el RFC" >
 			<span class="label-input100">RFC</span>
-			<input class="input100" type="text" name="rfc">
+			<input class="input100" type="text" name="rfc" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el monto">
 			<span class="label-input100">Monto</span>
-			<input class="input100" type="text" name="monto" placeholder="$">
+			<input class="input100" type="text" name="monto" placeholder="$" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
 	<div class="col-md-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere la cantidad">
 			<span class="label-input100">Cantidad</span>
-			<input class="input100" type="text" name="cantidad">
+			<input class="input100" type="text" name="cantidad" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
@@ -70,14 +70,14 @@
 		<div class="col-md-12">
 			<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el metodo">
 				<span class="label-input100">Metodo</span>
-				<input class="input100" type="text" name="metodo" placeholder="$">
+				<input class="input100" type="text" name="metodo" placeholder="$" required>
 				<span class="focus-input100"></span>
 			</div>
 		</div>
 		<div class="col-md-12">
 			<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requieren las condiciones">
 				<span class="label-input100">Condiciones</span>
-				<input class="input100" type="text" name="condiciones" placeholder="ej: 2 exhibiciones">
+				<input class="input100" type="text" name="condiciones" placeholder="ej: 2 exhibiciones" required>
 				<span class="focus-input100"></span>
 			</div>
 		</div>
@@ -85,7 +85,7 @@
 	<div class="col-md-9">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere la descripcion">
 			<span class="label-input100">Descripción</span>
-			<textarea class="input100" type="text" name="descripcion" style="height: 130px ;"></textarea>
+			<textarea class="input100" type="text" name="descripcion" style="height: 130px ;" required></textarea>
 			<span class="focus-input100"></span>
 		</div>
 	</div>

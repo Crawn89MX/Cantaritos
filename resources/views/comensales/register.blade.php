@@ -49,28 +49,28 @@
 							<div class="col-md-12">
 								<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required" >
 									<span class="label-input100">Nombre completo</span>
-									<input class="input100" type="text" name="nombre">
+									<input class="input100" type="text" name="nombre" required>
 									<span class="focus-input100"></span>
 								</div>
 							</div>
 			        <div class="col-md-12">
 								<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Correo is required" >
 									<span class="label-input100">Correo</span>
-									<input class="input100" type="email" name="apellidop">
+									<input class="input100" type="email" name="apellidop" required>
 									<span class="focus-input100"></span>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required" >
 									<span class="label-input100">Contraseña</span>
-									<input class="input100" type="password" name="password">
+									<input class="input100" type="password" name="password" required>
 									<span class="focus-input100"></span>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required" >
 									<span class="label-input100">Confirmación de contraseña</span>
-									<input class="input100" type="password" name="passwordr">
+									<input class="input100" type="password" name="passwordr" required>
 									<span class="focus-input100"></span>
 								</div>
 							</div>
