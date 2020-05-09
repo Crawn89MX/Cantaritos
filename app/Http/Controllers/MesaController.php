@@ -42,11 +42,21 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        $data = request()->all();
-        //$data = $request;
-        if(empty($data['id']) || empty($data['disponibilidad']) || empty($data['total']) || empty($data['ordenes'])){
-            return;
-        }
+        //$data = request()->all();
+        $data = request()->validate([
+            'id' => 'required',
+            'disponibilidad' => 'required',
+            'total' => 'required',
+            'ordenes' => 'required',
+            'ruta' => 'required'
+        ],[
+            'id.required' => 'El ID es requerido',
+            'disponibilidad.required' => 'Se requiere la disponibilidad',
+            'total.required' => 'El total es requerido',
+            'ordenes.required' => 'Se requieren las ordenes',
+            'ruta.required' => 'Se requieren la ruta'
+        ]);
+        
 
         Mesa::where('ID', $data['id'])->where('Borrado',0)->update([ 
             'Disponibilidad' => $data['disponibilidad'],

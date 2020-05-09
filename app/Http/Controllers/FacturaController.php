@@ -36,15 +36,30 @@ class FacturaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $data = request()->all();
-        //$data = $request;
-
-        if(empty($data['nombre']) || empty($data['apellidop']) || empty($data['apellidom']) || empty($data['domicilio'])
-        || empty($data['rfc']) || empty($data['monto']) || empty($data['condiciones']) || empty($data['metodo'])
-        || empty($data['cantidad']) || empty($data['descripcion'])){
-            return;
-        }
+        
+        $data = request()->validate([
+            'nombre' => 'required',
+            'apellidop' => 'required',
+            'apellidom' => 'required',
+            'domicilio' => 'required',
+            'rfc' => 'required',
+            'monto' => 'required',
+            'condiciones' => 'required',
+            'metodo' => 'required',
+            'cantidad' => 'required',
+            'descripcion' => 'required'
+        ],[
+            'nombre.index' => 'El nombre es requerido',
+            'apellidop.index' => 'El apellido paterno es requerido',
+            'apellidom.index' => 'El apellido materno es requerido',
+            'domicilio.index' => 'El domicilio es requerido',
+            'rfc.index' => 'El rfc es requerido',
+            'monto.index' => 'El monto es requerido',
+            'condiciones.index' => 'Las condiciones son requerido',
+            'metodo.index' => 'El metodo es requerido',
+            'cantidad.index' => 'La cantidad es requerida',
+            'descripcion.index' => 'La descripcion es requerida'
+        ]);
 
         Factura::create([ 
             'Nombre' => $data['nombre'],

@@ -70,47 +70,77 @@
 	<div class="margenes">
 		<div class="container contenido">
 			<div class="row" style="padding-left: 135px;">
-				<div class="col-2">
+				<div class="col-2" style="margin-right:150px;">
+
 					<div class="boton" style="padding-top: 67px !important; ">
-						
-					</div>
-					<?php
-
-						for($i = 3;$i <= 15; $i++) {
-							if($i != 6 && $i != 7 && $i != 11 && $i != 12){
-							echo '	<div class="boton" style="padding-top: 13px !important; ">
-										<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa '.$i.'</button>
-									</div>';
-							}
-						}
-
-					?>
-					
-					</div>
-				<div class="col-2" style="margin-left: 110px; padding-top: 330px;">
-					<div class="boton" style="padding-top: 80px !important;">
-						<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa 18</button>
-					</div>
-				</div>
-				<div class="col-2" style="margin-left: -55px; padding-top: 330px;">
-					<div class="boton" style="padding-top: 80px !important;">
-						<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa 19</button>
-					</div>
-				</div>
-				<div class="col-2" style="margin-left: -55px; padding-top: 330px;">
-					<div class="boton" style="padding-top: 80px !important;">
-						<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa 20</button>
-					</div>
-				</div>
-				<div class="col-2"  style="padding-left: 70px;">
-					<div class="boton" style="padding-top: 70px !important;">
 						
 					</div>
 					
 						@forelse ($mesas as $mesa)
-							@if($mesa->Disponibilidad == 1 && ($mesa->ID == 1 || $mesa->ID == 2 || $mesa->ID == 6 || $mesa->ID == 7 || $mesa->ID == 11 || $mesa->ID == 12 || $mesa->ID == 16 || $mesa->ID == 17 || $mesa->ID == 21))
+							@if($mesa->ID != 6 && $mesa->ID != 7 && $mesa->ID != 11 && $mesa->ID != 12 && $mesa->ID >= 3 && $mesa->ID <= 15)
+									
+								<?php
+									$btntype = 'btn-info';
+									if($mesa->Disponibilidad == 0){$btntype = 'btn-danger';}
+									if($mesa->Disponibilidad == 2){$btntype = 'btn-success';}
+									if($mesa->Disponibilidad == 3){$btntype = 'btn-warning';}
+									if($mesa->Disponibilidad == 4){$btntype = 'btn-light';}
+								?>
+								<div class="boton" style="padding-top: 13px !important;">
+									<button type="button" style=" width:70px !important;" class="btn <?php echo $btntype; ?> btn-sm">{{ $mesa->Nombre }}</button>
+								</div>
+							@endif
+						@empty
+							<div class="boton" style="padding-top: 13px !important; ">
+								<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa '.$i.'</button>
+							</div>
+						@endforelse
+					
+					</div>
+
+					@forelse ($mesas as $mesa)
+							@if($mesa->ID == 18 || $mesa->ID == 19 || $mesa->ID == 20 )
+								 <?php
+									$btntype = 'btn-info';
+									if($mesa->Disponibilidad == 0){$btntype = 'btn-danger';}
+									if($mesa->Disponibilidad == 2){$btntype = 'btn-success';}
+									if($mesa->Disponibilidad == 3){$btntype = 'btn-warning';}
+									if($mesa->Disponibilidad == 4){$btntype = 'btn-light';}
+								?>
+								<div class="col-2" style="margin-left: -55px; padding-top: 330px;">
+									<div class="boton" style="padding-top: 80px !important;">
+										<button type="button" style=" width:70px !important;" class="btn <?php echo $btntype; ?> btn-sm">{{ $mesa->Nombre }}</button>
+									</div>
+								</div>
+							@endif
+						@empty
+							<div class="boton" style="padding-top: 13px !important; ">
+								<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">Mesa '.$i.'</button>
+							</div>
+						@endforelse
+
+				
+
+				<div class="col-2"  style="padding-left: 70px;">
+					<div class="boton" style="padding-top: 67px !important;">
+						
+					</div>
+					
+						@forelse ($mesas as $mesa)
+							@if($mesa->ID == 1 || $mesa->ID == 2 || $mesa->ID == 6 || $mesa->ID == 7 || $mesa->ID == 11 || $mesa->ID == 12 || $mesa->ID == 16 || $mesa->ID == 17 || $mesa->ID == 21)
+								 <?php
+									$btntype = 'btn-info';
+									if($mesa->Disponibilidad == 0){$btntype = 'btn-danger';}
+									if($mesa->Disponibilidad == 2){$btntype = 'btn-success';}
+									if($mesa->Disponibilidad == 3){$btntype = 'btn-warning';}
+									if($mesa->Disponibilidad == 4){$btntype = 'btn-light';}
+								?>
 								<div class="boton" style="padding-top: 13px !important; ">
-									<button type="button" style=" width:70px !important;" class="btn btn-info btn-sm">{{ $mesa->Nombre }}</button>
+									<input type="text" value="{{ $mesa->ID }}" name="id">
+									<input type="text" value="{{ $mesa->Disponibilidad }}" name="disponibilidad">
+									<input type="text" value="{{ $mesa->Total }}" name="total">
+									<input type="text" value="{{ $mesa->Ordenes }}" name="ordenes">
+									<button type="button" style=" width:70px !important;" class="btn <?php echo $btntype; ?> btn-sm">{{ $mesa->Nombre }}</button>
 								</div>
 							@endif
 						@empty
