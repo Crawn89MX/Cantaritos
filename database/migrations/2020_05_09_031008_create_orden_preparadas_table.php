@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMiembrosTable extends Migration
+class CreateOrdenPreparadasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateMiembrosTable extends Migration
      */
     public function up()
     {
-        Schema::create('miembros', function (Blueprint $table) {
-            $table->bigIncrements('ID');
-            $table->string('Nombre');
-            $table->string('Apellido_Pat');
-            $table->string('Apellido_Mat');
-            $table->string('Consumo');
-            $table->string('Puntos_Gastados');
-            $table->string('Correo');
-            $table->string('Password');
+        Schema::create('orden_preparadas', function (Blueprint $table) {
+            $table->bigIncrements('ID')->unique();
+            $table->string('Mesa');
+            $table->bigInteger('ID_Receta');
+            $table->string('Ingredientes_Alternativos');
+            $table->string('Precio');
 
             $table->integer('Borrado')->default(0);
             $table->timestamp('FechaCreacion')->useCurrent();
@@ -36,6 +33,6 @@ class CreateMiembrosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('miembros');
+        Schema::dropIfExists('orden_preparadas');
     }
 }

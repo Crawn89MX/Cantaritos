@@ -50,6 +50,9 @@
 				list-style: none !important;
 				text-decoration: none !important;
 		}
+		.espacio>.navbar-brand-principal:hover{
+			color:white;
+		}
 	</style>
 </head>
 <body>

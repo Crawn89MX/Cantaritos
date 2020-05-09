@@ -9,4 +9,5 @@ class Factura extends Model
     //
 
     public $timestamps = false;
+    protected $guarded = [];
 }

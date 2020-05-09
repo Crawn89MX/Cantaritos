@@ -19,6 +19,8 @@ class CreateOrdenPedidasTable extends Migration
             $table->bigInteger('ID_Receta');
             $table->string('Ingredientes_Alternativos');
             $table->string('Precio');
+
+            $table->integer('Borrado')->default(0);
             $table->timestamp('FechaCreacion')->useCurrent();
             $table->timestamp('FechaModificacion')->useCurrent();
         });

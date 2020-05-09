@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Miembros extends Model
+class OrdenPreparada extends Model
 {
     //
     public $timestamps = false;

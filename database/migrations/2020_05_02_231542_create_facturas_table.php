@@ -25,6 +25,8 @@ class CreateFacturasTable extends Migration
             $table->string("Metodo");
             $table->string("Cantidad_Descripcion");
             //$table->timestamps();
+
+            $table->integer('Borrado')->default(0);
             $table->timestamp('FechaCreacion')->useCurrent();
             $table->timestamp('FechaModificacion')->useCurrent();
         });

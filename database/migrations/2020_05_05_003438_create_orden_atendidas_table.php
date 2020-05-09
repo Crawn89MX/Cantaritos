@@ -20,6 +20,8 @@ class CreateOrdenAtendidasTable extends Migration
             $table->string('Ingredientes_Alternativos');
             $table->string('Precio');
             $table->bigInteger("ID_Facturacion");
+
+            $table->integer('Borrado')->default(0);
             $table->timestamp('FechaCreacion')->useCurrent();
             $table->timestamp('FechaModificacion')->useCurrent();
         });

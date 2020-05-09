@@ -14,8 +14,10 @@ class DatabaseSeeder extends Seeder
         $this->truncateTables([
             'mesas',
             'facturas',
+            'miembros',
             'orden_atendidas',
             'orden_pedidas',
+            'orden_preparadas',
             'recetas'
         ]);
 
@@ -23,7 +25,9 @@ class DatabaseSeeder extends Seeder
         $this->call(FacturasSeeder::class);
         $this->call(OrdenAtendidasSeeder::class);
         $this->call(OrdenPedidasSeeder::class);
+        $this->call(OrdenPreparadasSeeder::class);
         $this->call(RecetasSeeder::class);
+        $this->call(MiembrosSeeder::class);
     }
 
         protected function truncateTables(array $tables)

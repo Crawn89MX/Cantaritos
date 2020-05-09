@@ -32,7 +32,7 @@ class OrdenPedidaController extends Controller
                                         recetas.Ingredientes,
                                         recetas.Preparacion 
                                         FROM orden_pedidas,recetas 
-                                        WHERE orden_pedidas.ID_Receta = recetas.ID;');
+                                        WHERE orden_pedidas.ID_Receta = recetas.ID && recetas.Borrado = 0 && orden_pedidas.Borrado = 0;');
         
         //dd($ordenPedida);
         //$id = $receta->id_receta;

@@ -37,22 +37,24 @@ class FacturaController extends Controller
     public function store(Request $request)
     {
         //
-        //$data = request()->all();
-        $data = $request;
+        $data = request()->all();
+        //$data = $request;
+
 
         Factura::create([ 
-            'Name' => $data['nombre'],
-            'Apellido_Pat' => $data['apellido_pat'],
-            'Apellido_Mat' => $data['apellido_mat'],
+            'Nombre' => $data['nombre'],
+            'Apellido_Pat' => $data['apellidop'],
+            'Apellido_Mat' => $data['apellidom'],
             'Domicilio' => $data['domicilio'],
             'RFC' => $data['rfc'],
             'Monto' => $data['monto'],
             'Condiciones' => $data['condiciones'],
             'Metodo' => $data['metodo'],
-            'Cantidad_Descripcion' => $data['cantidad_descripcion']
+            'Cantidad_Descripcion' => $data['cantidad'].$data['descripcion']
         ]);
+        
 
-        return redirect()->route('index');
+        return redirect('index');
     }
 
     /**

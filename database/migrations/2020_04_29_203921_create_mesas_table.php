@@ -21,6 +21,8 @@ class CreateMesasTable extends Migration
             $table->integer('Sillas');
             $table->string("Ordenes")->nullable();
             //$table->timestamps();
+
+            $table->integer('Borrado')->default(0);
             $table->timestamp('FechaCreacion')->useCurrent();
             $table->timestamp('FechaModificacion')->useCurrent();
             

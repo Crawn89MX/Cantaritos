@@ -23,6 +23,8 @@ class CreateRecetasTable extends Migration
             $table->longText('Ingredientes');
             $table->longText('Preparacion');
             $table->string('Condimentos_Alternativos');
+
+            $table->integer('Borrado')->default(0);
             $table->timestamp('FechaCreacion')->useCurrent();
             $table->timestamp('FechaModificacion')->useCurrent();
         });
