@@ -13,17 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
+Route::get('/', function () 
+{
+    return view('comensales.index');
+});
 
 Route::get('/cuenta', function () 
 {
     return view('administracion.cuenta');
 });
 
-Route::get('/', function () 
+/* Route::get('/login', function () 
 {
-    return view('comensales.index');
+    return view('comensales.login');
 });
+
+Route::get('/register', function () 
+{
+    return view('comensales.register');
+}); */
 
 Route::get('/menu', 'RecetaController@index');
 
@@ -46,16 +54,11 @@ Route::get('/ordenes','OrdenPedidaController@index');
 
 Route::post('/ordenes/pedida','OrdenPedidaController@store');
 
+//Órdenes atendidas
 Route::get('/entregas','OrdenPreparadaController@index');
 
-//Órdenes atendidas
+//Usuarios
+Route::get('/register','MiembrosController@index');
 
-Route::get('/login', function () 
-{
-    return view('comensales.login');
-});
+Route::post('/register/registro','MiembrosController@store');
 
-Route::get('/register', function () 
-{
-    return view('comensales.register');
-});

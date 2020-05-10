@@ -15,6 +15,7 @@ class MiembrosController extends Controller
     public function index()
     {
         //
+        return view('comensales.register');
     }
 
     /**
@@ -33,9 +34,36 @@ class MiembrosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
         //
+        //$data = request()->all();
+        $data = request()validate([
+            'nombre' => 'required',
+            'apellidop' => 'required',
+            'apellidom' => 'required',
+            'correo' => 'required',
+            'password' => 'required'
+        ],[
+            'nombre.required' => 'El nombre es requerido',
+            'apellidop.required' => 'El apellido paterno es requerido',
+            'apellidom.required' => 'El apellido materno es requerido',
+            'correo.required' => 'Se requiere el email',
+            'password.required' => 'Se requiere la contraseña',
+        ])
+
+
+        Miembros::create([
+            'Nombre' => $data['nombre'],
+            'Apellido_Pat' => $data['apellidop'],
+            'Apellido_Mat' => $data['apellidom'],
+            'Correo' => $data['correo'],
+            'Password' => bcscrypt($data['password']),
+            'Consumo' => 0,
+            'Puntos_Gastados'  => 0,
+        ]);
+
+        return redirect('index');
     }
 
     /**
