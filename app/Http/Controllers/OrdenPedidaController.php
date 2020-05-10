@@ -69,7 +69,6 @@ class OrdenPedidaController extends Controller
             'precio.required' => 'Se requieren el precio'
         ]);
         
-
         OrdenPedida::create([ 
             'Mesa' => $data['idmesa'],
             'ID_Receta' => $data['idpedido1'],
