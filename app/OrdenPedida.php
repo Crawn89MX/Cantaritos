@@ -8,4 +8,5 @@ class OrdenPedida extends Model
 {
     //
     public $timestamps = false;
+    protected $guarded = [];
 }

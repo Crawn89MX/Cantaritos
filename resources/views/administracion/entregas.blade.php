@@ -87,8 +87,14 @@
 									  <CENTER>
 										  <i class="fas fa-stopwatch" style="font-size:20px; color:gray;"></i>
 									  </CENTER>
-									  <input type="text" name="id" value="{{$orden_Preparada->ID}}" requierd hidden> 
-									  <button type="button" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;"><i class="fas fa-check"></i></button>
+									  <form method="POST" action="ordenes/entregada">
+										@csrf
+										<input type="text" name="id" value="{{ $orden_Preparada->ID }}" required hidden> 
+										<input type="text" name="idmesa" value="{{ $orden_Preparada->Mesa }}" required hidden>
+										<input type="text" name="ingredientes" value="{{ $orden_Preparada->Ingredientes_Alternativos }}" required hidden> 
+										<input type="text" name="precio" value="{{ $orden_Preparada->Precio }}" required hidden>  
+										<button type="submit" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;"><i class="fas fa-check"></i></button>
+									  </form>
 								  </div>
 							  </div>
 						</div>

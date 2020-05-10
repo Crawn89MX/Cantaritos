@@ -9,4 +9,5 @@ class OrdenAtendida extends Model
     //
 
     public $timestamps = false;
+    protected $guarded = [];
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\OrdenPreparada;
+use App\OrdenAtendida;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -87,7 +88,31 @@ class OrdenPreparadaController extends Controller
      */
     public function update(Request $request, OrdenPreparada $ordenPreparada)
     {
-        //
+        $data = request()->validate([
+            'idmesa' => 'required',
+            'id' => 'required',
+            'ingredientes' => 'required',
+            'precio' => 'required'
+        ],[
+            'idmesa.required' => 'El ID de la mesa es requerido',
+            'id.required' => 'El ID del pedido es requerido',
+            'ingredientes.required' => 'Los ingredientes son requerimientos',
+            'precio.required' => 'Se requieren el precio'
+        ]);
+
+        OrdenPreparada::where('ID',$data['id'])->update([
+            'Borrado' => 1
+        ]);
+        
+        OrdenAtendida::create([ 
+            'Mesa' => $data['idmesa'],
+            'ID_Receta' => $data['id'],
+            'Ingredientes_Alternativos' => $data['ingredientes'],
+            'Precio'=>$data['precio'],
+            'ID_Facturacion' => '0'
+        ]);
+
+        return redirect('entregas');
     }
 
     /**

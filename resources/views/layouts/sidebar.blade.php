@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Menú Cantaritos</title>
+	<title>Cantaritos</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -85,6 +85,7 @@
 				</div>
 			@endif
 			<form method="POST" action="ordenes/pedida">
+				@csrf
 				<ul class="list-unstyled components">
 					<li class="active">
 						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Resumen</a>
@@ -109,7 +110,9 @@
 
 				<ul class="list-unstyled CTAs">
 					<li>
-						<a href="" >Hacer pedido</a>
+						<button type="submit" class="btn" style="color:white;">
+							<a >Hacer pedido</a>
+						</button>
 					</li>
 				</ul>
 			</form>
@@ -136,12 +139,36 @@
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>PEDIR CUENTA</b></h4></a>
+		@foreach($cuentas as $cuenta)
+			@if($cuenta->ID == 1)
+				<form method="POST" action="inicio">
+					@csrf
+					<input name="id" value="{{ $cuenta->ID }}" required hidden>
+					<input name="disponibilidad" value="2" required hidden>
+					<input name="total" value="{{ $cuenta->Total }}" required hidden>
+					<input name="ordenes" value="{{ $cuenta->Ordenes }}" required hidden>
+					<input name="ruta" value="/" required hidden>
+					<button type="submit" class="btn" style="color: white;"><a class="navbar-brand-principal"><h4><b>PEDIR CUENTA</b></h4></a></button>
+				</form>
+			@endif
+		@endforeach
 	</div>
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>PEDIR FACTURACION</b></h4></a>
+		@foreach($cuentas as $cuenta)
+			@if($cuenta->ID == 1)
+				<form method="POST" action="inicio">
+					@csrf
+					<input name="id" value="{{ $cuenta->ID }}" required hidden>
+					<input name="disponibilidad" value="3" required hidden>
+					<input name="total" value="{{ $cuenta->Total }}" required hidden>
+					<input name="ordenes" value="{{ $cuenta->Ordenes }}" required hidden>
+					<input name="ruta" value="/" required hidden>
+					<button type="submit" class="btn" style="color: white;"><a class="navbar-brand-principal"><h4><b>PEDIR FACTURACION</b></h4></a></button>
+				</form>
+			@endif
+		@endforeach
 	</div>
 		</li>
 	  </ul>

@@ -47,7 +47,14 @@ Route::get('/ordenes','OrdenPedidaController@index');
 
 Route::post('/ordenes/pedida','OrdenPedidaController@store');
 
+Route::post('/ordenes/preparada','OrdenPedidaController@update');
+
 Route::get('/entregas','OrdenPreparadaController@index');
+
+//Órdenes preparadas
+
+Route::post('/ordenes/entregada','OrdenPreparadaController@update');
+
 
 //Órdenes atendidas
 

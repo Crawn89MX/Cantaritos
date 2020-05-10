@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\OrdenPedida;
-use App\Receta;
+use App\OrdenPreparada;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -61,23 +61,23 @@ class OrdenPedidaController extends Controller
             'idmesa' => 'required',
             'idpedido1' => 'required',
             'ingredientes1' => 'required',
-            'precio' => 'required'
+            'precio1' => 'required'
         ],[
             'idmesa.required' => 'El ID de la mesa es requerido',
             'idpedido1.required' => 'El ID del pedido es requerido',
             'ingredientes1.required' => 'Los ingredientes son requerimientos',
-            'precio.required' => 'Se requieren el precio'
+            'precio1.required' => 'Se requieren el precio'
         ]);
         
         OrdenPedida::create([ 
             'Mesa' => $data['idmesa'],
             'ID_Receta' => $data['idpedido1'],
             'Ingredientes_Alternativos' => $data['ingredientes1'],
-            'Precio'=>$data['precio'],
+            'Precio'=>$data['precio1'],
             'Preparandose'=>0
         ]);
 
-        return redirect($data['ruta']);
+        return redirect('menu');
     }
 
     /**
@@ -112,7 +112,30 @@ class OrdenPedidaController extends Controller
      */
     public function update(Request $request, OrdenPedida $ordenPedida)
     {
-        //
+        $data = request()->validate([
+            'idmesa' => 'required',
+            'id' => 'required',
+            'ingredientes' => 'required',
+            'precio' => 'required'
+        ],[
+            'idmesa.required' => 'El ID de la mesa es requerido',
+            'id.required' => 'El ID del pedido es requerido',
+            'ingredientes.required' => 'Los ingredientes son requerimientos',
+            'precio.required' => 'Se requieren el precio'
+        ]);
+
+        OrdenPedida::where('ID',$data['id'])->update([
+            'Borrado' => 1
+        ]);
+        
+        OrdenPreparada::create([ 
+            'Mesa' => $data['idmesa'],
+            'ID_Receta' => $data['id'],
+            'Ingredientes_Alternativos' => $data['ingredientes'],
+            'Precio'=>$data['precio']
+        ]);
+
+        return redirect('ordenes');
     }
 
     /**

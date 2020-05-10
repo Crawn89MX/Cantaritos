@@ -7,6 +7,16 @@
 					De que punto a que punto se tomará, en este caso para el diseño
 					 Punto específico, es decir, el orden que se tomará el contenido-->
 	
+@if($errors->any())
+	<div class="alert alert-danger">
+	<ul>
+	@foreach($errors->all() as $error)
+		<li>{{ $error }}</li>
+	@endforeach
+	</ul>
+	</div>
+@endif
+
 <div class="titulo">
 	<h2>Facturación</h2>
 </div>
