@@ -75,28 +75,44 @@
 				<h5>Restaurante "Cantaritos"</h5>
                         
 			</div>
+			@if($errors->any())
+				<div class="alert alert-danger">
+				<ul>
+				@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+				</ul>
+				</div>
+			@endif
+			<form method="POST" action="ordenes/pedida">
+				<ul class="list-unstyled components">
+					<li class="active">
+						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Resumen</a>
+						<ul class="collapse list-unstyled" id="homeSubmenu">
+							<li>
+								<input type="text" hidden value="1" name="idmesa">
+							</li>
+							<li>
+								<label style="font-size:17px;">Quesadillas</label><br>
+								<img src="{{ asset("Images/quesadilla.jpg") }}" width="50px">
+								<label style="font-size:25px;">X</label>
+								<input type="text" hidden value="2" name="idpedido1">
+								<input type="text" hidden value="25" name="precio1">
+								<input type="text" hidden value='{"1/2 de chicharron","1/2 de pierna"}' name="ingredientes1">
+								<input type="text" style="width:50px;" value="1" name="cantidad1" class="form-input">
+								<label style="font-size:25px;">=</label>
+								<label style="font-size:25px;">$25</label>
+							</li>
+						</ul>
+					</li>
+				</ul>
 
-			<ul class="list-unstyled components">
-				<li class="active">
-					<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Resumen</a>
-					<ul class="collapse list-unstyled" id="homeSubmenu">
-						<li>
-							<label style="font-size:17px;">Quesadillas</label><br>
-							<img src="{{ asset("Images/quesadilla.jpg") }}" width="50px">
-							<label style="font-size:25px;">X</label>
-							<input type="text" style="width:50px;" class="form-input">
-							<label style="font-size:25px;">=</label>
-							<label style="font-size:25px;">$25</label>
-						</li>
-					</ul>
-				</li>
-			</ul>
-
-			<ul class="list-unstyled CTAs">
-				<li>
-					<a href="" >Hacer pedido</a>
-				</li>
-			</ul>
+				<ul class="list-unstyled CTAs">
+					<li>
+						<a href="" >Hacer pedido</a>
+					</li>
+				</ul>
+			</form>
 		</nav>
 	</div>
 

@@ -60,7 +60,7 @@ class RecetaController extends Controller
         //Eloquent
         $recetas = Receta::all();   // la forma de eloquent
         $title = 'Listado de Recetas';  // es solo un titulo para la pagina
-        return view('users.index', compact('title','users')); // puedes pasar mas de un parametro pero tu sabes como rescatarlo
+        return view('comensales.menu', compact('title','recetas')); // puedes pasar mas de un parametro pero tu sabes como rescatarlo
     }
 
     /**
