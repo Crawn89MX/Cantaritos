@@ -1,6 +1,16 @@
 @extends('layouts.sidebar')
 
 @section("content-comensales")
+
+	@if($errors->any())
+		<div class="alert alert-danger">
+		<ul>
+		@foreach($errors->all() as $error)
+			<li>{{ $error }}</li>
+		@endforeach
+		</ul>
+		</div>
+	@endif
 	<!--Menu-->
 	<div>
 		<img src="{{ asset('Images/decorador.png') }}" style="float: left; padding-left:260px; padding-top:80px;  filter: invert(85%);">

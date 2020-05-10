@@ -57,8 +57,28 @@ class OrdenPedidaController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        return 'Procesando informacion';
+        $data = request()->validate([
+            'idmesa' => 'required',
+            'idpedido1' => 'required',
+            'ingredientes1' => 'required',
+            'precio' => 'required'
+        ],[
+            'idmesa.required' => 'El ID de la mesa es requerido',
+            'idpedido1.required' => 'El ID del pedido es requerido',
+            'ingredientes1.required' => 'Los ingredientes son requerimientos',
+            'precio.required' => 'Se requieren el precio'
+        ]);
+        
+
+        OrdenPedida::create([ 
+            'Mesa' => $data['idmesa'],
+            'ID_Receta' => $data['idpedido1'],
+            'Ingredientes_Alternativos' => $data['ingredientes1'],
+            'Precio'=>$data['precio'],
+            'Preparandose'=>0
+        ]);
+
+        return redirect($data['ruta']);
     }
 
     /**

@@ -15,13 +15,13 @@ class MesaController extends Controller
      */
     public function index()
     {
-        $mesas = DB::table('mesas')->get();
+        $mesas = Mesa::all();  // en otro lado se hace la deteccion de borrado
 
         //dd($mesas);
 
         $title = 'Listado de Mesas';
 
-        return view('administracion.mesas', compact('title','mesas'));
+        return view('comensales.index', compact('title','mesas'));
     }
 
     /**
@@ -75,7 +75,13 @@ class MesaController extends Controller
      */
     public function show(Mesa $mesa)
     {
-        //
+        $mesas = Mesa::all();  // en otro lado se hace la deteccion de borrado
+
+        //dd($mesas);
+
+        $title = 'Listado de Mesas';
+
+        return view('administracion.mesas', compact('title','mesas'));
     }
 
     /**
@@ -99,6 +105,26 @@ class MesaController extends Controller
     public function update(Request $request, Mesa $mesa)
     {
         //
+        $data = request()->validate([
+            'id' => 'required',
+            'disponibilidad' => 'required',
+            'total' => 'required',
+            'ordenes' => 'required',
+            'ruta' => 'required'
+        ],[
+            'ordenes.required' => 'Sucedio un problema, no existen ordenes'
+        ]);
+        
+
+        Mesa::where('ID', $data['id'])->where('Borrado',0)->update([ 
+            'Disponibilidad' => $data['disponibilidad'],
+            'Total' => $data['total'],
+            'Ordenes' => $data['ordenes']
+        ]);
+
+        $ordenes = $data['ordenes'];
+
+        return redirect('facturacion', compact('ruta','ordenes'));
     }
 
     /**

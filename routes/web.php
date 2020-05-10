@@ -20,14 +20,12 @@ Route::get('/cuenta', function ()
     return view('administracion.cuenta');
 });
 
-Route::get('/', function () 
-{
-    return view('comensales.index');
-});
+Route::get('/','MesaController@index');
 
-Route::get('/menu', 'RecetaController@index');
+Route::get('/menu', 'RecetaController@show');
 
-Route::get('/mesas', 'MesaController@index');
+Route::get('/mesas', 'MesaController@show');
+
 
 //Facturación
 Route::get('/facturacion','FacturaController@create');
@@ -36,10 +34,13 @@ Route::post('/facturacion/registrar','FacturaController@store');
 
 Route::post('/inicio','MesaController@store');
 
+Route::post('/cobrar','MesaController@update');
+
 Route::get('/receta', function () 
 {
     return view('administracion.receta');
 });
+
 
 //Órdenes pedidas
 Route::get('/ordenes','OrdenPedidaController@index');

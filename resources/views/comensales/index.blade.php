@@ -45,18 +45,23 @@
                 </ul>
               </div>
             @endif
+            
+            @foreach ($mesas as $mesa)
+              @if($mesa->ID == '1' && $mesa->Disponibilidad == 4)
+              <form method="POST" action="{{ url("inicio") }}">
 
-            <form method="POST" action="{{ url("inicio") }}">
-              @csrf
-              <input value="1" name="id" hidden>
-              <input value="0" name="total" hidden>
-              <input value="{}" name="ordenes" hidden>
-              <input value="0" name="disponibilidad" hidden>
-              <input value="menu" name="ruta" hidden>
-              <!--Botón-->
-              <button type="submit" class="btn btn-default btn-xs"><b>Empezar pedidos</b></button>
+                @csrf
+                <input value="1" name="id" hidden>
+                <input value="0" name="total" hidden>
+                <input value="{}" name="ordenes" hidden>
+                <input value="0" name="disponibilidad" hidden>
+                <input value="menu" name="ruta" hidden>
+                <!--Botón-->
+                <button type="submit" class="btn btn-default btn-xs"><b>Empezar pedidos</b></button>
 
-            </form>
+              </form>
+              @endif
+            @endforeach
         </div>
       </center>
     </body>
