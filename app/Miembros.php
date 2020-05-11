@@ -8,4 +8,5 @@ class Miembros extends Model
 {
     //
     public $timestamps = false;
+    protected $guarded = [];
 }
