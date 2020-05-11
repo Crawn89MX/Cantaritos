@@ -80,17 +80,32 @@
 
 			<!--Entradas-->
 				<div class="row form-group">
-          <div class="col-md-4">
-            <h5>Orden</h5>
-          </div>
-          <div class="col-md-4">
-            <h5>Precio unitario</h5>
-          </div>
-          <div class="col-md-4">
-            <h5>Precio total</h5>
-          </div>
+					<div class="col-md-4">
+						<h5>Orden</h5>
+					</div>
+					<div class="col-md-4">
+						<h5>Precio unitario</h5>
+					</div>
+					<div class="col-md-4">
+						<h5>Precio total</h5>
+					</div>
 				</div>
-        <br>
+				<br>
+				@foreach($ordenes as $orden)
+					
+					<div class="row form-group">
+						<div class="col-md-4">
+							<h5>{{ $orden->Nombre }}</h5>
+						</div>
+						<div class="col-md-4">
+							<h5>{{ $orden->Precio }}</h5>
+						</div>
+						<div class="col-md-4">
+							<h5>{{ $orden->Precio }}</h5>
+						</div>
+					</div>
+					<br>
+				@endforeach
         <CENTER>
         <div class="col-md-12">
   				<div class="col-md-11">

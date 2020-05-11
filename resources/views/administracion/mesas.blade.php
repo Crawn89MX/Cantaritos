@@ -180,8 +180,8 @@
 									// valores de mesa en diferentes estados.
 									if($mesa->Borrado == 1){$btntype = 'btn-danger'; $nombremesa = 'borrada';}
 									if($mesa->Disponibilidad == 0){$btntype = 'btn-danger'; $rutaForm = '';}  //ocupada
-									if($mesa->Disponibilidad == 2){$btntype = 'btn-success'; $mesadisponibilidad = 1; $rutaForm = 'cobrar';} //pido cuenta
-									if($mesa->Disponibilidad == 3){$btntype = 'btn-warning'; $mesadisponibilidad = 1; $rutaForm = 'cobrar';} //pidio facturacion
+									if($mesa->Disponibilidad == 2){$btntype = 'btn-success'; $mesadisponibilidad = 1; $rutaForm = 'cobrar'; $rutaRetorno = 'cuenta';} //pido cuenta
+									if($mesa->Disponibilidad == 3){$btntype = 'btn-warning'; $mesadisponibilidad = 1; $rutaForm = 'cobrar'; $rutaRetorno = 'facturacion';} //pidio facturacion
 									if($mesa->Disponibilidad == 4){$btntype = 'btn-light'; $rutaForm = '';}  //siendo ocupada
 								?>
 								<div class="boton" style="padding-top: 13px !important; ">
