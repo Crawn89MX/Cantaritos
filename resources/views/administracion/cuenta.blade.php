@@ -68,8 +68,8 @@
 		<div class="container contenido">
 			<CENTER>
 			<br>
-			<div class="col-md-12">
-				<div class="col-md-8">
+			<div class="col-12">
+				<div class="col-8">
 					<div class="titulo">
 						<h2>CUENTA</h2>
 						<hr>
@@ -80,6 +80,7 @@
 
 			<!--Entradas-->
 				<div class="row form-group">
+<<<<<<< HEAD
 					<div class="col-md-4">
 						<h5>Orden</h5>
 					</div>
@@ -89,6 +90,17 @@
 					<div class="col-md-4">
 						<h5>Precio total</h5>
 					</div>
+=======
+          <div class="col-4">
+            <h5>Orden</h5>
+          </div>
+          <div class="col-4">
+            <h5>Precio unitario</h5>
+          </div>
+          <div class="col-4">
+            <h5>Precio total</h5>
+          </div>
+>>>>>>> f479722a059d9e886a1024aca207306ec075c388
 				</div>
 				<br>
 				@foreach($ordenes as $orden)
@@ -107,8 +119,8 @@
 					<br>
 				@endforeach
         <CENTER>
-        <div class="col-md-12">
-  				<div class="col-md-11">
+        <div class="col-12">
+  				<div class="col-11">
             <hr>
   						<h5 style="text-align: left !important;">Total</h5>
   				</div>

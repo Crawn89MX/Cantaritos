@@ -80,10 +80,10 @@
 						<img class="card-img-top" width="350" height="200" src="{{ asset("Images/$orden_Preparada->Imagen") }}" alt="Card image">
 						<div class="card-body" style="padding: 5px !important;">
 							  <div class="row d-flex justify-content-between">
-								  <div class="col-md-8">
+								  <div class="col-8">
 									  <h5 class="card-title" style="margin-bottom: 0px !important;">{{$orden_Preparada->Nombre}}</h5>
 								  </div>
-								  <div class="col-md-4">
+								  <div class="col-4">
 									  <CENTER>
 										  <i class="fas fa-stopwatch" style="font-size:20px; color:gray;"></i>
 									  </CENTER>
