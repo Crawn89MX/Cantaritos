@@ -93,11 +93,11 @@ class FacturaController extends Controller
             'Monto' => $data['monto'],
             'Condiciones' => $data['condiciones'],
             'Metodo' => $data['metodo'],
-            'Cantidad_Descripcion' => $data['cantidad'].$data['descripcion']
+            'Cantidad_Descripcion' => $data['cantidad'].' ,Descripcion: '.$data['descripcion']
         ]);
         
 
-        return redirect('index');
+        return redirect('mesas');
     }
 
     /**

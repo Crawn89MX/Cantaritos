@@ -72,7 +72,7 @@
 	<div class="col-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere la cantidad">
 			<span class="label-input100">Cantidad</span>
-			<input class="input100" type="text" name="cantidad" value="{{ count($ordenes) }}"required>
+			<input class="input100" type="text" name="cantidad" value="{{ count($ordenes) ?? '' }}"required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
@@ -119,7 +119,7 @@
 
 					for ($i=0; $i < count($stackComida); $i++) { 
 						echo $countComida[$i];
-						echo ' -';
+						echo '-';
 						echo $stackComida[$i];
 						if($i > 0)
 							echo ',';
