@@ -8,41 +8,58 @@ use Illuminate\Support\Facades\DB;
 
 class MesaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+
+
+
+
+
+
+
+
+
+
+
     public function index()
     {
         $mesas = Mesa::all();  // en otro lado se hace la deteccion de borrado
 
-        //dd($mesas);
+        
 
         $title = 'Listado de Mesas';
 
         return view('comensales.index', compact('title','mesas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+
+
+
+
+
+
+
+
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+     
+
+
+
+
+
+
+
+
+
+
     public function store(Request $request)
     {
-        //$data = request()->all();
+        
         $data = request()->validate([
             'id' => 'required',
             'disponibilidad' => 'required',
@@ -58,53 +75,78 @@ class MesaController extends Controller
         ]);
         
 
+
+
         Mesa::where('ID', $data['id'])->where('Borrado',0)->update([ 
             'Disponibilidad' => $data['disponibilidad'],
             'Total' => $data['total'],
             'Ordenes' => $data['ordenes']
         ]);
 
+
+
         return redirect($data['ruta']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Mesa  $mesa
-     * @return \Illuminate\Http\Response
-     */
+    
+
+
+
+
+
+
+
     public function show(Mesa $mesa)
     {
         $mesas = Mesa::all();  // en otro lado se hace la deteccion de borrado
-
-        //dd($mesas);
 
         $title = 'Listado de Mesas';
 
         return view('administracion.mesas', compact('title','mesas'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Mesa  $mesa
-     * @return \Illuminate\Http\Response
-     */
+    
+
+
+
+
+
+
+
+
     public function edit(Mesa $mesa)
     {
-        //
+        $data = request()->validate([
+            'id' => 'required'
+        ],[
+            'id.required' => 'ID requerido'
+        ]);
+
+        DB::select('UPDATE orden_pedidas
+                    SET Pagado = 1
+                    WHERE Mesa = '.$data['id'].' && Pagado == 0 ');
+                     
+        $ruta = 'mesas';
+        if($data['ruta'] == 'facturacion'){
+            $ruta = 'facturacion';
+            $data['ruta'] = 'mesas';
+        }     
+
+        return view('administracion.mesas',compact('ordenes'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Mesa  $mesa
-     * @return \Illuminate\Http\Response
-     */
+       
+
+
+
+
+
+
+
+
+
     public function update(Request $request, Mesa $mesa)
     {
-        //
         $data = request()->validate([
             'id' => 'required',
             'disponibilidad' => 'required',
@@ -122,11 +164,7 @@ class MesaController extends Controller
             'Ordenes' => $data['ordenes']
         ]);
 
-        $ruta = 'cuenta';
-        if($data['ruta'] == 'facturacion'){
-            $ruta = 'facturacion';
-            $data['ruta'] = 'cuenta';
-        }
+        $ruta = $data['ruta'];
 
         $ordenes = DB::select('SELECT orden_atendidas.ID,
                                 orden_atendidas.Mesa,
@@ -140,18 +178,20 @@ class MesaController extends Controller
                                 recetas.Ingredientes,
                                 recetas.Preparacion 
                                 FROM orden_atendidas,recetas 
-                                WHERE orden_atendidas.ID_Receta = recetas.ID && recetas.Borrado = 0 && orden_atendidas.Borrado = 0;');
+                                WHERE orden_atendidas.ID_Receta = recetas.ID && orden_atendidas.Mesa = '.$data['id'].' && recetas.Borrado = 0 && orden_atendidas .Borrado = 0;');
 
 
-        return view('administracion.'.$data['ruta'], compact('ruta','ordenes'));
+        return view('administracion.cuenta', compact('ruta','ordenes'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Mesa  $mesa
-     * @return \Illuminate\Http\Response
-     */
+    
+
+
+
+
+
+
+
     public function destroy(Mesa $mesa)
     {
         //

@@ -28,13 +28,21 @@ Route::get('/mesas', 'MesaController@show');
 
 
 //Facturación
-Route::get('/facturacion','FacturaController@create');
+Route::get('/facturacion','FacturaController@index');
+
+Route::post('/facturacion','FacturaController@create');
 
 Route::post('/facturacion/registrar','FacturaController@store');
 
+//inicio
+
 Route::post('/inicio','MesaController@store');
 
+//cobrar
+
 Route::post('/cobrar','MesaController@update');
+
+//receta
 
 Route::get('/receta', function () 
 {
@@ -49,6 +57,8 @@ Route::post('/ordenes/pedida','OrdenPedidaController@store');
 
 Route::post('/ordenes/preparada','OrdenPedidaController@update');
 
+//entregas
+
 Route::get('/entregas','OrdenPreparadaController@index');
 
 //Órdenes preparadas
@@ -57,6 +67,9 @@ Route::post('/ordenes/entregada','OrdenPreparadaController@update');
 
 
 //Órdenes atendidas
+
+Route::post('/cuentas/pagar','MesaController@edit');
+
 
 //Usuarios
 Route::get('/register','MiembrosController@index');

@@ -63,6 +63,16 @@
 		text-align: center;
 		}
 	</style>
+
+	@if($errors->any())
+		<div class="alert alert-danger">
+		<ul>
+		@foreach($errors->all() as $error)
+			<li>{{ $error }}</li>
+		@endforeach
+		</ul>
+		</div>
+	@endif
 	<!--Menu-->
 	<div class="margenes">
 		<div class="container contenido">
@@ -80,7 +90,6 @@
 
 			<!--Entradas-->
 				<div class="row form-group">
-<<<<<<< HEAD
 					<div class="col-md-4">
 						<h5>Orden</h5>
 					</div>
@@ -90,17 +99,6 @@
 					<div class="col-md-4">
 						<h5>Precio total</h5>
 					</div>
-=======
-          <div class="col-4">
-            <h5>Orden</h5>
-          </div>
-          <div class="col-4">
-            <h5>Precio unitario</h5>
-          </div>
-          <div class="col-4">
-            <h5>Precio total</h5>
-          </div>
->>>>>>> f479722a059d9e886a1024aca207306ec075c388
 				</div>
 				<br>
 				@foreach($ordenes as $orden)
@@ -117,28 +115,34 @@
 						</div>
 					</div>
 					<br>
+					{{ $mesa = $orden->Mesa }}
 				@endforeach
         <CENTER>
-        <div class="col-12">
+        	<div class="col-12">
   				<div class="col-11">
-            <hr>
-  						<h5 style="text-align: left !important;">Total</h5>
+            		<hr>
+  					<h5 style="text-align: left !important;">Total</h5>
   				</div>
   			</div>
         </CENTER>
 				<br>
 
-				<!--Botón
+			<div class="row form-group contact100-form">
+			</div>
+				<!--Botón-->
 				<div class="col-md-12">
 					<div class="container-contact100-form-btn">
-						<button class="contact100-form-btn">
-							<span>
-								<b>Generar</b>
-								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
-							</span>
-						</button>
+						<form action="{{ $ruta }}" method="POST">
+							<input type="text" name="id" value="{{ $mesa }}" hidden>
+							<button class="contact100-form-btn">
+								<span>
+									<b>Cobrar</b>
+									<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+								</span>
+							</button>
+						</form>
 					</div>
-				</div>-->
+				</div>
 			</div>
 		</div>
 	</div>

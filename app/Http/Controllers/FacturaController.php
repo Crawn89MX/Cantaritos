@@ -15,6 +15,7 @@ class FacturaController extends Controller
     public function index()
     {
         //
+        return view('administracion.facturacion');
     }
 
     /**
@@ -25,7 +26,28 @@ class FacturaController extends Controller
     public function create()
     {
         //
-        return view('administracion.facturacion');
+        $data = request()->validate([
+            'id' => 'required'
+        ],[
+            'id.required' => 'ID requerido'
+        ]);
+
+        $ordenes = DB::select('SELECT orden_atendidas.ID,
+                                orden_atendidas.Mesa,
+                                orden_atendidas.Ingredientes_Alternativos,
+                                orden_atendidas.Precio,
+                                recetas.Imagen,
+                                recetas.Nombre,
+                                recetas.Descripcion,
+                                recetas.Costo,
+                                recetas.Clasificacion,
+                                recetas.Ingredientes,
+                                recetas.Preparacion 
+                                FROM orden_atendidas,recetas 
+                                WHERE orden_atendidas.ID_Receta = recetas.ID && orden_atendidas.Mesa = '.$data['id'].' && recetas.Borrado = 0 && orden_atendidas .Borrado = 0;');
+
+        
+        return view('administracion.facturacion',compact('ordenes'));
     }
 
     /**
