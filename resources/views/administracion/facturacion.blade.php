@@ -72,7 +72,7 @@
 	<div class="col-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere la cantidad">
 			<span class="label-input100">Cantidad</span>
-			<input class="input100" type="text" name="cantidad" value="{{ count($ordenes); }}"required>
+			<input class="input100" type="text" name="cantidad" value="{{ count($ordenes) }}"required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
@@ -95,8 +95,7 @@
 	<div class="col-9">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere la descripcion">
 			<span class="label-input100">Descripción</span>
-			<textarea class="input100" type="text" name="descripcion" style="height: 130px ;" required>
-				<?php 
+			<textarea class="input100" type="text" name="descripcion" style="height: 130px ;" required><?php 
 					$stackComida = array();
 					$countComida = array();
 					$MinCount = 0;
@@ -113,17 +112,19 @@
 						}
 						if($bandera == 0){
 							$stackComida[$j]=$orden->Nombre;
-							$countComida[$j]=0;
+							$countComida[$j]=1;
 						}
 						$j++;
 					}
 
 					for ($i=0; $i < count($stackComida); $i++) { 
-						echo $stackComida[$i];
 						echo $countComida[$i];
+						echo ' -';
+						echo $stackComida[$i];
+						if($i > 0)
+							echo ',';
 					}
-				?>
-			</textarea>
+				?></textarea>
 			<span class="focus-input100"></span>
 		</div>
 	</div>

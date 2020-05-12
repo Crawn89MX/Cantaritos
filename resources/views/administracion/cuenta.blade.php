@@ -133,7 +133,8 @@
 				<div class="col-md-12">
 					<div class="container-contact100-form-btn">
 						<form action="{{ $ruta }}" method="POST">
-							<input type="text" name="id" value="{{ $mesa }}" hidden>
+							@csrf
+							<input type="text" name="id" value="{{ $mesa ?? '0' }}" hidden>
 							<button class="contact100-form-btn">
 								<span>
 									<b>Cobrar</b>
