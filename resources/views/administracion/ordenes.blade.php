@@ -103,6 +103,7 @@
 									<form method="POST" action="ordenes/preparada">
 									  @csrf
 									  <input type="text" name="id" value="{{ $orden_Pedida->ID }}" required hidden> 
+									  <input type="text" name="idreceta" value="{{ $orden_Pedida->ID_Receta }}" required hidden> 
 									  <input type="text" name="idmesa" value="{{ $orden_Pedida->Mesa }}" required hidden>
 									  <input type="text" name="ingredientes" value="{{ $orden_Pedida->Ingredientes_Alternativos }}" required hidden> 
 									  <input type="text" name="precio" value="{{ $orden_Pedida->Precio }}" required hidden>  

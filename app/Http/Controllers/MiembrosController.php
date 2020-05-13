@@ -70,17 +70,15 @@ class MiembrosController extends Controller
 
         //Enviar correo
         $url = 'cantaritos.test/verificar';
-
+        
         $mail = new PHPMailer(true);
     try{
         $mail->CharSet = "utf-8"; // set charset to utf8
         $mail->setFrom('cantaritos2021@gmail.com','Cantaritos');
-        $mail->addReplyTo('cantaritos2021@gmail.com','Cantaritos');
-        $mail->Subject = "Por favor verifique su direccion de correo electronico";
         $mail->addAddress($data['correo'],'Correo Usuario');
-        $mail->SMTPAuth = true;  // use smpt auth
-        $mail->SMTPSecure = "tls"; // or ssl
-        $mail->MsgHTML('<div style="width:100%; background:#eee; position:relative; font-family:sans-serif; padding-bottom: 40px;">
+        $mail->Subject = "Por favor verifique su direccion de correo electronico";
+        $mail->isHTML(true);
+        $mail->Body = '<div style="width:100%; background:#eee; position:relative; font-family:sans-serif; padding-bottom: 40px;">
         <center>
             <img src="" style="padding: 20px; width:10%;">
         </center>
@@ -101,7 +99,7 @@ class MiembrosController extends Controller
                     <h5>Si no se inscribió en esta cuenta, puede ignorar este correo electrónico y la cuenta se eliminirá</h5>
                 </center>
             </div>
-        </div>');
+        </div>' ;
         $mail->send();
     }catch(phpmailerException $e){
         dd($e);
