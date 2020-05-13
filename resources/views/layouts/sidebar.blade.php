@@ -19,6 +19,7 @@
                 <link rel="stylesheet" href="{{ asset("Fuentes/stylesheet.css") }}">
                 <link rel="stylesheet" href="{{ asset("css/estilos.css") }}">
                 <link rel="stylesheet" href="{{ asset("css/app.css")}}">
+				<script src="{{asset("js/carrito-de-compras.js")}}"></script>
         
 
           <!-- Kit de FontAwesome -->
@@ -63,6 +64,15 @@
         </style>
 </head>
 <body>
+	@if($errors->any())
+		<div class="alert alert-danger">
+		<ul>
+		@foreach($errors->all() as $error)
+			<li>{{ $error }}</li>
+		@endforeach
+		</ul>
+		</div>
+	@endif
 	<div class="wrapper">
 		<!-- Sidebar  -->
 		<nav id="sidebar">
@@ -75,35 +85,17 @@
 				<h5>Restaurante "Cantaritos"</h5>
                         
 			</div>
-			@if($errors->any())
-				<div class="alert alert-danger">
-				<ul>
-				@foreach($errors->all() as $error)
-					<li>{{ $error }}</li>
-				@endforeach
-				</ul>
-				</div>
-			@endif
+			
 			<form method="POST" action="ordenes/pedida">
 				@csrf
 				<ul class="list-unstyled components">
 					<li class="active">
 						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Resumen</a>
-						<ul class="collapse list-unstyled" id="homeSubmenu">
+						<ul class="collapse list-unstyled cuerpoCarrito" id="homeSubmenu">
 							<li>
 								<input type="text" hidden value="1" name="idmesa">
 							</li>
-							<li>
-								<label style="font-size:17px;">Quesadillas</label><br>
-								<img src="{{ asset("Images/quesadilla.jpg") }}" width="50px">
-								<label style="font-size:25px;">X</label>
-								<input type="text" hidden value="2" name="idpedido1">
-								<input type="text" hidden value="25" name="precio1">
-								<input type="text" hidden value='{"1/2 de chicharron","1/2 de pierna"}' name="ingredientes1">
-								<input type="text" style="width:50px;" value="1" name="cantidad1" class="form-input">
-								<label style="font-size:25px;">=</label>
-								<label style="font-size:25px;">$25</label>
-							</li>
+							
 						</ul>
 					</li>
 				</ul>

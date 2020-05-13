@@ -45,7 +45,7 @@ class FacturaController extends Controller
                                 recetas.Ingredientes,
                                 recetas.Preparacion 
                                 FROM orden_atendidas,recetas 
-                                WHERE orden_atendidas.ID_Receta = recetas.ID && orden_atendidas.Mesa = '.$data['id'].' && recetas.Borrado = 0 && orden_atendidas .Borrado = 0;');
+                                WHERE orden_atendidas.ID_Receta = recetas.ID && orden_atendidas.Mesa = '.$data['id'].' && recetas.Borrado = 0 && orden_atendidas.Pagado = 0;');
 
         
         return view('administracion.facturacion',compact('ordenes'));

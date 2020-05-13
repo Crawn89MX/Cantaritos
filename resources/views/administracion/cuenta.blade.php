@@ -144,7 +144,7 @@
 					?>
 					
 					<br>
-					{{ $mesa = $orden->Mesa }}
+					<?php if(isset($orden)){$mesa = $orden->Mesa;} ?>
 				
         <CENTER>
         	<div class="col-12">

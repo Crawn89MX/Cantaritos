@@ -27,7 +27,7 @@
 					
 					<!--Entradas-->	
 					<CENTER>
-						<div class="subtitulo" id="Entradas">
+						<div class="subtitulo botonCarrito" id="Entradas">
 							<h3>Entradas</h3>
 							<br>
 						</div>
@@ -45,7 +45,8 @@
 											<h5 class="card-title" style="margin-bottom: 0px !important; font-size:14px;">{{$receta->Nombre}}</h5>
 										</div>
 										<div class="col-md-3">
-										<h5 class="card-title" style="margin-bottom: 0px !important; width: 150px !important; margin-left: -20px !important; font-size:14px;">${{$receta->Costo}}</h5>
+											<h5 class="card-title" style="margin-bottom: 0px !important; width: 150px !important; margin-left: -20px !important; font-size:14px;">${{$receta->Costo}}</h5>
+											<button type="submit" class="btn btn-success btn-xs agregarCarrito" style="height:25px !important; padding-top: 0px !important; margin:-30px;" imagen="{{ $receta->Imagen }}" idProducto="{{ $receta->ID }}" precio="{{ $receta->Costo }}" ingredientes="{{ $receta->Condimentos_Alternativos }}" cantidadArt="1" titulo="{{ $receta->Nombre }}"><i class="fas fa-plus"></i></button>
 										</div>
 									</div>
 								</div>
@@ -77,7 +78,8 @@
 												<h5 class="card-title" style="margin-bottom: 0px !important; font-size:14px;">{{$receta->Nombre}}</h5>
 											</div>
 											<div class="col-md-3">
-											<h5 class="card-title" style="margin-bottom: 0px !important; width: 150px !important; margin-left: -20px !important; font-size:14px;">${{$receta->Costo}}</h5>
+												<h5 class="card-title" style="margin-bottom: 0px !important; width: 150px !important; margin-left: -20px !important; font-size:14px;">${{$receta->Costo}}</h5>
+												<button type="submit" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important; margin:-30px;"><i class="fas fa-plus"></i></button>
 											</div>
 										</div>
 									</div>
@@ -110,7 +112,8 @@
 										</div>
 										<div class="col-md-3">
 										<h5 class="card-title" style="margin-bottom: 0px !important; width: 150px !important; margin-left: -20px !important; font-size:14px;">${{$receta->Costo}}</h5>
-										</div>
+										<button type="submit" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important; margin:-30px;"><i class="fas fa-plus"></i></button>
+									</div>
 									</div>
 								</div>
 							</div>
