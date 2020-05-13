@@ -21,8 +21,9 @@ class CreateMiembrosTable extends Migration
             $table->string('Consumo');
             $table->string('Puntos_Gastados');
             $table->string('Correo');
+            $table->string('Correo_Encriptado');
             $table->string('Password');
-
+            $table->integer('Verificado')->default(0);
             $table->integer('Borrado')->default(0);
             $table->timestamp('FechaCreacion')->useCurrent();
             $table->timestamp('FechaModificacion')->useCurrent();

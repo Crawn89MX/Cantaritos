@@ -60,9 +60,12 @@ class MiembrosController extends Controller
             'Apellido_Pat' => $data['apellidop'],
             'Apellido_Mat' => $data['apellidom'],
             'Correo' => $data['correo'],
+            'Correo_Encriptado' => md5($data['correo']),
             'Password' => $data['password'],
             'Consumo' => '0',
-            'Puntos_Gastados'  => '0'
+            'Puntos_Gastados'  => '0',
+            'Verificado'  => '0'
+
         ]);
 
         //Enviar correo
@@ -89,7 +92,7 @@ class MiembrosController extends Controller
                     <hr style="border:1px solid #ccc width:80%;">
                     <h4 style="font-weight: 100; color: #999; padding: 0px 20px;">Para comenzar a usar su cuenta de Cantaritos, Debe confirmar su dirección de correo electrónico</h4>
 
-                    <a href="'.$url.''.md5($data['correo']).
+                    <a href="'.$url.'/'.md5($data['correo']).
                     '" target="_blank" style="text-decoration: none;">
                         <div style="line-height:60px; background: #428BCA; width:60%; color: white; ">Verifique su dirección de correo electrónico</div>
                     </a>
@@ -106,10 +109,6 @@ class MiembrosController extends Controller
         dd($e);
     }
     die('success');
-
-
-        
-
 
         return redirect('/');
     }
@@ -146,6 +145,12 @@ class MiembrosController extends Controller
     public function update(Request $request, Miembros $miembros)
     {
         //
+        $data = request()->all();
+        Miembros::where('Correo_Encriptado',$data['correo'])
+            ->where('Verificado',0)
+            ->update(['Verificado' => 1]);
+        
+        return redirect('/');
     }
 
     /**
