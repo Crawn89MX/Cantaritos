@@ -65,15 +65,8 @@ Route::get('/entregas','OrdenPreparadaController@index');
 
 Route::post('/ordenes/entregada','OrdenPreparadaController@update');
 
-<<<<<<< HEAD
-=======
-
-//Órdenes atendidas
-
 Route::post('/cuentas/pagar','MesaController@edit');
 
-
->>>>>>> c7ca731a8dc209dcadb2cc5c63a1b9f678e0e2f9
 //Usuarios
 Route::get('/register','MiembrosController@index');
 

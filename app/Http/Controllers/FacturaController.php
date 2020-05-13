@@ -96,10 +96,10 @@ class FacturaController extends Controller
             'Cantidad_Descripcion' => $data['cantidad'].' ,Descripcion: '.$data['descripcion']
         ]);
 
-        $factura = DB::select('SELECT * FROM facturas WHERE Nombre = '.$data['nombre'].' && Domicilio = '.$data['domicilio'].' ORDER BY FechaCreacion DESC');
+        $factura = DB::select('SELECT * FROM facturas WHERE Nombre = "'.$data['nombre'].'" && Domicilio = "'.$data['domicilio'].'" ORDER BY FechaCreacion DESC');
 
         $ordenes = DB::update('UPDATE orden_atendidas
-                                SET ID_Facturacion = 
+                                SET ID_Facturacion = '.$factura[0]->ID.'
                                 WHERE ID = '.$factura[0]->ID.'');
         
 
