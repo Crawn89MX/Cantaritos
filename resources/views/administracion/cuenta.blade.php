@@ -101,22 +101,51 @@
 					</div>
 				</div>
 				<br>
-				@foreach($ordenes as $orden)
+					<?php 
+						$stackComida = $ordenes;
+						$countComida = array();
+						$MinCount = 0;
+						$j=0;
+						
+						
+						
+						foreach ($ordenes as $orden) {
+							$bandera = 0;
+							for($i = 0; $i < $j ;$i++){
+								
+								if($stackComida[$i]->Nombre == $orden->Nombre){			
+									$stackComida[$i]->Nombre = $orden->Nombre;
+									$countComida[$i] = $countComida[$i]+1;
+									$bandera = 1;
+								}
+							}
+							if($bandera == 0){
+								$stackComida[$j]->Nombre=$orden->Nombre;
+								$countComida[$j]=1;
+								$j++;
+							}
+						}
+
+						for ($i=0; $i < $j; $i++) { 
+							
+							echo '
+							<div class="row form-group">
+								<div class="col-md-4">
+									<h5>'.$stackComida[$i]->Nombre.' X '.$countComida[$i].'</h5>
+								</div>
+								<div class="col-md-4">
+									<h5>'.$stackComida[$i]->Precio.'</h5>
+								</div>
+								<div class="col-md-4">
+									<h5>'.($stackComida[$i]->Precio * $countComida[$i]).'</h5>
+								</div>
+							</div>';
+						}
+					?>
 					
-					<div class="row form-group">
-						<div class="col-md-4">
-							<h5>{{ $orden->Nombre }}</h5>
-						</div>
-						<div class="col-md-4">
-							<h5>{{ $orden->Precio }}</h5>
-						</div>
-						<div class="col-md-4">
-							<h5>{{ $orden->Precio }}</h5>
-						</div>
-					</div>
 					<br>
 					{{ $mesa = $orden->Mesa }}
-				@endforeach
+				
         <CENTER>
         	<div class="col-12">
   				<div class="col-11">
