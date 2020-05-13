@@ -18,18 +18,19 @@ class OrdenPreparadaController extends Controller
     {
         //
         $orden_Preparadas = DB::select('SELECT orden_Preparadas.ID,
-                                                orden_Preparadas.Mesa,
-                                                orden_Preparadas.Ingredientes_Alternativos,
-                                                orden_Preparadas.Precio,
-                                                recetas.Imagen,
-                                                recetas.Nombre,
-                                                recetas.Descripcion,
-                                                recetas.Costo,
-                                                recetas.Clasificacion,
-                                                recetas.Ingredientes,
-                                                recetas.Preparacion 
-                                                FROM orden_Preparadas,recetas 
-                                                WHERE orden_Preparadas.ID_Receta = recetas.ID && recetas.Borrado = 0 && orden_Preparadas.Borrado = 0;');
+                                        orden_Preparadas.Mesa,
+                                        orden_Preparadas.Ingredientes_Alternativos,
+                                        orden_Preparadas.Precio,
+                                        orden_Preparadas.ID_Receta,
+                                        recetas.Imagen,
+                                        recetas.Nombre,
+                                        recetas.Descripcion,
+                                        recetas.Costo,
+                                        recetas.Clasificacion,
+                                        recetas.Ingredientes,
+                                        recetas.Preparacion 
+                                        FROM orden_Preparadas,recetas 
+                                        WHERE orden_Preparadas.ID_Receta = recetas.ID && recetas.Borrado = 0 && orden_Preparadas.Borrado = 0;');
 
         //dd($ordenPedida);
         //$id = $receta->id_receta;
@@ -89,13 +90,15 @@ class OrdenPreparadaController extends Controller
     public function update(Request $request, OrdenPreparada $ordenPreparada)
     {
         $data = request()->validate([
-            'idmesa' => 'required',
             'id' => 'required',
+            'idmesa' => 'required',
+            'idreceta' => 'required',
             'ingredientes' => 'required',
             'precio' => 'required'
         ],[
+            'id.required' => 'El ID de la mesa es requerido',
             'idmesa.required' => 'El ID de la mesa es requerido',
-            'id.required' => 'El ID del pedido es requerido',
+            'idreceta.required' => 'El ID de la receta es requerido',
             'ingredientes.required' => 'Los ingredientes son requerimientos',
             'precio.required' => 'Se requieren el precio'
         ]);
@@ -106,7 +109,7 @@ class OrdenPreparadaController extends Controller
         
         OrdenAtendida::create([ 
             'Mesa' => $data['idmesa'],
-            'ID_Receta' => $data['id'],
+            'ID_Receta' => $data['idreceta'],
             'Ingredientes_Alternativos' => $data['ingredientes'],
             'Precio'=>$data['precio'],
             'ID_Facturacion' => '0'

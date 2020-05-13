@@ -90,6 +90,7 @@
 									  <form method="POST" action="ordenes/entregada">
 										@csrf
 										<input type="text" name="id" value="{{ $orden_Preparada->ID }}" required hidden> 
+										<input type="text" name="idreceta" value="{{ $orden_Preparada->ID_Receta }}" required hidden> 
 										<input type="text" name="idmesa" value="{{ $orden_Preparada->Mesa }}" required hidden>
 										<input type="text" name="ingredientes" value="{{ $orden_Preparada->Ingredientes_Alternativos }}" required hidden> 
 										<input type="text" name="precio" value="{{ $orden_Preparada->Precio }}" required hidden>  

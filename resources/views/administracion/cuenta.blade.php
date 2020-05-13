@@ -132,9 +132,10 @@
 				<!--Botón-->
 				<div class="col-md-12">
 					<div class="container-contact100-form-btn">
-						<form action="{{ $ruta }}" method="POST">
+						<form action="cuentas/pagar" method="POST">
 							@csrf
 							<input type="text" name="id" value="{{ $mesa ?? '0' }}" hidden>
+							<input type="text" name="ruta" value="{{ $ruta }}" hidden>
 							<button class="contact100-form-btn">
 								<span>
 									<b>Cobrar</b>

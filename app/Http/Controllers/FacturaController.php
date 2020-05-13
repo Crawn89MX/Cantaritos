@@ -95,6 +95,12 @@ class FacturaController extends Controller
             'Metodo' => $data['metodo'],
             'Cantidad_Descripcion' => $data['cantidad'].' ,Descripcion: '.$data['descripcion']
         ]);
+
+        $factura = DB::select('SELECT * FROM facturas WHERE Nombre = '.$data['nombre'].' && Domicilio = '.$data['domicilio'].' ORDER BY FechaCreacion DESC');
+
+        $ordenes = DB::update('UPDATE orden_atendidas
+                                SET ID_Facturacion = 
+                                WHERE ID = '.$factura[0]->ID.'');
         
 
         return redirect('mesas');

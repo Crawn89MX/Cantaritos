@@ -24,6 +24,7 @@ class OrdenPedidaController extends Controller
                                         orden_pedidas.Mesa,
                                         orden_pedidas.Ingredientes_Alternativos,
                                         orden_pedidas.Precio,
+                                        orden_pedidas.ID_Receta,
                                         recetas.Imagen,
                                         recetas.Nombre,
                                         recetas.Descripcion,
@@ -113,13 +114,15 @@ class OrdenPedidaController extends Controller
     public function update(Request $request, OrdenPedida $ordenPedida)
     {
         $data = request()->validate([
-            'idmesa' => 'required',
             'id' => 'required',
+            'idmesa' => 'required',
+            'idreceta' => 'required',
             'ingredientes' => 'required',
             'precio' => 'required'
         ],[
-            'idmesa.required' => 'El ID de la mesa es requerido',
             'id.required' => 'El ID del pedido es requerido',
+            'idmesa.required' => 'El ID de la mesa es requerido',
+            'idreceta.required' => 'El ID de la receta es requerido',
             'ingredientes.required' => 'Los ingredientes son requerimientos',
             'precio.required' => 'Se requieren el precio'
         ]);
@@ -130,7 +133,7 @@ class OrdenPedidaController extends Controller
         
         OrdenPreparada::create([ 
             'Mesa' => $data['idmesa'],
-            'ID_Receta' => $data['id'],
+            'ID_Receta' => $data['idreceta'],
             'Ingredientes_Alternativos' => $data['ingredientes'],
             'Precio'=>$data['precio']
         ]);
