@@ -96,31 +96,34 @@
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere la descripcion">
 			<span class="label-input100">Descripción</span>
 			<textarea class="input100" type="text" name="descripcion" style="height: 130px ;" required><?php 
-					$stackComida = array();
+					$stackComida = $ordenes;
 					$countComida = array();
 					$MinCount = 0;
 					$j=0;
+					
+					
+					
 					foreach ($ordenes as $orden) {
 						$bandera = 0;
 						for($i = 0; $i < $j ;$i++){
 							
-							if($stackComida[$i] == $orden->Nombre){			
-								$stackComida[$i] = $orden->Nombre;
+							if($stackComida[$i]->Nombre == $orden->Nombre){			
+								$stackComida[$i]->Nombre = $orden->Nombre;
 								$countComida[$i] = $countComida[$i]+1;
 								$bandera = 1;
 							}
 						}
 						if($bandera == 0){
-							$stackComida[$j]=$orden->Nombre;
+							$stackComida[$j]->Nombre=$orden->Nombre;
 							$countComida[$j]=1;
+							$j++;
 						}
-						$j++;
 					}
 
-					for ($i=0; $i < count($stackComida); $i++) { 
+					for ($i=0; $i < $j; $i++) { 
 						echo $countComida[$i];
 						echo '-';
-						echo $stackComida[$i];
+						echo $stackComida[$i]->Nombre;
 						if($i > 0)
 							echo ',';
 					}
