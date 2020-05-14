@@ -21,6 +21,13 @@
 	<h2>Facturación</h2>
 </div>
 
+<?php
+	SESSION_START();
+	$nom = $_SESSION['nomnre'];
+	$appep = $_SESSION['apellidop'];
+	$appem = $_SESSION['apellidom'];
+	$corr = $_SESSION['correo'];
+?>
 <!-- Formulario -->
 <div class="container">
 <form method="POST" action="{{ url("facturacion/registrar") }}">
@@ -29,21 +36,21 @@
 	<div class="col-6">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el nombre" >
 			<span class="label-input100">Nombre completo</span>
-			<input class="input100" type="text" name="nombre" required>
+			<input class="input100" type="text" name="nombre" value="<?php echo "$nom"; ?>" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el apellido paterno" >
 			<span class="label-input100">Apellido paterno</span>
-			<input class="input100" type="text" name="apellidop" required>
+			<input class="input100" type="text" name="apellidop" value="<?php echo "$apep"; ?>" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el apellido materno" >
 			<span class="label-input100">Apellido materno</span>
-			<input class="input100" type="text" name="apellidom" required>
+			<input class="input100" type="text" name="apellidom" value="<?php echo "$apem"; ?>" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>

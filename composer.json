@@ -2,7 +2,6 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "phpmailer/phpmailer":"dev-master",
     "keywords": [
         "framework",
         "laravel"
