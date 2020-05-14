@@ -24,7 +24,6 @@ class OrdenPedidaController extends Controller
                                         orden_pedidas.Mesa,
                                         orden_pedidas.Ingredientes_Alternativos,
                                         orden_pedidas.Precio,
-                                        orden_pedidas.ID_Receta,
                                         recetas.Imagen,
                                         recetas.Nombre,
                                         recetas.Descripcion,
@@ -114,15 +113,13 @@ class OrdenPedidaController extends Controller
     public function update(Request $request, OrdenPedida $ordenPedida)
     {
         $data = request()->validate([
-            'id' => 'required',
             'idmesa' => 'required',
-            'idreceta' => 'required',
+            'id' => 'required',
             'ingredientes' => 'required',
             'precio' => 'required'
         ],[
-            'id.required' => 'El ID del pedido es requerido',
             'idmesa.required' => 'El ID de la mesa es requerido',
-            'idreceta.required' => 'El ID de la receta es requerido',
+            'id.required' => 'El ID del pedido es requerido',
             'ingredientes.required' => 'Los ingredientes son requerimientos',
             'precio.required' => 'Se requieren el precio'
         ]);
@@ -133,12 +130,42 @@ class OrdenPedidaController extends Controller
         
         OrdenPreparada::create([ 
             'Mesa' => $data['idmesa'],
-            'ID_Receta' => $data['idreceta'],
+            'ID_Receta' => $data['id'],
             'Ingredientes_Alternativos' => $data['ingredientes'],
             'Precio'=>$data['precio']
         ]);
 
         return redirect('ordenes');
+
+        /*
+
+         $data = request()->validate([
+            'idmesa' => 'required',
+            'idReceta' => 'required',
+            'idProductoArray' => 'required',
+            'ingredientesArray' => 'required',
+            'precioItemArray' => 'required'
+        ],[
+            'idmesa.required' => 'El ID de la mesa es requerido',
+            'idReceta.required' => 'El ID del pedido es requerido',
+            'idProductoArray.required' => 'El ID de la receta es requerido',
+            'ingredientesArray.required' => 'Los ingredientes son requerimientos',
+            'precioItemArray.required' => 'Se requieren el precio'
+        ]);
+        OrdenPedida::where('ID',1)->update([
+            'Borrado' => 7
+        ]);
+        
+        OrdenPreparada::create([ 
+            'Mesa' => $data['idmesa'],
+            'ID_Receta' => $data['idRecetaArray'],
+            'Ingredientes_Alternativos' => $data['ingredientes'],
+            'Precio'=>$data['precio']
+        ]);
+
+        return redirect('ordenes');
+
+        */
     }
 
     /**

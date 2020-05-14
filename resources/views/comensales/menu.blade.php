@@ -46,7 +46,7 @@
 										</div>
 										<div class="col-md-3">
 											<h5 class="card-title" style="margin-bottom: 0px !important; width: 150px !important; margin-left: -20px !important; font-size:14px;">${{$receta->Costo}}</h5>
-											<button type="submit" class="btn btn-success btn-xs agregarCarrito" style="height:25px !important; padding-top: 0px !important; margin:-30px;" imagen="{{ $receta->Imagen }}" idProducto="{{ $receta->ID }}" precio="{{ $receta->Costo }}" ingredientes="{{ $receta->Condimentos_Alternativos }}" cantidadArt="1" titulo="{{ $receta->Nombre }}"><i class="fas fa-plus"></i></button>
+											<button type="submit" class="btn btn-success btn-xs agregarCarrito" style="height:25px !important; padding-top: 0px !important; margin:-30px;" imagen="http://cantaritos.test/Images/{{ $receta->Imagen }}" idProducto="{{ $receta->ID }}" idReceta="{{ $receta->ID_Receta }}" precio="{{ $receta->Costo }}" ingredientes="{{ $receta->Condimentos_Alternativos }}" cantidadArt="1" titulo="{{ $receta->Nombre }}"><i class="fas fa-plus"></i></button>
 										</div>
 									</div>
 								</div>

@@ -17,44 +17,49 @@
 				});
 			}
 
+			checkProducts();
 
-		if(localStorage.getItem("listaProductos") != null){
-			var listaCarrito = JSON.parse(localStorage.getItem("listaProductos"));
+		function checkProducts(){
 
-			listaCarrito.forEach(funcionForEach);
+			if(localStorage.getItem("listaProductos") != null){
+				var listaCarrito = JSON.parse(localStorage.getItem("listaProductos"));
 
-			function funcionForEach(item, index){
+				listaCarrito.forEach(funcionForEach);
+
+				function funcionForEach(item, index){
+
+					var url = 'http://cantaritos.test/Images/';
+					$(document).ready(function(){
+						$(".cuerpoCarrito").append(
+						'<li>'+
+							'<button class="btn btn-xs btn-danger quitarItemCarrito" idProducto="'+item.idProducto+'">x</button>'+
+							'<label style="font-size:17px;" class="tituloCarritoCompra">'+item.titulo+'</label><br>'+
+							'<img src="'+item.imagen+'" width="50px">'+
+							'<label style="font-size:25px;" class="precioCarritoCompra">$<span>'+item.precio+'</span></label>'+
+							'<label style="font-size:25px;">X</label>'+
+							'<input type="text" hidden value="2" name="idpedido1">'+
+							'<input type="text" hidden value="25" name="precio1">'+
+							'<input type="text" hidden value="'+item.idReceta+'" name="precio1" class="idReceta">'+
+							'<input type="text" class="ingredientesCarritoCompra form-control" hidden value=\''+item.ingredientes+'\' name="ingredientes1">'+
+							'<input type="number" class="cantidadItem" style="width:50px;" value="'+item.cantidad+'" name="cantidad1" class="form-input" item="'+index+'" idProducto="'+item.idProducto+'" precio="'+item.precio+'">'+
+							'<label style="font-size:25px;">=</label>'+
+							'<label style="font-size:25px;" class="subTotal'+index+'">$<span>'+item.precio+'</span></label>'+
+						'</li>');
+					});
+				}
+			}else{
+
+				/*===============================================
+					CARRITO VACIO
+				===============================================*/
 
 
 				$(document).ready(function(){
-					$(".cuerpoCarrito").append(
-					'<li>'+
-						'<button class="btn btn-xs btn-danger quitarItemCarrito" idProducto="'+item.idProducto+'">x</button>'+
-						'<label style="font-size:17px;" class="tituloCarritoCompra">'+item.Titulo+'</label><br>'+
-						'<img src="http://cantaritos.test/Images/'+item.imagen+'" width="50px">'+
-						'<label style="font-size:25px;" class="precioCarritoCompra">$<span>'+item.precio+'</span></label>'+
-						'<label style="font-size:25px;">X</label>'+
-						'<input type="text" hidden value="2" name="idpedido1">'+
-						'<input type="text" hidden value="25" name="precio1">'+
-						'<input type="text" class="ingredientesCarritoCompra form-control" hidden value=\''+item.ingredientes+'\' name="ingredientes1">'+
-						'<input type="number" class="cantidadItem" style="width:50px;" value="'+item.cantidad+'" name="cantidad1" class="form-input" item="'+index+'" idProducto="'+item.idProducto+'" precio="'+item.precio+'">'+
-						'<label style="font-size:25px;">=</label>'+
-						'<label style="font-size:25px;" class="subTotal'+index+'">$<span>'+item.precio+'</span></label>'+
-					'</li>');
+					$(".cuerpoCarrito").html('<li><h3>No hay articulos en el carrito</h3></li>');
+					$(".sumaCarrito").hide();
+					$(".botonCarrito").hide();
 				});
 			}
-		}else{
-
-			/*===============================================
-				CARRITO VACIO
-			===============================================*/
-
-
-			$(document).ready(function(){
-				$(".cuerpoCarrito").html('<li><h3>No hay articulos en el carrito</h3></li>');
-				$(".sumaCarrito").hide();
-				$(".botonCarrito").hide();
-			});
 		}
 
 
@@ -68,12 +73,14 @@
 		$(function() {
 		 $(document).on('click', '.agregarCarrito', function(event) {
 		    var idProducto = $(this).attr("idProducto");
+		    var idReceta = $(this).attr("idReceta");
 			var imagen = $(this).attr("imagen");
 			var ingredientes = $(this).attr("ingredientes");
 			var titulo = $(this).attr("titulo");
 			var precio = $(this).attr("precio");
 			var cantidad = $(this).attr("cantidadArt");
 
+				
 
 				/*===============================================
 					RECUPERAR ALMACENAMIENTO DEL LOCALSTORAGE
@@ -96,8 +103,8 @@
 							  timer: 1000
 							})
 							*/
-							alert('EL producto ya esta en el carrito');
-
+							alert('El producto ya esta en el carrito');
+							
 						 return;
 						}
 					}
@@ -111,6 +118,7 @@
 				===============================================*/
 
 				listaCarrito.push({"idProducto":idProducto,
+									"idReceta":idReceta,
 									"imagen":imagen,
 									"ingredientes":ingredientes,
 									"titulo":titulo,
@@ -157,6 +165,7 @@ $(document).ready(function(){
 		$(this).parent().remove();
 
 		var idProducto = $(".cuerpoCarrito .cantidadItem");
+		var idReceta = $(".cuerpoCarrito .idReceta");
 		var imagen = $(".cuerpoCarrito img");
 		var ingredientes = $(".cuerpoCarrito .ingredientesCarritoCompra");
 		var titulo = $(".cuerpoCarrito .tituloCarritoCompra");
@@ -177,6 +186,7 @@ $(document).ready(function(){
 			for(var i = 0; i < idProducto.length ; i++){
 
 				var idProductoArray = $(idProducto[i]).attr("idProducto");
+				var idRecetaArray = $(idReceta[i]).val();
 				var imagenArray = $(imagen[i]).attr("src");
 				var ingredientesArray = $(ingredientes[i]).html();
 				var tituloArray = $(titulo[i]).html();
@@ -184,6 +194,7 @@ $(document).ready(function(){
 				var cantidadArray = $(cantidad[i]).val();
 
 				listaCarrito.push({"idProducto":idProductoArray,
+									"idReceta":idRecetaArray,
 									"imagen":imagenArray,
 									"ingredientes":ingredientesArray,
 									"titulo":tituloArray,
@@ -225,6 +236,7 @@ $(document).ready(function(){
 		var cantidad = $(this).val();
 		var precio = $(this).attr("precio");
 		var idProducto = $(this).attr("idProducto");
+		var idReceta = $(this).attr("idReceta");
 		var item = $(this).attr("item");
 
 		if(cantidad< 1){
@@ -247,6 +259,7 @@ $(document).ready(function(){
 		var precio = $(".cuerpoCarrito .precioCarritoCompra span");
 		var cantidad = $(".cuerpoCarrito .cantidadItem");
 		var idProducto = $(".cuerpoCarrito button");
+		var idReceta = $(".cuerpoCarrito .idReceta");
 		//var skuProducto = $(".cuerpoCarrito .cantidadItem");
 
 		listaCarrito = [];
@@ -255,6 +268,7 @@ $(document).ready(function(){
 		for(var i = 0; i < idProducto.length ; i++){
 
 				var idProductoArray = $(idProducto[i]).attr("idProducto");
+				var idRecetaArray = $(idReceta[i]).val();
 				var imagenArray = $(imagen[i]).attr("src");
 				var ingredientesArray = $(ingredientes[i]).html();
 				var tituloArray = $(titulo[i]).html();
@@ -267,6 +281,7 @@ $(document).ready(function(){
 				}
 
 				listaCarrito.push({"idProducto":idProductoArray,
+									"idReceta":idRecetaArray,
 									"imagen":imagenArray,
 									"ingredientes":ingredientesArray,
 									"titulo":tituloArray,
@@ -288,6 +303,7 @@ $(document).ready(function(){
 	var precioCarritoCompra = $(".cuerpoCarrito .precioCarritoCompra span");
 	var cantidadItem = $(".cuerpoCarrito .cantidadItem");
 	var idProducto = $(".cuerpoCarrito button");
+	var idReceta = $(".cuerpoCarrito .idReceta");
 
 	for(var i = 0 ; i < precioCarritoCompra.length ; i++){
 		var cantidadItemArray = $(cantidadItem[i]).val();
@@ -379,64 +395,7 @@ function cestaCarrito(cantidadProductos){
 	}
 */
 
-/*======================================================================================================================================================================================
-																			METODO DE PAGO PARA CAMBIO DIVISAS
-======================================================================================================================================================================================*/
-/*
-	var metodoPago = "paypal";
-	divisas(metodoPago);
 
-	$("input[name='pago']").change(function(){
-
-		metodoPago = $(this).val();
-
-		divisas(metodoPago);
-
-		if(metodoPago == "whatsapp"){
-			$(".PagarW").show();
-			$(".formPayu").hide();
-			$(".btnPagar").show();
-		}else if(metodoPago == "payu"){
-			$(".PagarW").hide();
-			$(".formPayu").show();
-			$(".btnPagar").hide();
-		}else if(metodoPago == "paypal"){
-			$(".PagarW").hide();
-			$(".formPayu").hide();
-			$(".btnPagar").show();
-		}
-	});
-*/
-
-/*======================================================================================================================================================================================
-																			FUNCION PARA EL CAMBIO DE DIVISAS
-======================================================================================================================================================================================*/
-/*
-	function divisas(metodoPago){
-
-		$("#cambiarDivisa").html('');
-
-
-		if(metodoPago == "paypal"){
-			$("#cambiarDivisa").append(	'<option value="MXN">MXN</option>'+
-										'<option value="USD">USD</option>'+
-										'<option value="EUR">EUR</option>'+
-										'<option value="CAD">CAD</option>'+
-										'<option value="JPY">JPY</option>'+
-										'<option value="BRL">BRL</option>'+
-										'<option value="GBP">GBP</option>');
-		}else{
-			$("#cambiarDivisa").append(	'<option value="MXN">MXN</option>'+
-										'<option value="USD">USD</option>'+
-										'<option value="PEN">PEN</option>'+
-										'<option value="COP">COP</option>'+
-										'<option value="CLP">CLP</option>'+
-										'<option value="BRL">BRL</option>'+
-										'<option value="ARS">ARS</option>');
-		}
-
-	}
-*/
 /*======================================================================================================================================================================================
 																		CAMBIO DE DIVISA
 ======================================================================================================================================================================================*/
@@ -497,28 +456,22 @@ $("#cambiarDivisa").change(function(){
 /*======================================================================================================================================================================================
 																				BOTON PAGAR 
 ======================================================================================================================================================================================*/
+$(document).ready(function(){
+	$(".btnPedir").click(function(){
 
-	$(".btnPagar").click(function(){
-
-		var divisa = $("#cambiarDivisa").val();
-		var total = $(".valorTotalCompra").html();
-		var impuesto = $(".valorTotalImpuesto").html();
-		var envio = $(".valorTotalEnvio").html();
-		var subtotal = $(".valorSubTotal").html();
-		var descripcion = $(".valorTotalCompra").html();
 		var titulo = $(".valorTitulo");
 		var cantidad = $(".valorCantidad");
-		var valorItem = $(".valorItem");
+		var precioItem = $(".valorItem");
 		var idProducto = $(".cuerpoCarrito button");
-		var email = $("#emailW").val();
-		var pais = $("#seleccionarPais").val();
-		var direccion = $("#direccionW").val();
-		var id_usuario = $("#id_usuario").val();
-
+		var idReceta = $(".cuerpoCarrito .idReceta");
+		var ingredientes = $(".cuerpoCarrito .ingredientesCarritoCompra");
+		var token = document.getElementsByName('_token').val();
+		var idmesa = $(".idmesa").val();
 
 		var tituloArray = [];
 		var cantidadArray = [];
-		var valorItemArray = [];
+		var ingredientesArray = [];
+		var precioItemArray = [];
 		var idProductoArray = [];
 
 
@@ -526,56 +479,43 @@ $("#cambiarDivisa").change(function(){
 			tituloArray[i] = $(titulo[i]).html();
 			tituloArray[i] = tituloArray[i].replace(/,/gi,'|'); //esto se hace por un problema con las comas en paypal.controlador.php
 			cantidadArray[i] = $(cantidad[i]).html();
-			valorItemArray[i] = $(valorItem[i]).html();
+			ingredientesArray[i] = $(ingredientes[i]).html();
+			precioItemArray[i] = $(precioItem[i]).html();
 			idProductoArray[i] = $(idProducto[i]).attr("idProducto");
+			idRecetaArray[i] = $(idReceta[i]).val();
 		}
+
 
 		var datos = new FormData();
 
-		datos.append("divisa",divisa);
-		datos.append("total",total);
-		datos.append("impuesto",impuesto);
-		datos.append("envio",envio);
-		datos.append("subtotal",subtotal);
+		datos.append("_token",token);
+		datos.append("idmesa",idmesa);
 		datos.append("tituloArray",tituloArray);
+		datos.append("ingredientesArray",ingredientesArray);
 		datos.append("cantidadArray",cantidadArray);
-		datos.append("valorItemArray",valorItemArray);
+		datos.append("precioItemArray",precioItemArray);
+		datos.append("idRecetaArray",idRecetaArray);
 		datos.append("idProductoArray",idProductoArray);
 
-		if(metodoPago == "whatsapp" && email != "" && pais != "" && direccion != "" && direccion != "nuevo"){
-			datos.append("email",email);
-			datos.append("pais",pais);
-			datos.append("direccion",direccion);
-			datos.append("id_usuario",id_usuario);
-			$.ajax({
-				url:urls+"PHP/whatsappPago.controlador.php",
-				method:"POST",
-				data: datos,
-				cache: false,
-				contentType: false,
-				processData: false,
-				success:function(respuesta){
-					console.log("result:",respuesta);
-					//$("#resultado").html(respuesta);
-				}
-			})
-		}
-		if(metodoPago == "paypal"){
-			$.ajax({
-				url:urls+"ajax/carrito.ajax.php",
-				method:"POST",
-				data: datos,
-				cache: false,
-				contentType: false,
-				processData: false,
-				success:function(respuesta){
-					window.location = respuesta;
-				}
-			})
-		}
+		
+		
+		$.ajax({
+			url:"ordenes/pedida",
+			method:"POST",
+			data: datos,
+			cache: false,
+			contentType: false,
+			processData: false,
+			success:function(respuesta){
+				alert('hola');
+				window.location = respuesta;
+			}
+		})
+		
 
 		
 
 		
 
 	});
+});

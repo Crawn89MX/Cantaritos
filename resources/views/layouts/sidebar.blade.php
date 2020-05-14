@@ -88,13 +88,12 @@
 			
 			<form method="POST" action="ordenes/pedida">
 				@csrf
+				<input type="text" hidden value="1" name="idmesa" class="idmesa">
 				<ul class="list-unstyled components">
 					<li class="active">
 						<a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Resumen</a>
 						<ul class="collapse list-unstyled cuerpoCarrito" id="homeSubmenu">
-							<li>
-								<input type="text" hidden value="1" name="idmesa">
-							</li>
+							
 							
 						</ul>
 					</li>
@@ -102,7 +101,11 @@
 
 				<ul class="list-unstyled CTAs">
 					<li>
-						<button type="submit" class="btn" style="color:white;">
+						<label for="">Total<span class="valorTotalCompra"></span></label>
+					</li>
+					<li>
+						<!-- btnPedir -->
+						<button type="submit" class="btn " style="color:white;">
 							<a >Hacer pedido</a>
 						</button>
 					</li>
