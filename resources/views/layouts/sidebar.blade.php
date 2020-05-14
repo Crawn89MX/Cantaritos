@@ -120,8 +120,12 @@
 		<ul class="navbar-nav">
 			<li class="nav-item" style="padding-top: 20px !important;">
 	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b>CLUBCANTARITOS</b></h4></a>
-	  <!--<a href="" class="navbar-brand-principal"><h4><b>HECTOR JESUS</b></h4></a>-->
+	<?php SESSION_START(); ?>
+	@if(isset($_SESSION['nombre']))
+		<a href="/logout" class="navbar-brand-principal"><h4><b>{{ strtoupper($_SESSION['nombre']) }} {{ strtoupper($_SESSION['apellidop']) }} {{ strtoupper($_SESSION['apellidom']) }}</b></h4></a>
+	@else
+		<a href="/register" class="navbar-brand-principal"><h4><b>CLUBCANTARITOS</b></h4></a>
+	@endif
 	</div>
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important; padding-right: 30px !important;">

@@ -37,9 +37,8 @@
 							'<img src="'+item.imagen+'" width="50px">'+
 							'<label style="font-size:25px;" class="precioCarritoCompra">$<span>'+item.precio+'</span></label>'+
 							'<label style="font-size:25px;">X</label>'+
-							'<input type="text" hidden value="2" name="idpedido1">'+
-							'<input type="text" hidden value="25" name="precio1">'+
-							'<input type="text" hidden value="'+item.idReceta+'" name="precio1" class="idReceta">'+
+							'<input type="text" hidden value="'+item.precio+'" name="precio1">'+
+							'<input type="text" hidden value="'+item.idReceta+'" name="idpedido1" class="idReceta">'+
 							'<input type="text" class="ingredientesCarritoCompra form-control" hidden value=\''+item.ingredientes+'\' name="ingredientes1">'+
 							'<input type="number" class="cantidadItem" style="width:50px;" value="'+item.cantidad+'" name="cantidad1" class="form-input" item="'+index+'" idProducto="'+item.idProducto+'" precio="'+item.precio+'">'+
 							'<label style="font-size:25px;">=</label>'+

@@ -68,6 +68,14 @@ class MiembrosController extends Controller
 
         ]);
 
+        
+        SESSION_START();
+        $_SESSION['nombre'] = $data['nombre'];
+        $_SESSION['apellidop'] = $data['apellidop'];
+        $_SESSION['apellidom'] = $data['apellidom'];
+        $_SESSION['correo'] = $data['correo'];
+		
+
         //Enviar correo
         $url = 'cantaritos.test/verificar';
         
@@ -148,7 +156,7 @@ class MiembrosController extends Controller
             ->where('Verificado',0)
             ->update(['Verificado' => 1]);
         
-        return redirect('/');
+        return redirect('/menu');
     }
 
     /**

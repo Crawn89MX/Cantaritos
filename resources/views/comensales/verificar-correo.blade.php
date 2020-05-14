@@ -60,8 +60,8 @@
           <br>
           <h6>Para más información visita nuestra página: <a href="#">cantaritos.test</a></h6>
           <br>
-          <img src="https://lh3.googleusercontent.com/proxy/WPB9Sfj0MdEIV_FZ71h7SHbdmUJ4fqxHDJxghdwbx-8waa8Oe-9t0g5oSoOGWqVpN26PyJmJk_3X9te7SZyVdqSLL8mE7mYXWUoSOBlgabLrslatRepdw4k" height="5%" width="5%" style="float: right !important;  padding-right: 5px;">
-          <img src="https://cdn.icon-icons.com/icons2/1231/PNG/512/1492693505-1-twitter_83571.png" height="5%" width="5%" style="float: right !important;  padding-right: 5px;">
+          <img src="https://cdn.icon-icons.com/icons2/836/PNG/512/Facebook_icon-icons.com_66805.png" height="5%" width="5%" style="float: right !important;  padding-right: 5px;">
+          <img src="https://cdn.icon-icons.com/icons2/1211/PNG/512/1491579583-yumminkysocialmedia02_83111.png" height="5%" width="5%" style="float: right !important;  padding-right: 5px;">
           <img src="https://cdn.icon-icons.com/icons2/2037/PNG/512/ig_instagram_media_social_icon_124260.png" height="5%" width="5%" style="float: right !important; padding-right: 5px;">
           <br><br>
           <button type="submit" class="btn btn-info">Activar cuenta</button>

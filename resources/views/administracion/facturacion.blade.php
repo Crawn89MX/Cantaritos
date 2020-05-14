@@ -10,12 +10,12 @@
 @if($errors->any())
 	<div class="alert alert-danger">
 	<ul>
-	@foreach($errors->all() as $error)
-		<li>{{ $error }}</li>
-	@endforeach
-	</ul>
-	</div>
-@endif
+	@foreach(isset($errors) && $errors->all() as $error)
+			<li>{{ $error }}</li>
+		@endforeach
+		</ul>
+		</div>
+	@endif
 
 <div class="titulo">
 	<h2>Facturación</h2>
@@ -23,10 +23,12 @@
 
 <?php
 	SESSION_START();
-	$nom = $_SESSION['nomnre'];
-	$appep = $_SESSION['apellidop'];
-	$appem = $_SESSION['apellidom'];
+if(isset($_SESSION['nombre'])){
+	$nom = $_SESSION['nombre'];
+	$apep = $_SESSION['apellidop'];
+	$apem = $_SESSION['apellidom'];
 	$corr = $_SESSION['correo'];
+}
 ?>
 <!-- Formulario -->
 <div class="container">
@@ -36,21 +38,21 @@
 	<div class="col-6">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el nombre" >
 			<span class="label-input100">Nombre completo</span>
-			<input class="input100" type="text" name="nombre" value="<?php echo "$nom"; ?>" required>
+			<input class="input100" type="text" name="nombre" value="{{ $nom ?? '' }}" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el apellido paterno" >
 			<span class="label-input100">Apellido paterno</span>
-			<input class="input100" type="text" name="apellidop" value="<?php echo "$apep"; ?>" required>
+			<input class="input100" type="text" name="apellidop" value="{{ $apep ?? '' }}" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el apellido materno" >
 			<span class="label-input100">Apellido materno</span>
-			<input class="input100" type="text" name="apellidom" value="<?php echo "$apem"; ?>" required>
+			<input class="input100" type="text" name="apellidom" value="{{ $apem ?? '' }}" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
@@ -79,7 +81,7 @@
 	<div class="col-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere la cantidad">
 			<span class="label-input100">Cantidad</span>
-			<input class="input100" type="text" name="cantidad" value="{{ count($ordenes) ?? '' }}"required>
+			<input class="input100" type="text" name="cantidad" value="<?php if(isset($ordenes))count($ordenes); ?>"required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
@@ -103,6 +105,7 @@
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere la descripcion">
 			<span class="label-input100">Descripción</span>
 			<textarea class="input100" type="text" name="descripcion" style="height: 130px ;" required><?php 
+			if(isset($ordenes)){
 					$stackComida = $ordenes;
 					$countComida = array();
 					$MinCount = 0;
@@ -134,6 +137,7 @@
 						if($i > 0)
 							echo ',';
 					}
+				}
 				?></textarea>
 			<span class="focus-input100"></span>
 		</div>

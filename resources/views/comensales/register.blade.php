@@ -109,13 +109,7 @@
 							</div>
 						</div>
 					</form>
-					<?php
-						SESSION_START();
-						$_SESSION['nombre'] = $nombre;
-						$_SESSION['apellidop'] = $apellidop;
-						$_SESSION['apellidom'] = $apellidom;
-						$_SESSION['correo'] = $correo;
-					?>
+					
 				</div>
 				<br>
 			</div>

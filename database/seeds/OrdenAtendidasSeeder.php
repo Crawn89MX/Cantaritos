@@ -14,7 +14,7 @@ class OrdenAtendidasSeeder extends Seeder
     {
         //
         OrdenAtendida::create([
-            'Mesa'=>'Mesa 1',
+            'Mesa'=>'1',
             'ID_Receta'=>1,
             'ID_Facturacion'=>1,
             'Ingredientes_Alternativos'=>'{"1/2 cebolla blanca mediana cortada en rodajas",}"1 cucharadita de orégano mexicano","4 dientes de ajo enteros"}',

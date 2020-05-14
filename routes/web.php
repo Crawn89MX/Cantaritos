@@ -79,3 +79,8 @@ Route::get('/verificar/{correo?}', function ($correo = 'Desconocido')
 });
 
 Route::post('/verificar/verificado','MiembrosController@update');
+
+Route::get('/logout', function () 
+{
+    return view('comensales.logout');
+});
