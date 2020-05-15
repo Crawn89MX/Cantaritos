@@ -33,19 +33,9 @@ class FacturaController extends Controller
             'id.required' => 'ID requerido'
         ]);
 
-        $ordenes = DB::select('SELECT orden_atendidas.ID,
-                                orden_atendidas.Mesa,
-                                orden_atendidas.Ingredientes_Alternativos,
-                                orden_atendidas.Precio,
-                                recetas.Imagen,
-                                recetas.Nombre,
-                                recetas.Descripcion,
-                                recetas.Costo,
-                                recetas.Clasificacion,
-                                recetas.Ingredientes,
-                                recetas.Preparacion 
-                                FROM orden_atendidas,recetas 
-                                WHERE orden_atendidas.ID_Receta = recetas.ID && orden_atendidas.Mesa = '.$data['id'].' && recetas.Borrado = 0 && orden_atendidas.Pagado = 0;');
+        $ordenes = DB::select('SELECT ID,Mesa,Ingredientes_Alternativos,Precio
+                                FROM orden_atendidas
+                                WHERE Mesa = '.$data['id'].' && Borrado = 0 && Pagado = 1 && ID_Facturacion = 0;');
 
         
         return view('administracion.facturacion',compact('ordenes'));
@@ -61,6 +51,7 @@ class FacturaController extends Controller
     {
         
         $data = request()->validate([
+            'id' => 'required',
             'nombre' => 'required',
             'apellidop' => 'required',
             'apellidom' => 'required',
@@ -72,6 +63,7 @@ class FacturaController extends Controller
             'cantidad' => 'required',
             'descripcion' => 'required'
         ],[
+            'id.required' => 'Se requiere el ID',
             'nombre.index' => 'El nombre es requerido',
             'apellidop.index' => 'El apellido paterno es requerido',
             'apellidom.index' => 'El apellido materno es requerido',
@@ -100,7 +92,7 @@ class FacturaController extends Controller
 
         $ordenes = DB::update('UPDATE orden_atendidas
                                 SET ID_Facturacion = '.$factura[0]->ID.'
-                                WHERE ID = '.$factura[0]->ID.'');
+                                WHERE Mesa = '.$data['id'].' && Pagado = 1 && ID_Facturacion = 0');
         
 
         return redirect('mesas');

@@ -104,6 +104,7 @@
 							*/
 							alert('El producto ya esta en el carrito');
 							
+							
 						 return;
 						}
 					}

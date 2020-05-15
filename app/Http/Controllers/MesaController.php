@@ -140,7 +140,7 @@ class MesaController extends Controller
                                     recetas.Ingredientes,
                                     recetas.Preparacion 
                                     FROM orden_atendidas,recetas 
-                                    WHERE orden_atendidas.ID_Receta = recetas.ID && orden_atendidas.Mesa = '.$data['id'].' && recetas.Borrado = 0 && orden_atendidas .Borrado = 0;');
+                                    WHERE orden_atendidas.ID_Receta = recetas.ID && orden_atendidas.Mesa = '.$data['id'].' && recetas.Borrado = 0 && orden_atendidas.Borrado = 0 && orden_atendidas.Pagado = 1 && orden_atendidas.ID_Facturacion = 0;');
 
        DB::delete('DELETE FROM orden_pedidas WHERE Mesa = '.$data['id'].' && Borrado = 1;');
 
@@ -177,7 +177,8 @@ class MesaController extends Controller
         ]);
         
 
-        Mesa::where('ID', $data['id'])->where('Borrado',0)->update([ 
+        Mesa::where('ID', $data['id'])->where('Borrado',0)
+        ->update([ 
             'Disponibilidad' => $data['disponibilidad'],
             'Total' => $data['total'],
             'Ordenes' => $data['ordenes']

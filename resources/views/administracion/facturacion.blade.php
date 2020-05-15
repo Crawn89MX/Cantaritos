@@ -35,6 +35,7 @@ if(isset($_SESSION['nombre'])){
 <form method="POST" action="{{ url("facturacion/registrar") }}">
 <div class="row form-group contact100-form">
 	@csrf
+	<input hidden value="{{ $ordenes[0]->Mesa }}" name="id">
 	<div class="col-6">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el nombre" >
 			<span class="label-input100">Nombre completo</span>
@@ -104,6 +105,7 @@ if(isset($_SESSION['nombre'])){
 	<div class="col-9">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere la descripcion">
 			<span class="label-input100">Descripción</span>
+			
 			<textarea class="input100" type="text" name="descripcion" style="height: 130px ;" required><?php 
 			if(isset($ordenes)){
 					$stackComida = $ordenes;

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\OrdenPedida;
 use App\OrdenPreparada;
 use Illuminate\Http\Request;
+use UxWeb\SweetAlert\SweetAlert;
 use Illuminate\Support\Facades\DB;
+
 
 class OrdenPedidaController extends Controller
 {
@@ -77,6 +79,8 @@ class OrdenPedidaController extends Controller
             'Precio'=>$data['precio1'],
             'Preparandose'=>0
         ]);
+
+        SweetAlert::message('Orden Pedida Exitosamente!');
 
         return redirect('menu');
     }
