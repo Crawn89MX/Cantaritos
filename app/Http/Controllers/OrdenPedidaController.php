@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+Use Alert;
 use App\OrdenPedida;
 use App\OrdenPreparada;
 use Illuminate\Http\Request;
@@ -11,17 +12,22 @@ use Illuminate\Support\Facades\DB;
 
 class OrdenPedidaController extends Controller
 {
+
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()   // ESTO MUESTRA EL MENU DEL CHEF CON LAS RECETAS COMBINADAS CON PEDIDOS
     {
-        //Eloquent
-        //$ordenPedida = OrdenPedida::all();
-        //$receta = Receta::all();
-
+        //Consulta para griselda
         $orden_Pedidas = DB::select('SELECT orden_pedidas.ID,
                                         orden_pedidas.ID_Receta,
                                         orden_pedidas.Mesa,
@@ -37,10 +43,19 @@ class OrdenPedidaController extends Controller
                                         FROM orden_pedidas,recetas 
                                         WHERE orden_pedidas.ID_Receta = recetas.ID && recetas.Borrado = 0 && orden_pedidas.Borrado = 0;');
         
-        //dd($ordenPedida);
-        //$id = $receta->id_receta;
+        
         return view('administracion.ordenes', compact('orden_Pedidas'));
     }
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -52,14 +67,34 @@ class OrdenPedidaController extends Controller
         //
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request) // SE ENVIA A ORDEN_PEDIDA CUANDO EL COMENSAL QUIERA.
     {
+        $numordenes = OrdenPedida::all()->where('Borrado', 0);
+
+        if(count($numordenes) > 30){
+            toast('Estamos actualmente ocupados, porfavor intentelo en un momento','warning');
+            return redirect('menu');
+        }
+
+
         $data = request()->validate([
             'idmesa' => 'required',
             'idpedido1' => 'required',
@@ -72,6 +107,7 @@ class OrdenPedidaController extends Controller
             'precio1.required' => 'Se requieren el precio'
         ]);
         
+        //Eloquents
         OrdenPedida::create([ 
             'Mesa' => $data['idmesa'],
             'ID_Receta' => $data['idpedido1'],
@@ -80,10 +116,19 @@ class OrdenPedidaController extends Controller
             'Preparandose'=>0
         ]);
 
-        SweetAlert::message('Orden Pedida Exitosamente!');
-
+        toast('Tu orden ha sido enviada','success');
         return redirect('menu');
     }
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -97,6 +142,16 @@ class OrdenPedidaController extends Controller
         
     }
 
+
+
+
+
+
+
+
+
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -108,6 +163,16 @@ class OrdenPedidaController extends Controller
         //
     }
 
+
+
+
+
+
+
+
+
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -115,7 +180,7 @@ class OrdenPedidaController extends Controller
      * @param  \App\OrdenPedida  $ordenPedida
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrdenPedida $ordenPedida)
+    public function update(Request $request, OrdenPedida $ordenPedida)   // ENVIA A ORDEN_PREPARADA CUANDO EL CHEF DECIDA
     {
         $data = request()->validate([
             'idmesa' => 'required',
@@ -131,49 +196,32 @@ class OrdenPedidaController extends Controller
             'precio.required' => 'Se requieren el precio'
         ]);
 
-        OrdenPedida::where('ID',$data['id'])->update([
-            'Borrado' => 1
-        ]);
+        $resp1= OrdenPedida::where('ID',$data['id'])->update([
+                    'Borrado' => 1
+                ]);
         
-        OrdenPreparada::create([ 
-            'Mesa' => $data['idmesa'],
-            'ID_Receta' => $data['idreceta'],
-            'Ingredientes_Alternativos' => $data['ingredientes'],
-            'Precio'=>$data['precio']
-        ]);
+        $resp2= OrdenPreparada::create([ 
+                    'Mesa' => $data['idmesa'],
+                    'ID_Receta' => $data['idreceta'],
+                    'Ingredientes_Alternativos' => $data['ingredientes'],
+                    'Precio'=>$data['precio']
+                ]);
 
+
+        if($resp1 && $resp2){
+            toast('La orden se marco como preparada','success');
+        }
         return redirect('ordenes');
-
-        /*
-
-         $data = request()->validate([
-            'idmesa' => 'required',
-            'idReceta' => 'required',
-            'idProductoArray' => 'required',
-            'ingredientesArray' => 'required',
-            'precioItemArray' => 'required'
-        ],[
-            'idmesa.required' => 'El ID de la mesa es requerido',
-            'idReceta.required' => 'El ID del pedido es requerido',
-            'idProductoArray.required' => 'El ID de la receta es requerido',
-            'ingredientesArray.required' => 'Los ingredientes son requerimientos',
-            'precioItemArray.required' => 'Se requieren el precio'
-        ]);
-        OrdenPedida::where('ID',1)->update([
-            'Borrado' => 7
-        ]);
-        
-        OrdenPreparada::create([ 
-            'Mesa' => $data['idmesa'],
-            'ID_Receta' => $data['idRecetaArray'],
-            'Ingredientes_Alternativos' => $data['ingredientes'],
-            'Precio'=>$data['precio']
-        ]);
-
-        return redirect('ordenes');
-
-        */
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * Remove the specified resource from storage.

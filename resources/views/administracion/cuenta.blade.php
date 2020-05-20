@@ -33,6 +33,7 @@
 		.contenido
 		{
 			background-color: #231E1F;
+			border-radius: 5px;
 		}
 		.margenes
 		{
@@ -137,7 +138,7 @@
 									<h5>'.$stackComida[$i]->Precio.'</h5>
 								</div>
 								<div class="col-md-4">
-									<h5>'.($stackComida[$i]->Precio * $countComida[$i]).'</h5>
+									<h5 class="TotalPrice">'.($stackComida[$i]->Precio * $countComida[$i]).'</h5>
 								</div>
 							</div>';
 						}
@@ -147,11 +148,24 @@
 					<?php if(isset($orden)){$mesa = $orden->Mesa;} ?>
 				
         <CENTER>
-        	<div class="col-12">
+        	<div class="col-12 row">
+				<div class="col-12">
+					<hr>
+				</div>
   				<div class="col-11">
-            		<hr>
   					<h5 style="text-align: left !important;">Total</h5>
-  				</div>
+				</div>
+				<div class="col-1">
+					<h5><?php
+						$total = 0;
+						 for ($i=0; $i < $j; $i++) { 
+							 $total+= $stackComida[$i]->Precio * $countComida[$i]; 
+						 }
+						 echo $total;
+						 ?>
+						 
+					<h5>
+				</div>
   			</div>
         </CENTER>
 				<br>
@@ -165,6 +179,7 @@
 							@csrf
 							<input type="text" name="id" value="{{ $mesa ?? '0' }}" hidden>
 							<input type="text" name="ruta" value="{{ $ruta }}" hidden>
+							<input type="text" name="total" value="{{ $total }}"  hidden>
 							<button class="contact100-form-btn">
 								<span>
 									<b>Cobrar</b>
@@ -174,6 +189,8 @@
 						</form>
 					</div>
 				</div>
+				<br>
+				<br>
 			</div>
 		</div>
 	</div>

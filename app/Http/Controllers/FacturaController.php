@@ -8,23 +8,40 @@ use Illuminate\Support\Facades\DB;
 
 class FacturaController extends Controller
 {
+
+
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()  // MUESTRA UNA VISTA SIMPLE DE FACTURACION
     {
         //
         return view('administracion.facturacion');
     }
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create()   // MUESTRA UNA VISTA AVANZADA DE FACTURACION QUE RELLENA CON INFORMACION DE POST
     {
         //
         $data = request()->validate([
@@ -41,13 +58,20 @@ class FacturaController extends Controller
         return view('administracion.facturacion',compact('ordenes'));
     }
 
+
+
+
+
+
+
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request)  //ESTE METODO GUARDA LA INFORMACION DE FACTURACION.
     {
         
         $data = request()->validate([
@@ -76,27 +100,42 @@ class FacturaController extends Controller
             'descripcion.index' => 'La descripcion es requerida'
         ]);
 
-        Factura::create([ 
-            'Nombre' => $data['nombre'],
-            'Apellido_Pat' => $data['apellidop'],
-            'Apellido_Mat' => $data['apellidom'],
-            'Domicilio' => $data['domicilio'],
-            'RFC' => $data['rfc'],
-            'Monto' => $data['monto'],
-            'Condiciones' => $data['condiciones'],
-            'Metodo' => $data['metodo'],
-            'Cantidad_Descripcion' => $data['cantidad'].' ,Descripcion: '.$data['descripcion']
-        ]);
+        $cons1= Factura::create([ 
+                    'Nombre' => $data['nombre'],
+                    'Apellido_Pat' => $data['apellidop'],
+                    'Apellido_Mat' => $data['apellidom'],
+                    'Domicilio' => $data['domicilio'],
+                    'RFC' => $data['rfc'],
+                    'Monto' => $data['monto'],
+                    'Condiciones' => $data['condiciones'],
+                    'Metodo' => $data['metodo'],
+                    'Cantidad_Descripcion' => $data['cantidad'].' ,Descripcion: '.$data['descripcion']
+                ]);
 
         $factura = DB::select('SELECT * FROM facturas WHERE Nombre = "'.$data['nombre'].'" && Domicilio = "'.$data['domicilio'].'" ORDER BY FechaCreacion DESC');
 
-        $ordenes = DB::update('UPDATE orden_atendidas
+        $cons2= DB::update('UPDATE orden_atendidas
                                 SET ID_Facturacion = '.$factura[0]->ID.'
                                 WHERE Mesa = '.$data['id'].' && Pagado = 1 && ID_Facturacion = 0');
-        
 
-        return redirect('mesas');
+        if($cons1 && $cons2){
+
+            toast('La facturacion se hizo con exito.','success');
+            return redirect('mesas');
+        }else{
+
+            toast('La facturacion fue denegada.','success');
+            return back();
+        }
     }
+
+
+
+
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -109,6 +148,14 @@ class FacturaController extends Controller
         //
     }
 
+
+
+
+
+
+
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -119,6 +166,13 @@ class FacturaController extends Controller
     {
         //
     }
+
+
+
+
+
+
+
 
     /**
      * Update the specified resource in storage.
@@ -132,6 +186,13 @@ class FacturaController extends Controller
         //
     }
 
+
+
+
+
+
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -143,4 +204,5 @@ class FacturaController extends Controller
         //
         
     }
+
 }

@@ -9,4 +9,5 @@ class Mesa extends Model
     //
 
     public $timestamps = false;
+
 }

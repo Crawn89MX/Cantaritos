@@ -132,24 +132,25 @@
 									$rutaForm = 'inicio';
 									$rutaRetorno = 'mesas';
 									$mesadisponibilidad = 4;
+									$method = 'POST';
 
 									// valores de mesa en diferentes estados.
 									if($mesa->Borrado == 1){$btntype = 'btn-danger'; $nombremesa = 'borrada';}
-									if($mesa->Disponibilidad == 0){$btntype = 'btn-danger'; $rutaForm = '';}  //ocupada
+									if($mesa->Disponibilidad == 0){$btntype = 'btn-danger'; $rutaForm = ''; $method = '';}  //ocupada
 									if($mesa->Disponibilidad == 2){$btntype = 'btn-success'; $mesadisponibilidad = 1; $rutaForm = 'cobrar';} //pido cuenta
 									if($mesa->Disponibilidad == 3){$btntype = 'btn-warning'; $mesadisponibilidad = 1; $rutaForm = 'cobrar';} //pidio facturacion
-									if($mesa->Disponibilidad == 4){$btntype = 'btn-light'; $rutaForm = '';}  //siendo ocupada
+									if($mesa->Disponibilidad == 4){$btntype = 'btn-light'; $rutaForm = ''; $method = '';}  //siendo ocupada
 								?>
 								<div class="col-2" style="margin-left: -55px; padding-top: 330px;">
 									<div class="boton" style="padding-top: 80px !important;">
-										<form method="POST" action="<?php echo $rutaForm; ?>">
+										<form method="{{ $method }}" action="{{ $rutaForm }}">
 											@csrf
 											<input type="text" value="{{ $mesa->ID }}" name="id" hidden>
 											<input type="text" value="{{ $mesadisponibilidad }}" name="disponibilidad" hidden>
 											<input type="text" value="{{ $mesa->Total }}" name="total" hidden>
 											<input type="text" value="{{ $mesa->Ordenes }}" name="ordenes" hidden>
-											<input type="text" value="<?php echo $rutaRetorno; ?>" name="ruta" hidden>
-											<button type="submit" style=" width:70px !important;" class="btn <?php echo $btntype; ?> btn-sm">{{ $nombremesa }}</button>
+											<input type="text" value="{{ $rutaRetorno }}" name="ruta" hidden>
+											<button type="submit" style=" width:70px !important;" class="btn {{ $btntype }} btn-sm">{{ $nombremesa }}</button>
 										</form>
 									</div>
 								</div>

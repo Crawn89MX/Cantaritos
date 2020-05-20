@@ -75,14 +75,14 @@ if(isset($_SESSION['nombre'])){
 	<div class="col-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el monto">
 			<span class="label-input100">Monto</span>
-			<input class="input100" type="text" name="monto" placeholder="$" required>
+			<input class="input100" type="text" name="monto" placeholder="$" value="{{ $total }}" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
 	<div class="col-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere la cantidad">
 			<span class="label-input100">Cantidad</span>
-			<input class="input100" type="text" name="cantidad" value="<?php if(isset($ordenes))count($ordenes); ?>"required>
+			<input class="input100" type="text" name="cantidad" value="<?php if(isset($ordenes)) echo count($ordenes); ?>"required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>

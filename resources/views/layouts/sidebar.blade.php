@@ -122,7 +122,7 @@
 	<div class="espacio">
 	<?php SESSION_START(); ?>
 	@if(isset($_SESSION['nombre']))
-		<a href="/logout" class="navbar-brand-principal"><h4><b>{{ strtoupper($_SESSION['nombre']) }} {{ strtoupper($_SESSION['apellidop']) }} {{ strtoupper($_SESSION['apellidom']) }}</b></h4></a>
+		<a href="/logout" class="navbar-brand-principal"><h4><b>{{ strtoupper($_SESSION['nombre']) }} </b></h4></a>
 	@else
 		<a href="/register" class="navbar-brand-principal"><h4><b>CLUBCANTARITOS</b></h4></a>
 	@endif
@@ -255,7 +255,9 @@
 				});
 			});
         </script>
-
+		
+		@include('sweet::alert')
+		@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 </body>
 </html>
 

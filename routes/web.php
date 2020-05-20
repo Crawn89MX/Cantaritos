@@ -1,19 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use RealRashid\SweetAlert\Facades\Alert;
 
 
+
+//--------------------------------------------COMENSALES------------------------
 
 Route::get('/cuenta', function () 
 {
@@ -22,52 +14,12 @@ Route::get('/cuenta', function ()
 
 Route::get('/','MesaController@index');
 
-Route::get('/menu', 'RecetaController@show');
-
-Route::get('/mesas', 'MesaController@show');
-
-
-//Facturación
-Route::get('/facturacion','FacturaController@index');
-
-Route::post('/facturacion','FacturaController@create');
-
-Route::post('/facturacion/registrar','FacturaController@store');
-
-//inicio
-
 Route::post('/inicio','MesaController@store');
 
-//cobrar
-
-Route::post('/cobrar','MesaController@update');
-
-//receta
-
-Route::get('/receta', function () 
-{
-    return view('administracion.receta');
-});
+Route::get('/menu', 'RecetaController@show');
 
 
-//Órdenes pedidas
-Route::get('/ordenes','OrdenPedidaController@index');
-
-Route::post('/ordenes/pedida','OrdenPedidaController@store');
-
-//Órdenes preparadas
-Route::post('/ordenes/preparada','OrdenPedidaController@update');
-
-//entregas
-
-Route::get('/entregas','OrdenPreparadaController@index');
-
-
-Route::post('/ordenes/entregada','OrdenPreparadaController@update');
-
-Route::post('/cuentas/pagar','MesaController@edit');
-
-//Usuarios
+//Miembros
 Route::get('/register','MiembrosController@index');
 
 Route::post('/register/registro','MiembrosController@store');
@@ -83,4 +35,68 @@ Route::post('/verificar/verificado','MiembrosController@update');
 Route::get('/logout', function () 
 {
     return view('comensales.logout');
+});
+
+
+
+
+
+
+
+
+//---------------------------------------------------ADMINISTRACION---------------------
+
+
+//Mesas
+Route::get('/mesas', 'MesaController@show');
+
+
+//Facturación
+Route::get('/facturacion','FacturaController@index');
+
+Route::post('/facturacion','FacturaController@create');
+
+Route::post('/facturacion/registrar','FacturaController@store');
+
+
+//cobrar
+Route::post('/cobrar','OrdenAtendidaController@index');
+
+//receta
+Route::get('/receta', function () 
+{
+    return view('administracion.receta');
+});
+
+
+//Órdenes pedidas
+Route::get('/ordenes','OrdenPedidaController@index');
+
+Route::post('/ordenes/pedida','OrdenPedidaController@store');
+
+//Órdenes preparadas
+Route::post('/ordenes/preparada','OrdenPedidaController@update');
+
+//Ordenes Entragadas
+
+Route::post('/ordenes/entregada','OrdenPreparadaController@update');
+
+//Pagar la cuenta
+Route::post('/cuentas/pagar','OrdenAtendidaController@Store');
+
+//entregas(Meseros)
+Route::get('/entregas','OrdenPreparadaController@index');
+
+//reporte de excel
+Route::get('/reporte',function()
+{
+    return view('administracion.excel');
+});
+
+
+//ruta de prueba
+Route::get('/laravel',function()
+{
+    toast('Success Toast','success');
+    return view('welcome');
 });

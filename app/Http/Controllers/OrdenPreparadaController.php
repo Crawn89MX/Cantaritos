@@ -9,12 +9,20 @@ use Illuminate\Support\Facades\DB;
 
 class OrdenPreparadaController extends Controller
 {
+
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index()   //ESTO MUESTRA EL MENU DEL MESERO CON LAS RECETAS COMBINADAS CON LAS ORDENES PREPARADAS.
     {
         //
         $orden_Preparadas = DB::select('SELECT orden_Preparadas.ID,
@@ -37,6 +45,16 @@ class OrdenPreparadaController extends Controller
         return view('administracion.entregas', compact('orden_Preparadas'));
     }
 
+
+
+
+
+
+
+
+
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -46,6 +64,13 @@ class OrdenPreparadaController extends Controller
     {
         //
     }
+
+
+
+
+
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -58,6 +83,14 @@ class OrdenPreparadaController extends Controller
         //
     }
 
+
+
+
+
+
+
+
+
     /**
      * Display the specified resource.
      *
@@ -68,6 +101,15 @@ class OrdenPreparadaController extends Controller
     {
         //
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -80,6 +122,14 @@ class OrdenPreparadaController extends Controller
         //
     }
 
+
+
+
+
+
+
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -87,7 +137,7 @@ class OrdenPreparadaController extends Controller
      * @param  \App\OrdenPreparada  $ordenPreparada
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OrdenPreparada $ordenPreparada)
+    public function update(Request $request, OrdenPreparada $ordenPreparada) //SE ENVIA A ORDEN_ATENDIDA CUANDO EL MESERO QUIERA.
     {
         $data = request()->validate([
             'id' => 'required',
@@ -103,20 +153,31 @@ class OrdenPreparadaController extends Controller
             'precio.required' => 'Se requieren el precio'
         ]);
 
-        OrdenPreparada::where('ID',$data['id'])->update([
-            'Borrado' => 1
-        ]);
-        
-        OrdenAtendida::create([ 
-            'Mesa' => $data['idmesa'],
-            'ID_Receta' => $data['idreceta'],
-            'Ingredientes_Alternativos' => $data['ingredientes'],
-            'Precio'=>$data['precio'],
-            'ID_Facturacion' => '0'
-        ]);
+        $resp1= OrdenPreparada::where('ID',$data['id'])->update([
+                    'Borrado' => 1
+                ]);
+                
+        $resp2= OrdenAtendida::create([ 
+                    'Mesa' => $data['idmesa'],
+                    'ID_Receta' => $data['idreceta'],
+                    'Ingredientes_Alternativos' => $data['ingredientes'],
+                    'Precio'=>$data['precio'],
+                    'ID_Facturacion' => '0'
+                ]);
 
+        if($resp1 && $resp2){
+            toast('La orden se marco como atendida','success');
+        }
         return redirect('entregas');
     }
+
+
+
+
+
+
+
+
 
     /**
      * Remove the specified resource from storage.
