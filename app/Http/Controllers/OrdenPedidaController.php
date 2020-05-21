@@ -47,15 +47,10 @@ class OrdenPedidaController extends Controller
         return view('administracion.ordenes', compact('orden_Pedidas'));
     }
 
-
-
-
-
-
-
-
-
-
+    public function receta()
+    {
+        return $this->belongsTo(Receta::class);
+    }
 
     /**
      * Show the form for creating a new resource.

@@ -16,7 +16,7 @@ class CreateOrdenPedidasTable extends Migration
         Schema::create('orden_pedidas', function (Blueprint $table) {
             $table->bigIncrements('ID')->unique();
             $table->string('Mesa');
-            $table->bigInteger('ID_Receta');
+            $table->bigInteger('receta_id');
             $table->string('Ingredientes_Alternativos');
             $table->string('Precio');
             $table->integer('Preparandose');
