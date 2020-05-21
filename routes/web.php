@@ -20,7 +20,7 @@ Route::get('/menu', 'RecetaController@show');
 
 
 //Miembros
-Route::get('/register','MiembrosController@index');
+Route::get('/registeruser','MiembrosController@index');
 
 Route::post('/register/registro','MiembrosController@store');
 
@@ -47,56 +47,69 @@ Route::get('/logout', function ()
 //---------------------------------------------------ADMINISTRACION---------------------
 
 
-//Mesas
-Route::get('/mesas', 'MesaController@show');
+Route::group(['middleware' => 'auth'], function(){
 
 
-//Facturación
-Route::get('/facturacion','FacturaController@index');
-
-Route::post('/facturacion','FacturaController@create');
-
-Route::post('/facturacion/registrar','FacturaController@store');
+    
+        //Mesas
+        Route::get('/mesas', 'MesaController@show');
 
 
-//cobrar
-Route::post('/cobrar','OrdenAtendidaController@index');
+        //Facturación
+        Route::get('/facturacion','FacturaController@index');
 
-//receta
-Route::get('/receta', function () 
-{
-    return view('administracion.receta');
+        Route::post('/facturacion','FacturaController@create');
+
+        Route::post('/facturacion/registrar','FacturaController@store');
+
+
+        //cobrar
+        Route::post('/cobrar','OrdenAtendidaController@index');
+
+        //receta
+        Route::get('/receta', function () 
+        {
+            return view('administracion.receta');
+        });
+
+
+        //Órdenes pedidas
+        Route::get('/ordenes','OrdenPedidaController@index');
+
+        Route::post('/ordenes/pedida','OrdenPedidaController@store');
+
+        //Órdenes preparadas
+        Route::post('/ordenes/preparada','OrdenPedidaController@update');
+
+        //Ordenes Entragadas
+
+        Route::post('/ordenes/entregada','OrdenPreparadaController@update');
+
+        //Pagar la cuenta
+        Route::post('/cuentas/pagar','OrdenAtendidaController@Store');
+
+        //entregas(Meseros)
+        Route::get('/entregas','OrdenPreparadaController@index');
+
+        //reporte de excel
+        Route::get('/reporte',function()
+        {
+            return view('administracion.excel');
+        });
+
+
+        //ruta de prueba
+        Route::get('/laravel',function()
+        {
+            toast('Success Toast','success');
+            return view('welcome');
+        });
+
+        Route::post('/registered','UserController@create');
+
+
 });
 
+Auth::routes();
 
-//Órdenes pedidas
-Route::get('/ordenes','OrdenPedidaController@index');
-
-Route::post('/ordenes/pedida','OrdenPedidaController@store');
-
-//Órdenes preparadas
-Route::post('/ordenes/preparada','OrdenPedidaController@update');
-
-//Ordenes Entragadas
-
-Route::post('/ordenes/entregada','OrdenPreparadaController@update');
-
-//Pagar la cuenta
-Route::post('/cuentas/pagar','OrdenAtendidaController@Store');
-
-//entregas(Meseros)
-Route::get('/entregas','OrdenPreparadaController@index');
-
-//reporte de excel
-Route::get('/reporte',function()
-{
-    return view('administracion.excel');
-});
-
-
-//ruta de prueba
-Route::get('/laravel',function()
-{
-    toast('Success Toast','success');
-    return view('welcome');
-});
+Route::get('/home', 'HomeController@index')->name('home');

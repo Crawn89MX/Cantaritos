@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
-	@section('content')
+@section('content')
+	<?php
+		if(!auth()->user()->puesto == 'mesero' && !auth()->user()->puesto == 'admin'){
+			return view('login');
+		}
+	?>
 	<style>
 		.btn-primary
 		{

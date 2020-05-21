@@ -81,8 +81,8 @@
 	</div>
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important;">
-	<div class="espacio">
-	  <a href="" class="navbar-brand-principal"><h4><b></b></h4></a>
+	<div class="espacio" style="float: right;">
+	  <a href="" class="navbar-brand-principal"><h4><b> cerrar sesion</b></h4></a>
 	</div>
 		</li>
 	  </ul>
@@ -125,6 +125,12 @@
 			</li>
 			<li class="nav-item">
 				<a href="/reporte" class="navbar-brand"><h4><b>Reporte</b></h4></a>
+			</li>
+			<li class="nav-item">
+				<a href="" class="navbar-brand"><h4><b>•</b></h4></a>
+			  </li>
+			<li class="nav-item">
+				<a href="/register" class="navbar-brand"><h4><b>Registrar</b></h4></a>
 			</li>
 		  </ul>
 		</nav>

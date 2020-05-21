@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
             'mesas',
             'facturas',
             'miembros',
+            'users',
+            'orden_atendidas',
             'orden_atendidas',
             'orden_pedidas',
             'orden_preparadas',
@@ -28,6 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(OrdenPreparadasSeeder::class);
         $this->call(RecetasSeeder::class);
         $this->call(MiembrosSeeder::class);
+        $this->call(UsersSeeder::class);
     }
 
         protected function truncateTables(array $tables)
