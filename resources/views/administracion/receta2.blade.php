@@ -57,7 +57,7 @@
 	
 
 	<div class="margenes">
-	<div class="container contenido">
+		<div class="container contenido">
 		<div class="titulo">
 			<br>
 				<h2>Registro</h2>
@@ -74,9 +74,8 @@
 
 	<!-- Formulario -->
 	<div class="container">
-	<div class="row form-group">
-			<form class="contact100-form" method="POST" action="{{ url('menu/crear') }}">
-				@csrf
+		<div class="row form-group">
+			<form class="contact100-form">
 				<div class="col-md-12">
 					<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Name is required" >
 						<span class="label-input100">Nombre del platillo</span>
@@ -157,7 +156,7 @@
 		<!--Botón-->
 		<div class="col-md-12">
 			<div class="container-contact100-form-btn">
-				<button class="contact100-form-btn" type="submit">
+				<button class="contact100-form-btn">
 					<span>
 						<b>Generar</b>
 					</span>
