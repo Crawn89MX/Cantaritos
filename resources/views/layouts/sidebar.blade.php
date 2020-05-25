@@ -122,7 +122,7 @@
 	<div class="espacio">
 	<?php SESSION_START(); ?>
 	@if(isset($_SESSION['nombre']))
-		<a href="/logout" class="navbar-brand-principal"><h4><b>{{ strtoupper($_SESSION['nombre']) }} </b></h4></a>
+		<a href="/salir" class="navbar-brand-principal"><h4><b>{{ strtoupper($_SESSION['nombre']) }} </b></h4></a>
 	@else
 		<a href="/registeruser" class="navbar-brand-principal"><h4><b>CLUBCANTARITOS</b></h4></a>
 	@endif

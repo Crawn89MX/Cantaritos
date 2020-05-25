@@ -11,7 +11,7 @@
 	<script src="https://kit.fontawesome.com/64af8825ab.js"></script>
 	<script src="{{asset("js/main.js")}}"></script>
 	
-	  <!-- jQuery CDN - Slim version (=without AJAX) 
+	  <!-- jQuery CDN - Slim version (=without AJAX) -->
 	  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	  <!-- Popper.JS
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
@@ -82,7 +82,14 @@
 		</li>
 			<li class="nav-item" style="padding-top: 20px !important;">
 	<div class="espacio" style="float: right;">
-	  <a href="" class="navbar-brand-principal"><h4><b> cerrar sesion</b></h4></a>
+		<a class="dropdown-item" style="color:white;" href="{{ route('logout') }}"
+							onclick="event.preventDefault();
+					  				 document.getElementById('logout-form').submit();">
+			<h4><b>salir</b></h4>
+		</a>
+		<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+			@csrf
+		</form>
 	</div>
 		</li>
 	  </ul>
@@ -91,16 +98,17 @@
 <!-- Menu de meseros, chefs, cuentas, facturacion y gestión-->
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="padding: 0px; margin: 0px;">
 		  <ul class="navbar-nav">
+			
 			<li class="nav-item">
 				<div class="espacio">
-					<a href="/entregas" class="navbar-brand"><h4><b>Meseros</b></h4></a>
+			  		<a href="/ordenes" class="navbar-brand"><h4><b>Chefs</b></h4></a>
 				</div>
 			</li>
 			<li class="nav-item">
 			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
 			</li>
 	  		<li class="nav-item">
-			  <a href="/ordenes" class="navbar-brand"><h4><b>Chefs</b></h4></a>
+				<a href="/entregas" class="navbar-brand"><h4><b>Meseros</b></h4></a>
 			</li>
 			<li class="nav-item">
 			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
@@ -119,19 +127,23 @@
 			</li>
 			<li class="nav-item">
 			  <a href="/mesas" class="navbar-brand"><h4><b>Gestión</b></h4></a>
-	  		</li>
-	  		<li class="nav-item">
-			  <a href="" class="navbar-brand"><h4><b>•</b></h4></a>
 			</li>
-			<li class="nav-item">
-				<a href="/reporte" class="navbar-brand"><h4><b>Reporte</b></h4></a>
-			</li>
-			<li class="nav-item">
-				<a href="" class="navbar-brand"><h4><b>•</b></h4></a>
-			  </li>
-			<li class="nav-item">
-				<a href="/register" class="navbar-brand"><h4><b>Registrar</b></h4></a>
-			</li>
+			<?php
+				if(isset(auth()->user()->puesto) && auth()->user()->puesto == 'admin'){
+					echo '  <li class="nav-item">
+								<a href="" class="navbar-brand"><h4><b>•</b></h4></a>
+							</li>
+							<li class="nav-item">
+								<a href="/reporte" class="navbar-brand"><h4><b>Reporte</b></h4></a>
+							</li>
+							<li class="nav-item">
+								<a href="" class="navbar-brand"><h4><b>•</b></h4></a>
+							</li>
+							<li class="nav-item">
+								<a href="/registrar" class="navbar-brand"><h4><b>Registrar</b></h4></a>
+							</li>';
+				}
+			?>
 		  </ul>
 		</nav>
 <br>

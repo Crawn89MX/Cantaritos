@@ -1,11 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<?php
-		if(!auth()->user()->puesto == 'mesero' && !auth()->user()->puesto == 'admin'){
-			return view('login');
-		}
-	?>
+	
 	<style>
 		.btn-primary
 		{
@@ -69,7 +65,17 @@
 		text-align: center;
 		}
 	</style>
-
+	<?php
+		if(auth()->user()->puesto != 'mesero' && auth()->user()->puesto != 'admin'){
+			
+			echo '<center><h1 style="color:white;">Tu no tienes permisos</h1></center>';
+			echo'<script>
+					$(document).ready(function(){
+						$(".contenidos").remove();
+					});
+				</script>';
+		}
+	?>
 	@if($errors->any())
 		<div class="alert alert-danger">
 		<ul>
@@ -79,6 +85,7 @@
 		</ul>
 		</div>
 	@endif
+<div class="contenidos">
 	<!--Menu-->
 	<div class="margenes">
 		<div class="container contenido">
@@ -108,6 +115,8 @@
 				</div>
 				<br>
 					<?php 
+
+					if(isset($orden)){
 						$stackComida = $ordenes;
 						$countComida = array();
 						$MinCount = 0;
@@ -147,6 +156,7 @@
 								</div>
 							</div>';
 						}
+					}
 					?>
 					
 					<br>
@@ -162,12 +172,14 @@
 				</div>
 				<div class="col-1">
 					<h5><?php
-						$total = 0;
-						 for ($i=0; $i < $j; $i++) { 
-							 $total+= $stackComida[$i]->Precio * $countComida[$i]; 
-						 }
-						 echo $total;
-						 ?>
+							if(isset($orden)){
+								$total = 0;
+								for ($i=0; $i < $j; $i++) { 
+									$total+= $stackComida[$i]->Precio * $countComida[$i]; 
+								}
+								echo $total;
+							}
+						?>
 						 
 					<h5>
 				</div>
@@ -183,8 +195,8 @@
 						<form action="cuentas/pagar" method="POST">
 							@csrf
 							<input type="text" name="id" value="{{ $mesa ?? '0' }}" hidden>
-							<input type="text" name="ruta" value="{{ $ruta }}" hidden>
-							<input type="text" name="total" value="{{ $total }}"  hidden>
+							<input type="text" name="ruta" value="{{ $ruta ?? 'mesas' }}" hidden>
+							<input type="text" name="total" value="{{ $total ?? '' }}"  hidden>
 							<button class="contact100-form-btn">
 								<span>
 									<b>Cobrar</b>
@@ -199,4 +211,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 	@endsection

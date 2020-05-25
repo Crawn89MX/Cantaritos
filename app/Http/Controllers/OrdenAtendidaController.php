@@ -34,6 +34,8 @@ class OrdenAtendidaController extends Controller
 
         $ruta = $data['ruta'];
 
+        //$ordenes = OrdenAtendida::all();
+
         $ordenes = DB::select('SELECT orden_atendidas.ID,
                                 orden_atendidas.Mesa,
                                 orden_atendidas.Ingredientes_Alternativos,
@@ -84,7 +86,9 @@ class OrdenAtendidaController extends Controller
         $cons1= DB::select('UPDATE orden_atendidas
                             SET Pagado = 1
                             WHERE Mesa = '.$data['id'].' && Pagado = 0 ');
-                  
+        
+        //$ordenes = OrdenAtendida::all();
+        
         $ordenes = DB::select('SELECT orden_atendidas.ID,
                                     orden_atendidas.Mesa,
                                     orden_atendidas.Ingredientes_Alternativos,
@@ -98,6 +102,7 @@ class OrdenAtendidaController extends Controller
                                     recetas.Preparacion 
                                     FROM orden_atendidas,recetas 
                                     WHERE orden_atendidas.ID_Receta = recetas.ID && orden_atendidas.Mesa = '.$data['id'].' && recetas.Borrado = 0 && orden_atendidas.Borrado = 0 && orden_atendidas.Pagado = 1 && orden_atendidas.ID_Facturacion = 0;');
+        
 
         $cons2= DB::delete('DELETE FROM orden_pedidas WHERE Mesa = '.$data['id'].' && Borrado = 1;');
 

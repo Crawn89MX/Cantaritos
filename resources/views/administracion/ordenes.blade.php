@@ -56,7 +56,18 @@
 			box-shadow: 2px 2px 5px #999;
 		}
 	</style>
-
+	<?php
+		if(auth()->user()->puesto != 'chef' && auth()->user()->puesto != 'admin'){
+			
+			echo '<center><h1 style="color:white;">Tu no tienes permisos</h1></center>';
+			echo'<script>
+					$(document).ready(function(){
+						$(".contenidos").remove();
+					});
+				</script>';
+		}
+	?>
+<div class="contenidos">
 	<!--Menu-->
 	<div class="margenes">
 		@if($errors->any())
@@ -89,12 +100,16 @@
 
 					@forelse ($orden_Pedidas ?? '' as $orden_Pedida)
 					  <div class="card" style="width: 200px; margin-left: 2.2% !important;">
-						<img class="card-img-top" width="350" height="200" src="{{ asset("Images/$orden_Pedida->Imagen") }}" alt="Card image">
+						<img class="card-img-top" width="350" height="200" src="{{ asset("Images/".$orden_Pedida->receta->Imagen) }}" alt="Card image">
 						<div class="card-body" style="padding: 5px !important;">
 							  <div class="row d-flex justify-content-between">
 								  <div class="col-md-8">
-									  <h5 class="card-title" style="margin-bottom: 0px !important;">{{$orden_Pedida->Nombre}}</h5>
-									  <h6><?php echo $orden_Pedida->Ingredientes; ?></h6>
+									  <h5 class="card-title" style="margin-bottom: 0px !important;">{{$orden_Pedida->receta->Nombre}}</h5>
+									  <h6><?php 
+									  			  $ingredientes = json_decode($orden_Pedida->receta->Ingredientes,true);
+												  echo $ingredientes["1"]; 
+										   ?>
+									  </h6>
 								  </div>
 								  <div class="col-md-4">
 									  <CENTER>
@@ -105,8 +120,8 @@
 									  <input type="text" name="id" value="{{ $orden_Pedida->ID }}" required hidden> 
 									  <input type="text" name="idreceta" value="{{ $orden_Pedida->ID_Receta }}" required hidden> 
 									  <input type="text" name="idmesa" value="{{ $orden_Pedida->Mesa }}" required hidden>
-									  <input type="text" name="ingredientes" value="{{ $orden_Pedida->Ingredientes_Alternativos }}" required hidden> 
-									  <input type="text" name="precio" value="{{ $orden_Pedida->Precio }}" required hidden>  
+									  <input type="text" name="ingredientes" value="{{ $orden_Pedida->receta->Ingredientes_Alternativos }}" required hidden> 
+									  <input type="text" name="precio" value="{{ $orden_Pedida->receta->Precio }}" required hidden>  
 									  <button type="submit" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;"><i class="fas fa-check"></i></button>
 								  	</form>
 								</div>
@@ -120,5 +135,5 @@
 					
 		</div>
 	</div>
-
+</div>
 @endsection

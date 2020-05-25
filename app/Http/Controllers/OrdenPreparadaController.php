@@ -25,6 +25,8 @@ class OrdenPreparadaController extends Controller
     public function index()   //ESTO MUESTRA EL MENU DEL MESERO CON LAS RECETAS COMBINADAS CON LAS ORDENES PREPARADAS.
     {
         //
+        $orden_Preparadas = OrdenPreparada::all();
+        /*
         $orden_Preparadas = DB::select('SELECT orden_Preparadas.ID,
                                         orden_Preparadas.Mesa,
                                         orden_Preparadas.Ingredientes_Alternativos,
@@ -39,6 +41,8 @@ class OrdenPreparadaController extends Controller
                                         recetas.Preparacion 
                                         FROM orden_Preparadas,recetas 
                                         WHERE orden_Preparadas.ID_Receta = recetas.ID && recetas.Borrado = 0 && orden_Preparadas.Borrado = 0;');
+        */
+
 
         //dd($ordenPedida);
         //$id = $receta->id_receta;

@@ -32,7 +32,7 @@ Route::get('/verificar/{correo?}', function ($correo = 'Desconocido')
 
 Route::post('/verificar/verificado','MiembrosController@update');
 
-Route::get('/logout', function () 
+Route::get('/salir', function () 
 {
     return view('comensales.logout');
 });
@@ -67,7 +67,7 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/cobrar','OrdenAtendidaController@index');
 
         //receta
-        Route::get('/receta', function () 
+        Route::get('/receta/registrar', function () 
         {
             return view('administracion.receta');
         });
@@ -95,6 +95,11 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/reporte',function()
         {
             return view('administracion.excel');
+        });
+
+        Route::get('/registrar',function()
+        {
+            return view('administracion.registrar');
         });
 
 

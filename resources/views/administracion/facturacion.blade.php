@@ -16,7 +16,18 @@
 		</ul>
 		</div>
 	@endif
-
+	<?php
+		if(auth()->user()->puesto != 'mesero' && auth()->user()->puesto != 'admin'){
+			
+			echo '<center><h1 style="color:black;">Tu no tienes permisos</h1></center>';
+			echo'<script>
+					$(document).ready(function(){
+						$(".contenidos").remove();
+					});
+				</script>';
+		}
+	?>
+<div class="contenidos">
 <div class="titulo">
 	<h2>Facturación</h2>
 </div>
@@ -35,7 +46,7 @@ if(isset($_SESSION['nombre'])){
 <form method="POST" action="{{ url("facturacion/registrar") }}">
 <div class="row form-group contact100-form">
 	@csrf
-	<input hidden value="{{ $ordenes[0]->Mesa }}" name="id">
+	<input hidden value="{{ $ordenes[0]->Mesa ?? '' }}" name="id">
 	<div class="col-6">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el nombre" >
 			<span class="label-input100">Nombre completo</span>
@@ -75,7 +86,7 @@ if(isset($_SESSION['nombre'])){
 	<div class="col-3">
 		<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Se requiere el monto">
 			<span class="label-input100">Monto</span>
-			<input class="input100" type="text" name="monto" placeholder="$" value="{{ $total }}" required>
+			<input class="input100" type="text" name="monto" placeholder="$" value="{{ $total ?? '' }}" required>
 			<span class="focus-input100"></span>
 		</div>
 	</div>
@@ -159,5 +170,5 @@ if(isset($_SESSION['nombre'])){
 
 </form>
 </div>
-
+</div>
 @endsection

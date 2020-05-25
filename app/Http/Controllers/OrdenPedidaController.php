@@ -28,6 +28,8 @@ class OrdenPedidaController extends Controller
     public function index()   // ESTO MUESTRA EL MENU DEL CHEF CON LAS RECETAS COMBINADAS CON PEDIDOS
     {
         //Consulta para griselda
+        $orden_Pedidas = OrdenPedida::all();
+        /*
         $orden_Pedidas = DB::select('SELECT orden_pedidas.ID,
                                         orden_pedidas.ID_Receta,
                                         orden_pedidas.Mesa,
@@ -42,15 +44,17 @@ class OrdenPedidaController extends Controller
                                         recetas.Preparacion 
                                         FROM orden_pedidas,recetas 
                                         WHERE orden_pedidas.ID_Receta = recetas.ID && recetas.Borrado = 0 && orden_pedidas.Borrado = 0;');
-        
+        */
         
         return view('administracion.ordenes', compact('orden_Pedidas'));
     }
 
-    public function receta()
-    {
-        return $this->belongsTo(Receta::class);
-    }
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
