@@ -44,6 +44,7 @@ class RecetaController extends Controller
     public function store(Request $request)
     {
         //
+        return 'Procesando información';
     }
 
     /**

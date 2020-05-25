@@ -16,7 +16,13 @@ Route::get('/','MesaController@index');
 
 Route::post('/inicio','MesaController@store');
 
+//Menu
 Route::get('/menu', 'RecetaController@show');
+
+//Receta
+Route::get('/receta/nuevo', 'RecetaController@create');
+
+Route::post('/receta/crear', 'RecetaController@store');
 
 
 //Miembros
