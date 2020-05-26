@@ -16,9 +16,9 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 ## Requisitos de Instalacion
 
-[SweetAlert](https://github.com/realrashid/sweet-alert)
-[PHPMailer](https://packagist.org/packages/phpmailer/phpmailer)
-[LaravelCollective](https://laravelcollective.com/)
+[SweetAlert](https://github.com/realrashid/sweet-alert).
+[PHPMailer](https://packagist.org/packages/phpmailer/phpmailer).
+[LaravelCollective](https://laravelcollective.com/).
 
 
 
