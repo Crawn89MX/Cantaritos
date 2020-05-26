@@ -1,4 +1,4 @@
-<p align="center"><img src="https://subefotos.com/ver/?13cba04cee893705c7fefb011608dc8ao.png" width="400"></p>
+<p align="center"><img src="//fotos.subefotos.com/13cba04cee893705c7fefb011608dc8ao.png" width="400"></p>
 
 <p align="center">
 Esta aplicacion web fue desarrollada pensando en expandir su uso a quienes esten interesado, creemos que podria llegar a generar un ahorro del tiempo del personal de los restaurantes y hacer mucho mas seguro el respaldo de la informacion y los pagos a la vez que mas agil y sencillo la consulta de datos de relevancia para los dueños de los restaurantes, ademas que se estipula una jerarquia de operaciones para hacer el trabajo en equipo mas sencillo.
