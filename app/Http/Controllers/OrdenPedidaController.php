@@ -27,8 +27,12 @@ class OrdenPedidaController extends Controller
      */
     public function index()   // ESTO MUESTRA EL MENU DEL CHEF CON LAS RECETAS COMBINADAS CON PEDIDOS
     {
+        
+        $orden_Pedidas = OrdenPedida::all()->where('Borrado',0);
+        //$orden_Pedidas = OrdenPedida::with('receta')->get();
+
+
         //Consulta para griselda
-        $orden_Pedidas = OrdenPedida::all();
         /*
         $orden_Pedidas = DB::select('SELECT orden_pedidas.ID,
                                         orden_pedidas.ID_Receta,

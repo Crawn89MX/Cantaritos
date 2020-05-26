@@ -19,11 +19,6 @@ Route::post('/inicio','MesaController@store');
 //Menu
 Route::get('/menu', 'RecetaController@show');
 
-//Receta
-Route::get('/receta/nuevo', 'RecetaController@create');
-
-Route::post('/receta/crear', 'RecetaController@store');
-
 
 //Miembros
 Route::get('/registeruser','MiembrosController@index');
@@ -72,11 +67,26 @@ Route::group(['middleware' => 'auth'], function(){
         //cobrar
         Route::post('/cobrar','OrdenAtendidaController@index');
 
-        //receta
-        Route::get('/receta/registrar', function () 
-        {
-            return view('administracion.receta');
-        });
+
+        //Receta
+        Route::get('/receta/registrar', 'RecetaController@create');
+
+        Route::post('/receta/register', [
+            'as' => 'receta.store',
+            'uses' => 'RecetaController@store',
+        ]);
+
+        Route::get('/receta/editar', 'RecetaController@edit');
+
+        Route::post('/receta/updater', [
+            'as' => 'receta.update',
+            'uses' => 'RecetaController@update',
+        ]);
+
+        Route::get('/receta/{ID?}', [
+            'as' => 'receta',
+            'uses' => 'RecetaController@recipe',
+        ]);
 
 
         //Órdenes pedidas
@@ -97,11 +107,17 @@ Route::group(['middleware' => 'auth'], function(){
         //entregas(Meseros)
         Route::get('/entregas','OrdenPreparadaController@index');
 
-        //reporte de excel
         Route::get('/reporte',function()
         {
-            return view('administracion.excel');
+            return view('administracion.reporte');
         });
+
+        //reporte de excel o api
+        Route::get('/reporte/{type?}',[
+            'as' => 'reporte',
+            'uses' => 'OrdenAtendidaController@show',
+            ]);
+
 
         Route::get('/registrar',function()
         {

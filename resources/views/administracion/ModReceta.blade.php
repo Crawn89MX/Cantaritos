@@ -54,7 +54,17 @@
 	}
 
 </style>
-	
+	<?php
+	if(auth()->user()->puesto != 'admin'){
+		
+		echo '<center><h1 style="color:black;">Tu no tienes permisos</h1></center>';
+		echo'<script>
+				$(document).ready(function(){
+					$(".contenidos").remove();
+				});
+			</script>';
+	}
+	?>
 
 	<div class="margenes">
 		<div class="container contenido">

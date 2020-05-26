@@ -128,16 +128,35 @@ class OrdenAtendidaController extends Controller
         */
     }
 
+
+
+
+
+
+
+
+
+
     /**
      * Display the specified resource.
      *
      * @param  \App\Orden_Atendida  $orden_Atendida
      * @return \Illuminate\Http\Response
      */
-    public function show(Orden_Atendida $orden_Atendida)
+    public function show($type)
     {
         //
+        $resultado = OrdenAtendida::all();
+
+        return view('administracion.'.$type, compact('resultado'));
     }
+
+
+
+
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -145,10 +164,19 @@ class OrdenAtendidaController extends Controller
      * @param  \App\Orden_Atendida  $orden_Atendida
      * @return \Illuminate\Http\Response
      */
-    public function edit(Orden_Atendida $orden_Atendida)
+    public function edit(OrdenAtendida $orden_Atendida)
     {
         //
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * Update the specified resource in storage.
@@ -157,10 +185,17 @@ class OrdenAtendidaController extends Controller
      * @param  \App\Orden_Atendida  $orden_Atendida
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Orden_Atendida $orden_Atendida)
+    public function update(Request $request, OrdenAtendida $orden_Atendida)
     {
         //
     }
+
+
+
+
+
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -168,7 +203,7 @@ class OrdenAtendidaController extends Controller
      * @param  \App\Orden_Atendida  $orden_Atendida
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Orden_Atendida $orden_Atendida)
+    public function destroy(OrdenAtendida $orden_Atendida)
     {
         //
     }

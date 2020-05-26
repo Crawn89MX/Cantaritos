@@ -97,7 +97,6 @@
 					</CENTER>
 				<div class="row">
 					
-
 					@forelse ($orden_Pedidas ?? '' as $orden_Pedida)
 					  <div class="card" style="width: 200px; margin-left: 2.2% !important;">
 						<img class="card-img-top" width="350" height="200" src="{{ asset("Images/".$orden_Pedida->receta->Imagen) }}" alt="Card image">
@@ -115,15 +114,18 @@
 									  <CENTER>
 										  <i class="fas fa-stopwatch" style="font-size:20px; color:gray;"></i>
 									  </CENTER>
-									<form method="POST" action="ordenes/preparada">
-									  @csrf
-									  <input type="text" name="id" value="{{ $orden_Pedida->ID }}" required hidden> 
-									  <input type="text" name="idreceta" value="{{ $orden_Pedida->ID_Receta }}" required hidden> 
-									  <input type="text" name="idmesa" value="{{ $orden_Pedida->Mesa }}" required hidden>
-									  <input type="text" name="ingredientes" value="{{ $orden_Pedida->receta->Ingredientes_Alternativos }}" required hidden> 
-									  <input type="text" name="precio" value="{{ $orden_Pedida->receta->Precio }}" required hidden>  
-									  <button type="submit" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;"><i class="fas fa-check"></i></button>
-								  	</form>
+									  <form method="POST" action="ordenes/preparada">
+									    @csrf
+									    <input type="text" name="id" value="{{ $orden_Pedida->ID }}" required hidden> 
+									    <input type="text" name="idreceta" value="{{ $orden_Pedida->ID_Receta }}" required hidden> 
+									    <input type="text" name="idmesa" value="{{ $orden_Pedida->Mesa }}" required hidden>
+									    <input type="text" name="ingredientes" value="{{ $orden_Pedida->Ingredientes_Alternativos }}" required hidden> 
+									    <input type="text" name="precio" value="{{ $orden_Pedida->Precio }}" required hidden>  
+									    <button type="submit" class="btn btn-success btn-xs" style="height:25px !important; padding-top: 0px !important;"><i class="fas fa-check"></i></button>
+									  </form>  
+									  <p></p>
+									  <a href="receta/{{ $orden_Pedida->ID  }}" class="btn btn-primary btn-xs" style="height:25px !important; padding-top: 0px !important;"><i class="fas fa-clipboard-list"></i></i></a>
+								  	
 								</div>
 							  </div>
 						</div>

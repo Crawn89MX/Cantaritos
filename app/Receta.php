@@ -9,21 +9,11 @@ class Receta extends Model
     //
 
     public $timestamps = false;
+    protected $guarded = [];
 
 
-
-    
-    public function atendidas()
-    {
-        return $this->hasMany(Receta::class,'ID_Receta');
-    }
-    public function preparadas()
-    {
-        return $this->hasMany(Receta::class,'ID_Receta');
-    }
-    public function pedidas()
-    {
-        return $this->hasMany(Receta::class,'ID_Receta');
+    public function getNombreAttribute($value){
+        return ucwords($value);
     }
 }
 

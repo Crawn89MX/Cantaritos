@@ -17,6 +17,7 @@ class CreateOrdenAtendidasTable extends Migration
             $table->bigIncrements('ID')->unique();
             $table->string('Mesa');
             $table->bigInteger('ID_Receta');
+            $table->foreign('ID_Receta')->references('id')->('recetas');
             $table->string('Ingredientes_Alternativos');
             $table->string('Precio');
             $table->bigInteger("ID_Facturacion");
